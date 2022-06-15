@@ -1,5 +1,7 @@
 # Las Maria's Management Control systems
 
+![Las Maria's Hotel & Resort](./docs/images/logo.jpg)
+
 This repository contains **Las Maria's Hotel & Resort** management systems
 
 ## License
