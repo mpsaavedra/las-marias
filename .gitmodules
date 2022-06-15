@@ -1,0 +1,3 @@
+[submodule "src/BuildingBlocks"]
+	path = src/BuildingBlocks
+	url = git@github.com:mpsaavedra/BuildingBlocks.git
