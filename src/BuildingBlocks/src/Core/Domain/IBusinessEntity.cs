@@ -28,5 +28,10 @@ namespace Orun.Domain
         /// </summary>
         [JsonPropertyName("updateAt")]
         DateTime? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Version to avoid possible mismatch
+        /// </summary>
+        Guid RowVersion{ get; set; }
     }
 }
