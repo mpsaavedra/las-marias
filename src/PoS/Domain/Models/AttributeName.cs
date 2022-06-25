@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Orun.Domain;
+using HotChocolate.Data;
+using System.Text.Json.Serialization;
 
 namespace LasMarias.PoS.Domain.Models;
 
@@ -18,5 +20,8 @@ public partial class AttributeName : BusinessEntity<long>
 
     public bool Enable { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual ICollection<Attribute> Attributes { get; set; }
 }

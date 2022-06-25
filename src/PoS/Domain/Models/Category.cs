@@ -1,5 +1,7 @@
 
 using Orun.Domain;
+using HotChocolate.Data;
+using System.Text.Json.Serialization;
 
 namespace LasMarias.PoS.Domain.Models;
 
@@ -18,7 +20,13 @@ public partial class Category : BusinessEntity<long>
 
     public virtual Category ParentCategory { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual ICollection<Category> ChildCategories { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual ICollection<Product> Products { get; set; }
 }

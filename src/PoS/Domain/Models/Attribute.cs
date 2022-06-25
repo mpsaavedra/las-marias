@@ -1,6 +1,8 @@
 namespace LasMarias.PoS.Domain.Models;
 
+using System.Text.Json.Serialization;
 using System.Collections.Generic;
+using HotChocolate.Data;
 using Orun.Domain;
 
 public partial class Attribute : BusinessEntity<long>
@@ -22,5 +24,8 @@ public partial class Attribute : BusinessEntity<long>
 
     public virtual AttributeName AttributeName { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public ICollection<Product> Products { get; set; }
 }

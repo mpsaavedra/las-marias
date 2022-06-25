@@ -87,5 +87,7 @@ public partial class ApplicationUser : IdentityUser, IApplicationUser
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
 
+    public Guid RowVersion { get; set; }
+
     #endregion
 }

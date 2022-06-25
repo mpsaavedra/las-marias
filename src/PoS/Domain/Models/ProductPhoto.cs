@@ -1,6 +1,8 @@
 namespace LasMarias.PoS.Domain.Models;
 
 using Orun.Domain;
+using System.Text.Json.Serialization;
+using HotChocolate.Data;
 
 public partial class ProductPhoto : BusinessEntity<long>
 {
@@ -19,5 +21,8 @@ public partial class ProductPhoto : BusinessEntity<long>
 
     public long ProductId { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual Product Product { get; set; }
 }
