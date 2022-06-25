@@ -15,7 +15,7 @@ namespace OtroTraguito.API.Extensions
         public static IServiceCollection AddConfiguration(this IServiceCollection services, IConfiguration config)
         {
          
-
+            services.AddSingleton<IConfiguration>(config);
             return services;
         }
 

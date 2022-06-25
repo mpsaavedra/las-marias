@@ -25,6 +25,12 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<ProductPhoto> ProductPhotos { get; set; }
 
+    public virtual DbSet<Seat> Seats { get; set; }
+
+    public virtual DbSet<Stand> Stands { get; set; }
+
+    public virtual DbSet<Table> Tables { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
 

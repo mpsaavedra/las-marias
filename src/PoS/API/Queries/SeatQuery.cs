@@ -16,13 +16,13 @@ using Microsoft.EntityFrameworkCore;
 using LasMarias.PoS.Data;
 using LasMarias.PoS.Domain.Models;
 using LasMarias.PoS.Domain.Repositories;
-using LasMarias.PoS.Domain.DataModels.AttributeName;
+using LasMarias.PoS.Domain.DataModels.Seat;
 using LasMarias.PoS.Extensions;
 using Serilog;
 
 [ExtendObjectType(Name = "Query")]
-[GraphQLDescription("Product Attribute queries")]
-public partial class AttributeNameQuery
+[GraphQLDescription("Product Seat queries")]
+public partial class SeatQuery
 {
     [UseFirstOrDefault]
     [UsePaging]
@@ -30,16 +30,16 @@ public partial class AttributeNameQuery
     [UseFiltering]
     [UseSorting]
     [GraphQLDescription("List all available attributes names")]
-    public async Task<IQueryable<AttributeName>> GetAttributesNames(
+    public async Task<IQueryable<Seat>> GetSeats(
         [Service] IChainOfResponsibilityService chain
     )
     {
         try
         {
-            Log.Debug("Retrieving attributes names list");
-            var data = new AttributeNameListPayload();
-            var fail = await chain.ExecuteAsyncChain<AttributeNameListPayload, bool>(
-                "get-attributes-names-list", 
+            Log.Debug("Retrieving seats list");
+            var data = new SeatListPayload();
+            var fail = await chain.ExecuteAsyncChain<SeatListPayload, bool>(
+                "get-seats-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

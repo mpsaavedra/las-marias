@@ -16,30 +16,30 @@ using Microsoft.EntityFrameworkCore;
 using LasMarias.PoS.Data;
 using LasMarias.PoS.Domain.Models;
 using LasMarias.PoS.Domain.Repositories;
-using LasMarias.PoS.Domain.DataModels.AttributeName;
+using LasMarias.PoS.Domain.DataModels.Table;
 using LasMarias.PoS.Extensions;
 using Serilog;
 
 [ExtendObjectType(Name = "Query")]
 [GraphQLDescription("Product Attribute queries")]
-public partial class AttributeNameQuery
+public partial class TableQuery
 {
     [UseFirstOrDefault]
     [UsePaging]
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    [GraphQLDescription("List all available attributes names")]
-    public async Task<IQueryable<AttributeName>> GetAttributesNames(
+    [GraphQLDescription("List all available tables")]
+    public async Task<IQueryable<Table>> GetTables(
         [Service] IChainOfResponsibilityService chain
     )
     {
         try
         {
-            Log.Debug("Retrieving attributes names list");
-            var data = new AttributeNameListPayload();
-            var fail = await chain.ExecuteAsyncChain<AttributeNameListPayload, bool>(
-                "get-attributes-names-list", 
+            Log.Debug("Retrieving tables list");
+            var data = new TableListPayload();
+            var fail = await chain.ExecuteAsyncChain<TableListPayload, bool>(
+                "get-tables-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

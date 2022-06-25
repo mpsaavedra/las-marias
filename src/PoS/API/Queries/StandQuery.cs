@@ -16,13 +16,13 @@ using Microsoft.EntityFrameworkCore;
 using LasMarias.PoS.Data;
 using LasMarias.PoS.Domain.Models;
 using LasMarias.PoS.Domain.Repositories;
-using LasMarias.PoS.Domain.DataModels.AttributeName;
+using LasMarias.PoS.Domain.DataModels.Stand;
 using LasMarias.PoS.Extensions;
 using Serilog;
 
 [ExtendObjectType(Name = "Query")]
-[GraphQLDescription("Product Attribute queries")]
-public partial class AttributeNameQuery
+[GraphQLDescription("Stand queries")]
+public partial class StandQuery
 {
     [UseFirstOrDefault]
     [UsePaging]
@@ -30,16 +30,16 @@ public partial class AttributeNameQuery
     [UseFiltering]
     [UseSorting]
     [GraphQLDescription("List all available attributes names")]
-    public async Task<IQueryable<AttributeName>> GetAttributesNames(
+    public async Task<IQueryable<Stand>> GetStands(
         [Service] IChainOfResponsibilityService chain
     )
     {
         try
         {
-            Log.Debug("Retrieving attributes names list");
-            var data = new AttributeNameListPayload();
-            var fail = await chain.ExecuteAsyncChain<AttributeNameListPayload, bool>(
-                "get-attributes-names-list", 
+            Log.Debug("Retrieving stands list");
+            var data = new StandListPayload();
+            var fail = await chain.ExecuteAsyncChain<StandListPayload, bool>(
+                "get-stands-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

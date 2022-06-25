@@ -1,9 +1,9 @@
 namespace LasMarias.PoS.Domain.DataModels.AttributeName;
 
-using System.Collections.Generic;
+using System.Linq;
 using LasMarias.PoS.Domain.Models;
 
 public partial class AttributeNameListPayload
 {
-    public IQueryable<AttributeName> Payload { get; set; }
+    public IQueryable<AttributeName>? Payload { get; set; }
 }

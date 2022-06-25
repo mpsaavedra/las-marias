@@ -32,6 +32,9 @@ public static class GrahQlExtensions
             .AddType<CategoryQuery>()
             .AddType<ProductQuery>()
             .AddType<ProductPhotoQuery>()
+            .AddType<SeatQuery>()
+            .AddType<StandQuery>()
+            .AddType<TableQuery>()
             
             // adding mutations
 
