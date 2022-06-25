@@ -27,6 +27,7 @@ namespace Orun.Domain
         [JsonPropertyName("updateAt")]
         public DateTime? UpdatedAt { get; set; }
 
+        /// <inheritdoc cref="IBusinessEntity{TKey}.RowVersion" />
         [JsonPropertyName("rowVersion")]
         public Guid RowVersion{ get; set; }
     }

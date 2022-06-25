@@ -4,6 +4,9 @@ using Orun.Plugins.Resolver;
 
 namespace Orun.Plugins
 {
+    /// <summary>
+    /// Implements the ASynchronical Responsibility Chain
+    /// </summary>
     public class AsyncResponsibilityChain<TParameter, TReturn> 
         : BaseMiddlewareFlow<IAsyncMiddleware<TParameter, TReturn>>,
             IAsyncResponsibilityChain<TParameter, TReturn>

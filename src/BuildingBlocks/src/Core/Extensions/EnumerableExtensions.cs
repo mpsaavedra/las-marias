@@ -9,6 +9,9 @@ namespace Orun.Extensions
     public static class EnumerableExtensions
     {
 
+        /// <summary>
+        /// Return and ordenated list using provider parameters
+        /// </summary>
         public static IEnumerable<T> ToOrder<T>(this IEnumerable<T> list, string sortBy, 
             bool ascending, int offset, int take)
         {

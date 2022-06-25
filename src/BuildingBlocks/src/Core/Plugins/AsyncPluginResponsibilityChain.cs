@@ -23,6 +23,9 @@ namespace Orun.Plugins
             _middlewares = new List<object>();
         }
 
+        /// <summary>
+        /// Add a new middleware to the middleware chain
+        /// </summary>
         public AsyncPluginResponsibilityChain<TParameter, TReturn> Chain(object instance)
         {
             _middlewares.Add(instance);
@@ -61,6 +64,9 @@ namespace Orun.Plugins
             return await func(parameter).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Executes some function with the chain end it's execution
+        /// </summary>
         public AsyncPluginResponsibilityChain<TParameter, TReturn> Finally(Func<TParameter, Task<TReturn>> finallyFunc)
         {
             _finallyFunc = finallyFunc;
