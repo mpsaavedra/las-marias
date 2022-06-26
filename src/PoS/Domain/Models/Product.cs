@@ -13,7 +13,7 @@ public partial class Product : BusinessEntity<long>
 
     public string Decription { get; set; }
     
-   [UseFiltering]
+    [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<Attribute> Attributes { get; set; }

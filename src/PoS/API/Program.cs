@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddGraphQlConfiguration();
 
 var app = builder.Build();
 
@@ -28,6 +29,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.ApplyDatabaseMigration();
+app
+    .ApplyDatabaseMigration()
+    .UseGraphQL();
 
 app.Run();

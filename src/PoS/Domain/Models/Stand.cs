@@ -36,7 +36,13 @@ public partial class Stand : BusinessEntity<long>
     /// </summary>
     public StandType StandType { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual ICollection<Table> Tables { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual ICollection<Seat> Seats { get; set; }
 }

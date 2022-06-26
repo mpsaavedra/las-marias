@@ -17,9 +17,9 @@ public static class GrahQlExtensions
         
         // and here we go
         services
-            .AddGraphQL()
+            .AddGraphQLServer()
             .AddQueryType(d => d.Name("Query"))
-            .AddMutationType(m => m.Name("Mutation"))
+            // .AddMutationType(m => m.Name("Mutation"))
             
             // add filters and navigations stuffs
             .AddFiltering()
@@ -41,5 +41,15 @@ public static class GrahQlExtensions
             .ModifyOptions( o => o.RemoveUnreachableTypes = true);
        
         return services;
+    }
+
+    public static WebApplication UseGraphQL(this WebApplication app)
+    {
+        app.UseRouting();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapGraphQL();
+        });
+        return app;
     }
 }

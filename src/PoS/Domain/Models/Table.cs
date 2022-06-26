@@ -11,9 +11,17 @@ public partial class Table : BusinessEntity<long>
 
     public string Name { get; set; }
 
+    public bool IsOcuppied { get; set; }
+
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual ICollection<Seat> Seats { get; set; }
 
     public long StandId { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual Stand? Stand { get; set; }
 }

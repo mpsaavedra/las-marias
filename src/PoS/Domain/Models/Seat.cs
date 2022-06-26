@@ -13,11 +13,19 @@ public partial class Seat : BusinessEntity<long>
     
     public SeatType SeatType { get; set; }
 
+    public bool IsOccupied { get; set; }
+
     public long TableId { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual Table? Table { get; set; }
 
     public long StandId { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual Stand? Stand { get; set; }
 }
