@@ -20,7 +20,7 @@ using LasMarias.PoS.Domain.DataModels.Category;
 using LasMarias.PoS.Extensions;
 using Serilog;
 
-[ExtendObjectType(Name = "Query")]
+[ExtendObjectType("Query")]
 [GraphQLDescription("Product Categories queries")]
 public partial class CategoryQuery
 {
@@ -41,7 +41,7 @@ public partial class CategoryQuery
             var fail = await chain.ExecuteAsyncChain<CategoryListPayload, bool>(
                 "get-categories-list", 
                 data);
-            return await Task.FromResult(data.Payload);
+            return await Task.FromResult(data.Payload!);
         }
         catch (Exception e)
         {

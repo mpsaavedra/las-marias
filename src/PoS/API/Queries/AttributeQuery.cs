@@ -20,7 +20,7 @@ using LasMarias.PoS.Domain.DataModels.Attribute;
 using LasMarias.PoS.Extensions;
 using Serilog;
 
-[ExtendObjectType(Name = "Query")]
+[ExtendObjectType("Query")]
 [GraphQLDescription("Product Attribute queries")]
 public partial class AttributeQuery
 {
@@ -41,7 +41,7 @@ public partial class AttributeQuery
             var fail = await chain.ExecuteAsyncChain<AttributeListPayload, bool>(
                 "get-attributes-list", 
                 data);
-            return await Task.FromResult(data.Payload);
+            return await Task.FromResult(data.Payload!);
         }
         catch (Exception e)
         {

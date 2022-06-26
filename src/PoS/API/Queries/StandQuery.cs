@@ -20,7 +20,7 @@ using LasMarias.PoS.Domain.DataModels.Stand;
 using LasMarias.PoS.Extensions;
 using Serilog;
 
-[ExtendObjectType(Name = "Query")]
+[ExtendObjectType("Query")]
 [GraphQLDescription("Stand queries")]
 public partial class StandQuery
 {

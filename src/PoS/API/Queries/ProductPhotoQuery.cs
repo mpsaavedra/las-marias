@@ -20,7 +20,7 @@ using LasMarias.PoS.Domain.DataModels.ProductPhoto;
 using LasMarias.PoS.Extensions;
 using Serilog;
 
-[ExtendObjectType(Name = "Query")]
+[ExtendObjectType("Query")]
 [GraphQLDescription("Product photos queries")]
 public partial class ProductPhotoQuery
 {
@@ -41,7 +41,7 @@ public partial class ProductPhotoQuery
             var fail = await chain.ExecuteAsyncChain<ProductPhotoListPayload, bool>(
                 "get-products-list", 
                 data);
-            return await Task.FromResult(data.Payload);
+            return await Task.FromResult(data.Payload!);
         }
         catch (Exception e)
         {

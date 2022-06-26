@@ -30,7 +30,7 @@ public static class WebHostExtensions
             {
                 logger.LogInformation($"Migrating database associated with context {typeof(TContext).Name}");
 
-                context.Database.Migrate();
+                context!.Database.Migrate();
 
                 seeder(context, services);
 

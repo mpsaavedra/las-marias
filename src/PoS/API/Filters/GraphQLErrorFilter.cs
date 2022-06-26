@@ -16,7 +16,7 @@ public class GraphQLErrorFilter : IErrorFilter
     public IError OnError(IError error)
     {
         if (error.Exception != null)
-            return error?.WithMessage(error.Exception.Source + " " +
+            return error.WithMessage(error.Exception.Source + " " +
                                         error.Exception.Message + " " +
                                         error.Exception.StackTrace);
         return new Error(error.Message);

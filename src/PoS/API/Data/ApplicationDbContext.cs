@@ -16,21 +16,21 @@ public partial class ApplicationDbContext : DbContext
 
     }
 
-    public virtual DbSet<Attribute> Attributes { get; set; }
+    public virtual DbSet<Attribute> Attributes => Set<Attribute>();
 
-    public virtual DbSet<AttributeName> AttributeNames { get; set; }
+    public virtual DbSet<AttributeName> AttributeNames => Set<AttributeName>();
 
-    public virtual DbSet<Category> Categories { get; set; }
+    public virtual DbSet<Category> Categories => Set<Category>();
 
-    public virtual DbSet<Product> Products { get; set; }
+    public virtual DbSet<Product> Products => Set<Product>();
 
-    public virtual DbSet<ProductPhoto> ProductPhotos { get; set; }
+    public virtual DbSet<ProductPhoto> ProductPhotos => Set<ProductPhoto>();
 
-    public virtual DbSet<Seat> Seats { get; set; }
+    public virtual DbSet<Seat> Seats => Set<Seat>();
 
-    public virtual DbSet<Stand> Stands { get; set; }
+    public virtual DbSet<Stand> Stands => Set<Stand>();
 
-    public virtual DbSet<Table> Tables { get; set; }
+    public virtual DbSet<Table> Tables => Set<Table>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

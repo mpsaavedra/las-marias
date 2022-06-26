@@ -20,7 +20,7 @@ using LasMarias.PoS.Domain.DataModels.Seat;
 using LasMarias.PoS.Extensions;
 using Serilog;
 
-[ExtendObjectType(Name = "Query")]
+[ExtendObjectType("Query")]
 [GraphQLDescription("Product Seat queries")]
 public partial class SeatQuery
 {

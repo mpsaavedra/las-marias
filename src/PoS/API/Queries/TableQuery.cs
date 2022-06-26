@@ -20,7 +20,7 @@ using LasMarias.PoS.Domain.DataModels.Table;
 using LasMarias.PoS.Extensions;
 using Serilog;
 
-[ExtendObjectType(Name = "Query")]
+[ExtendObjectType("Query")]
 [GraphQLDescription("Product Attribute queries")]
 public partial class TableQuery
 {
