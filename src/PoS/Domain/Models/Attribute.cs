@@ -7,6 +7,11 @@ using Orun.Domain;
 
 public partial class Attribute : BusinessEntity<long>
 {
+    public Attribute()
+    {
+        Products = new HashSet<Product>();
+    }
+
     public long AttributeId { get; set; }
 
     /// <summary>

@@ -2,6 +2,7 @@ namespace LasMarias.PoS.Data;
 
 using Microsoft.EntityFrameworkCore;
 using LasMarias.PoS.Domain.Models;
+using LasMarias.PoS.Domain.EntityTypeConfigurations;
 
 public partial class ApplicationDbContext : DbContext
 {
@@ -33,6 +34,13 @@ public partial class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-
+        builder.ApplyConfiguration( new AttributeNameEntityTypeConfiguration());
+        builder.ApplyConfiguration( new AttributeEntityTypeConfiguration());
+        builder.ApplyConfiguration( new CategoryEntityTypeConfiguration());
+        builder.ApplyConfiguration( new ProductPhotoEntityTypeConfiguration());
+        builder.ApplyConfiguration( new ProductEntityTypeConfiguration());
+        builder.ApplyConfiguration( new SeatEntityTypeConfiguration());
+        builder.ApplyConfiguration( new StandEntityTypeConfiguration());
+        builder.ApplyConfiguration( new TableEntityTypeConfiguration());
     }
 }
