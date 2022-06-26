@@ -1,6 +1,12 @@
+using LasMarias.PoS.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder
+    .AddCustomSerilog()
+    .AddCustomDatabase()
+    .AddCustomHealthChecks();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -21,5 +27,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.ApplyDatabaseMigration();
 
 app.Run();

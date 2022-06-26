@@ -4,8 +4,8 @@ namespace LasMarias.PoS.Domain.Models;
 
 public enum SeatType
 {
-    [Display(Name = = "Simple")]
-    Single = 1,
+    [Display(Name = "Simple")]
+    Single,
 
     [Display(Name = "Doble")]
     Double,
@@ -16,6 +16,6 @@ public enum SeatType
     [Display(Name = "Banca")]
     Bench,
 
-    [Display(Name = "Cama de playa/piscina")]
+    [Display(Name = "Cama de playa-piscina")]
     BeachBeds
 }

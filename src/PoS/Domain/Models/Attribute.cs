@@ -7,6 +7,11 @@ using Orun.Domain;
 
 public partial class Attribute : BusinessEntity<long>
 {
+    public Attribute()
+    {
+        Products = new HashSet<Product>();
+    }
+
     public long AttributeId { get; set; }
 
     /// <summary>
@@ -27,5 +32,5 @@ public partial class Attribute : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public ICollection<Product> Products { get; set; }
+    public virtual ICollection<Product> Products { get; set; }
 }
