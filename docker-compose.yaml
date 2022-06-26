@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  postgres-data:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=marias
+      - POSTGRES_PASSWORD=marias
+      - POSTGRES_DB=marias
+    ports:
+      - 5432:5432
+    deploy:
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 512M
+
+volumes:
+  postgres_data:
+
