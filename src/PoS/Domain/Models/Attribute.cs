@@ -32,5 +32,5 @@ public partial class Attribute : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public ICollection<Product> Products { get; set; }
+    public virtual ICollection<Product> Products { get; set; }
 }

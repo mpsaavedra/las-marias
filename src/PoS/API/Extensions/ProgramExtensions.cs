@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Npgsql;
@@ -26,7 +27,7 @@ public static class ProgramExtensions
 {
     private const string AppName = "Las Marias - PoS";
 
-    public static void AddCustomSerilog(this WebApplicationBuilder builder)
+    public static WebApplicationBuilder AddCustomSerilog(this WebApplicationBuilder builder)
     {
         var seqServerUrl = builder.Configuration["SeqServerUrl"];
 
@@ -38,17 +39,17 @@ public static class ProgramExtensions
             .CreateLogger();
 
         builder.Host.UseSerilog();
+        return builder;
     }
 
-    public static void AddCustomHealthChecks(this WebApplicationBuilder builder) =>
+    public static WebApplicationBuilder AddCustomHealthChecks(this WebApplicationBuilder builder)
+    {
         builder.Services.AddHealthChecks()
-            .AddCheck("self", () => HealthCheckResult.Healthy())
-            .AddDapr()
-            .AddSqlServer(
-                builder.Configuration["ConnectionStrings:CatalogDB"],
-                name: "CatalogDB-check",
-                tags: new string[] { "catalogdb" });
-    public static void ApplyDatabaseMigration(this WebApplication app)
+            .AddCheck("self", () => HealthCheckResult.Healthy());
+        return builder;
+    }
+
+    public static WebApplication ApplyDatabaseMigration(this WebApplication app)
     {
         // Apply database migration automatically. Note that this approach is not
         // recommended for production scenarios. Consider generating SQL scripts from
@@ -59,15 +60,22 @@ public static class ProgramExtensions
         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
         retryPolicy.Execute(context.Database.Migrate);
+
+        return app;
     }
 
-    public static void AddCustomDatabase(this WebApplicationBuilder builder) =>
+    public static WebApplicationBuilder AddCustomDatabase(this WebApplicationBuilder builder)
+    {
         builder.Services.AddDbContext<ApplicationDbContext>(options => 
         {
             options.EnableSensitiveDataLogging(true);
             options.UseLazyLoadingProxies();
             options.UseNpgsql(builder.Configuration["ConnectionStrings:DefaultConnection"]);
         });
+
+        return builder;
+    }
+    
     private static Policy CreateRetryPolicy(IConfiguration configuration, Serilog.ILogger logger)
     {
         // Only use a retry policy if configured to do so.

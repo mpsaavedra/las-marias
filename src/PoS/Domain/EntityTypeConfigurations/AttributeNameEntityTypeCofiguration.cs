@@ -9,6 +9,7 @@ public class AttributeNameEntityTypeConfiguration : IEntityTypeConfiguration<Att
     public void Configure(EntityTypeBuilder<AttributeName> builder)
     {
         builder.HasKey(x => x.AttributeNameId);
+        
         builder
             .HasMany(x => x.Attributes)
             .WithOne(x => x.AttributeName)

@@ -16,7 +16,7 @@ public enum StandType
     [Display(Name = "Recepcion")]
     Reception,
 
-    [Display(Name = = "Restaurante")]
+    [Display(Name = "Restaurante")]
     Restaurant,
 
     [Display(Name = "Sala de conferencias")]
