@@ -9,7 +9,7 @@ public partial class Seat : BusinessEntity<long>
 {
     public long SeatId { get; set; }
 
-    public string Number { get; set; }
+    public string? Code { get; set; }
     
     public SeatType SeatType { get; set; }
 

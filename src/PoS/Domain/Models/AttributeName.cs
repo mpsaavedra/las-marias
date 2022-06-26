@@ -11,6 +11,11 @@ namespace LasMarias.PoS.Domain.Models;
 /// </summary>
 public partial class AttributeName : BusinessEntity<long>
 {
+    public AttributeName()
+    {
+        Attributes = new HashSet<Attribute>();
+    }
+
     public long AttributeNameId { get; set; }
 
     /// <summary>

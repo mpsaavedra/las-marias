@@ -10,6 +10,12 @@ namespace LasMarias.PoS.Domain.Models;
 /// </summary>
 public partial class Category : BusinessEntity<long>
 {
+    public Category()
+    {
+        ChildCategories = new HashSet<Category>();
+        Products = new HashSet<Product>();
+    }
+
     public long CategoryId { get; set; }    
 
     public string Name { get; set; }
@@ -18,7 +24,7 @@ public partial class Category : BusinessEntity<long>
 
     public long ParentCategoryId { get; set; }
 
-    public virtual Category ParentCategory { get; set; }
+    public virtual Category? ParentCategory { get; set; }
 
     [UseFiltering]
     [UseSorting]

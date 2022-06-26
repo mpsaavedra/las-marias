@@ -8,9 +8,9 @@ public partial class ProductPhoto : BusinessEntity<long>
 {
     public long ProductPhotoId { get; set; }
 
-    public byte[] Photo { get; set; }
+    public byte[]? Photo { get; set; }
 
-    public string PhotoUrl { get; set; }
+    public string? PhotoUrl { get; set; }
 
     /// <summary>
     /// used if for a better UX
@@ -24,5 +24,5 @@ public partial class ProductPhoto : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual Product Product { get; set; }
+    public virtual Product? Product { get; set; }
 }

@@ -18,6 +18,6 @@ public class SeatEntityTypeConfiguration: IEntityTypeConfiguration<Seat>
             .WithMany(x => x.Seats)
             .HasForeignKey(x => x.StandId);
         builder
-            .HasIndex(x => x.Number);
+            .HasIndex(x => x.Code);
     }
 }

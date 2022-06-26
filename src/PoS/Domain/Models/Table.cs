@@ -7,6 +7,11 @@ namespace LasMarias.PoS.Domain.Models;
 
 public partial class Table : BusinessEntity<long>
 {
+    public Table()
+    {
+        Seats = new HashSet<Seat>();
+    }
+
     public long TableId { get; set; }
 
     public string Name { get; set; }
@@ -16,7 +21,7 @@ public partial class Table : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<Seat> Seats { get; set; }
+    public virtual ICollection<Seat>? Seats { get; set; }
 
     public long StandId { get; set; }
 
