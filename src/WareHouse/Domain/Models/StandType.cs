@@ -1,4 +1,4 @@
-namespace LasMarias.PoS.Domain.Models;
+namespace LasMarias.WareHouse.Domain.Models;
 
 using System.ComponentModel.DataAnnotations;
 

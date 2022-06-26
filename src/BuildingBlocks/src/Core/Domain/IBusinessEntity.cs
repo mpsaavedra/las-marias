@@ -32,6 +32,6 @@ namespace Orun.Domain
         /// <summary>
         /// Version to avoid possible mismatch
         /// </summary>
-        Guid RowVersion{ get; set; }
+        string RowVersion{ get; set; }
     }
 }

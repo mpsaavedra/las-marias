@@ -13,6 +13,8 @@ namespace Orun.Domain
         public BusinessEntity()
         {
             Deleted = false;
+            CreatedAt = DateTime.UtcNow;
+            RowVersion = Guid.NewGuid().ToString();
         }
 
         /// <inheritdoc cref="IBusinessEntity{TKey}.Deleted"/>
@@ -29,6 +31,6 @@ namespace Orun.Domain
 
         /// <inheritdoc cref="IBusinessEntity{TKey}.RowVersion" />
         [JsonPropertyName("rowVersion")]
-        public Guid RowVersion{ get; set; }
+        public string RowVersion{ get; set; }
     }
 }

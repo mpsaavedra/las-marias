@@ -1,10 +1,10 @@
 ﻿using HotChocolate;
 using Microsoft.Extensions.DependencyInjection;
-using LasMarias.PoS.Filters;
-// using LasMarias.PoS.Mutations;
-using LasMarias.PoS.Queries;
+using LasMarias.WareHouse.Filters;
+// using LasMarias.WareHouse.Mutations;
+using LasMarias.WareHouse.Queries;
 
-namespace LasMarias.PoS.Extensions;
+namespace LasMarias.WareHouse.Extensions;
 
 public static class GrahQlExtensions
 {
@@ -27,9 +27,12 @@ public static class GrahQlExtensions
             .AddProjections()
             
             // adding queries
-            .AddType<SeatQuery>()
-            .AddType<StandQuery>()
-            .AddType<TableQuery>()
+            .AddType<AttributeQuery>()
+            .AddType<AttributeNameQuery>()
+            .AddType<CategoryQuery>()
+            .AddType<PriceHistoryQuery>()
+            .AddType<ProductQuery>()
+            .AddType<ProductPhotoQuery>()
             
             // adding mutations
 

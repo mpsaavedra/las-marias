@@ -10,6 +10,10 @@ public static class RepositoryExtensions
     {
         
         // registering repositories
+        services
+            .AddScoped<ISeatRepository, SeatRepository>()
+            .AddScoped<IStandRepository, StandRepository>()
+            .AddScoped<ITableRepository, TableRepository>();
         
         return services;
     }
