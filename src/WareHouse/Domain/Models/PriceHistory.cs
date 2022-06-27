@@ -11,6 +11,8 @@ public partial class PriceHistory : BusinessEntity<long>
 
     public long ProductId { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
     public virtual Product Product { get; set; }
 
     public decimal OldPrice { get; set; }

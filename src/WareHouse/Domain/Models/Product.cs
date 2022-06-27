@@ -13,6 +13,8 @@ public partial class Product : BusinessEntity<long>
         ProductPhotos = new HashSet<ProductPhoto>();
         Categories = new HashSet<Category>();
         PriceHistories = new HashSet<PriceHistory>();
+        Movements = new HashSet<Movement>();
+        ReOrderLevel = -1;
     }
 
     public long ProductId { get; set; }
@@ -20,6 +22,8 @@ public partial class Product : BusinessEntity<long>
     public string Name { get; set; }
 
     public string? Decription { get; set; }
+
+    public string? Note { get; set; }
 
     /// <summary>
     /// price in which was buyed
@@ -29,8 +33,12 @@ public partial class Product : BusinessEntity<long>
     /// <summary>
     /// sale price for the product
     /// <summary>
-    public decimal ListPrice {get; set; }
-    
+    public decimal SellingPrice {get; set; }
+
+    public decimal? Amount { get; set; }
+
+    public decimal? ReOrderLevel { get; set; }
+
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
@@ -50,4 +58,19 @@ public partial class Product : BusinessEntity<long>
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<PriceHistory> PriceHistories { get; set; }
+
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
+    public virtual ICollection<Movement> Movements { get; set; }
+
+    /// <summary>
+    /// return true if there are products available
+    /// </summary>
+    public bool OnStock  => Amount > 0;
+
+    /// <summary>
+    /// returns true to notice that this product need to be re-order
+    /// </summary>
+    public bool NotifyReOrder => ReOrderLevel > -1 && Amount <= ReOrderLevel; 
 }

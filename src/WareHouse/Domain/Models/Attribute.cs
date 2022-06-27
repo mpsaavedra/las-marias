@@ -25,6 +25,8 @@ public partial class Attribute : BusinessEntity<long>
     /// </summary>
     public string? Description { get; set; }
 
+    public bool Enable { get; set; }
+
     public long AttributeNameId { get; set; }
 
     public virtual AttributeName AttributeName { get; set; }

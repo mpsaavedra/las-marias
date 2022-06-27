@@ -2,6 +2,7 @@
 using Orun.Domain;
 using HotChocolate.Data;
 using System.Text.Json.Serialization;
+using LasMarias.WareHouse.Domain.Repositories;
 
 namespace LasMarias.WareHouse.Domain.Models;
 
@@ -14,6 +15,7 @@ public partial class Category : BusinessEntity<long>
     {
         ChildCategories = new HashSet<Category>();
         Products = new HashSet<Product>();
+        IVendorRepository d;
     }
 
     public long CategoryId { get; set; }    
@@ -29,10 +31,10 @@ public partial class Category : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<Category> ChildCategories { get; set; }
+    public virtual ICollection<Category>? ChildCategories { get; set; }
 
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<Product> Products { get; set; }
+    public virtual ICollection<Product>? Products { get; set; }
 }
