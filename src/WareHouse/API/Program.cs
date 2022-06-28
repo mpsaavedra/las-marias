@@ -2,6 +2,7 @@ using LasMarias.WareHouse.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAutoMapper(typeof(Program));
 // Add services to the container.
 builder
     .AddCustomSerilog()

@@ -3,37 +3,24 @@ namespace LasMarias.PoS.Domain.Models;
 using System.ComponentModel.DataAnnotations;
 
 // THIS class is share with PoS do not change or change both to keep identical
-public class StandType
+public enum StandType
 {
-    public static StandType Bar = new StandType(1, "Bar");
+    [Display(Name = "Bar")]
+    Bar,
 
-    public static StandType Pool = new StandType(2, "Piscina");
+    [Display(Name = "Piscina")]
+    Pool,
 
-    public static StandType Lobby = new StandType(3, "Lobby");
+    [Display(Name = "Lobby")]
+    Lobby,
 
-    public static StandType Reception = new StandType(4, "Recepcion");
+    [Display(Name = "Recepcion")]
+    Reception,
 
-    public static StandType Restaurant = new StandType(5, "Restaurante");
-    
-    public static StandType ConferenceRoom = new StandType(6, "Sala de conferencia");
+    [Display(Name = "Restaurante")]
+    Restaurant,
 
-    public StandType(int code, string name)
-    {
-        Code = code;
-        Name = name;
-        Description = Name;
-    }
+    [Display(Name = "Sala de conferencia")]    
+    ConferenceRoom
 
-    public StandType(int code, string name, string description)
-    {
-        Code = code;
-        Name = name;
-        Description = description;
-    }
-
-    public int Code { get; set; }
-
-    public string Name { get; set; }
-
-    public string Description { get; set; }
 }

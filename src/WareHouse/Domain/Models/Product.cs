@@ -13,7 +13,7 @@ public partial class Product : BusinessEntity<long>
         ProductPhotos = new HashSet<ProductPhoto>();
         Categories = new HashSet<Category>();
         PriceHistories = new HashSet<PriceHistory>();
-        Movements = new HashSet<Movement>();
+        ProductMovements = new HashSet<ProductMovement>();
         ReOrderLevel = -1;
     }
 
@@ -62,7 +62,7 @@ public partial class Product : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<Movement> Movements { get; set; }
+    public virtual ICollection<ProductMovement> ProductMovements { get; set; }
 
     /// <summary>
     /// return true if there are products available

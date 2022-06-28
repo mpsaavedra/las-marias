@@ -3,6 +3,7 @@ using LasMarias.PoS.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAutoMapper(typeof(Program));
 builder
     .AddCustomSerilog()
     .AddCustomDatabase()

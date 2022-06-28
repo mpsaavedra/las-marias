@@ -15,7 +15,6 @@ public partial class Category : BusinessEntity<long>
     {
         ChildCategories = new HashSet<Category>();
         Products = new HashSet<Product>();
-        IVendorRepository d;
     }
 
     public long CategoryId { get; set; }    

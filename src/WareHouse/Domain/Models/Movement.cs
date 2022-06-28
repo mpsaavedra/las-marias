@@ -10,6 +10,7 @@ public partial class Movement : BusinessEntity<long>
     public Movement()
     {
         MovementType = MovementType.DeliverToStand;
+        ProductMovements = new HashSet<ProductMovement>();
     }
 
     public long MovementId { get; set; }
@@ -32,15 +33,9 @@ public partial class Movement : BusinessEntity<long>
     /// </summary>
     public string ApplicationUserId { get; set; }
 
-    public long? ProductId { get; set; }
-
-    /// <summary>
-    /// <see cref="Product"/> of the <see cref="Product"/> this movement
-    /// register
-    /// </summary>
     [UseFiltering]
     [UseSorting]
-    public virtual Product? Product { get; set; }
+    public virtual ICollection<ProductMovement>? ProductMovements { get; set; }
 
     public long VendorId { get; set; }
 

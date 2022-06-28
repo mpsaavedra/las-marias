@@ -14,8 +14,7 @@ public class MovementEntityTypeConfiguration : IEntityTypeConfiguration<Movement
             .WithMany(x => x.Movements)
             .HasForeignKey( x => x.VendorId);
         builder
-            .HasOne(x => x.Product)
-            .WithMany(x => x.Movements)
-            .HasForeignKey(x => x.ProductId);
+            .HasMany(x => x.ProductMovements)
+            .WithOne(x => x.Movement);
     }    
 }
