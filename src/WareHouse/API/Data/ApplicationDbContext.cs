@@ -33,6 +33,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Vendor> Vendors => Set<Vendor>();
 
+    public virtual DbSet<MeasureUnit> MeasureUnits { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -45,5 +47,6 @@ public partial class ApplicationDbContext : DbContext
         builder.ApplyConfiguration( new ProductMovementEntityTypeConfiguration());
         builder.ApplyConfiguration( new ProductPhotoEntityTypeConfiguration());
         builder.ApplyConfiguration( new VendorEntityTypeConfiguration());
+        builder.ApplyConfiguration( new MeasureUnitEntityTypeConfiguration());
     }
 }

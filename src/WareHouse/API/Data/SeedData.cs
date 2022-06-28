@@ -17,6 +17,35 @@ public static class SeedData
 
     private static void EnsureSeedData(ApplicationDbContext context)
     {
+        if(!context.MeasureUnits.Any())
+        {
+            context.MeasureUnits.AddRange(new MeasureUnit[]
+            {
+                new MeasureUnit { Name = "Onza", Code = "onz" },
+                new MeasureUnit { Name = "Libra", Code = "lib" },
+                new MeasureUnit { Name = "Kilogramo", Code = "kg" },
+                new MeasureUnit { Name = "Tonelada", Code = "ton" },
+                new MeasureUnit { Name = "Quintal", Code = "qnt" },
+                new MeasureUnit { Name = "Unidad", Code = "u" },
+                new MeasureUnit { Name = "Par", Code = "par" },
+                new MeasureUnit { Name = "Docena", Code = "dozen" },
+                new MeasureUnit { Name = "Vaso", Code = "vaso" },
+                new MeasureUnit { Name = "Copa", Code = "copa" },
+                new MeasureUnit { Name = "Litro", Code = "lt" },
+                new MeasureUnit { Name = "Galon", Code = "gal" },
+                new MeasureUnit { Name = "Milimetro", Code = "mm" },
+                new MeasureUnit { Name = "Centimetro", Code = "cm" },
+                new MeasureUnit { Name = "Decimetro", Code = "dcm" },
+                new MeasureUnit { Name = "Metro", Code = "m" },
+                new MeasureUnit { Name = "Onza cubica", Code = "onz3" },
+                new MeasureUnit { Name = "Centimetro cubico", Code = "cm3" },
+                new MeasureUnit { Name = "Caja", Code = "caja" },
+                new MeasureUnit { Name = "Paquete", Code = "paq" },
+                new MeasureUnit { Name = "Parlet", Code = "parlet" }
+            });
+            context.SaveChanges();
+        }
+
         if(!context.Categories.Any())
         {
             var softDrinks = new Category { Name = "Refrescos", Code = "softdrinks" };
@@ -91,7 +120,7 @@ public static class SeedData
 
         if(!context.AttributeNames.Any())
         {
-            
+            // var weight
         }
     }
 }

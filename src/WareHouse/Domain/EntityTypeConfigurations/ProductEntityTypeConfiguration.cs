@@ -22,6 +22,9 @@ public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
         builder
             .HasMany(x => x.PriceHistories)
             .WithOne(x => x.Product);
-        
+        builder
+            .HasOne(x => x.MeasureUnit)
+            .WithMany(x => x.Products)
+            .HasForeignKey(x => x.MeasureUnitId);
     }
 }

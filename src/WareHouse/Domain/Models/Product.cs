@@ -39,6 +39,9 @@ public partial class Product : BusinessEntity<long>
 
     public decimal? ReOrderLevel { get; set; }
 
+    public long MeasureUnitId { get; set; }
+    public virtual MeasureUnit? MeasureUnit { get; set; }
+
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
