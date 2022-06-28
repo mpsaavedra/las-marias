@@ -21,11 +21,17 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Category> Categories => Set<Category>();
 
+    public virtual DbSet<Movement> Movements => Set<Movement>();
+
     public virtual DbSet<PriceHistory> PriceHistories => Set<PriceHistory>();
 
     public virtual DbSet<Product> Products => Set<Product>();
 
+    public virtual DbSet<ProductMovement> ProductMovements => Set<ProductMovement>();
+
     public virtual DbSet<ProductPhoto> ProductPhotos => Set<ProductPhoto>();
+
+    public virtual DbSet<Vendor> Vendors => Set<Vendor>();
 
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -33,8 +39,11 @@ public partial class ApplicationDbContext : DbContext
         builder.ApplyConfiguration( new AttributeEntityTypeConfiguration());
         builder.ApplyConfiguration( new AttributeNameEntityTypeConfiguration());
         builder.ApplyConfiguration( new CategoryEntityTypeConfiguration());
+        builder.ApplyConfiguration( new MovementEntityTypeConfiguration());
         builder.ApplyConfiguration( new PriceHistoryEntityTypeConfiguration());
         builder.ApplyConfiguration( new ProductEntityTypeConfiguration());
+        builder.ApplyConfiguration( new ProductMovementEntityTypeConfiguration());
         builder.ApplyConfiguration( new ProductPhotoEntityTypeConfiguration());
+        builder.ApplyConfiguration( new VendorEntityTypeConfiguration());
     }
 }
