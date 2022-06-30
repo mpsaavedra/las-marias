@@ -34,7 +34,7 @@ public static class ProgramExtensions
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(builder.Configuration)
             .WriteTo.Console()
-            // .WriteTo.Seq(seqServerUrl)
+            .WriteTo.Seq(seqServerUrl)
             .Enrich.WithProperty("ApplicationName", AppName)
             .CreateLogger();
 

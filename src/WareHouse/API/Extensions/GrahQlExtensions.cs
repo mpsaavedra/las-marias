@@ -8,7 +8,7 @@ namespace LasMarias.WareHouse.Extensions;
 
 public static class GrahQlExtensions
 {
-    public static IServiceCollection AddGraphQlConfiguration(this IServiceCollection services)
+    public static IServiceCollection AddGraphQlConfiguration(this IServiceCollection services, bool isDevelopment)
     {
         
         // a custom Error filter to display more info bout the error
@@ -30,13 +30,26 @@ public static class GrahQlExtensions
             .AddType<AttributeQuery>()
             .AddType<AttributeNameQuery>()
             .AddType<CategoryQuery>()
+            .AddType<MeasureUnitQuery>()
+            .AddType<MovementQuery>()
             .AddType<PriceHistoryQuery>()
-            .AddType<ProductQuery>()
+            .AddType<ProductBrandQuery>()
+            .AddType<ProductMovementQuery>()
             .AddType<ProductPhotoQuery>()
+            .AddType<ProductQuery>()
+            .AddType<VendorBrandQuery>()
+            .AddType<VendorQuery>()
             
             // adding mutations
 
-            .ModifyOptions( o => o.RemoveUnreachableTypes = true);
+            .ModifyOptions( o => 
+            {
+                o.RemoveUnreachableTypes = true;
+            })
+            .ModifyRequestOptions( opts => 
+            {
+                opts.IncludeExceptionDetails = isDevelopment;
+            });
        
         return services;
     }

@@ -15,8 +15,12 @@ public static class ReWareHouseitoryExtensions
             .AddScoped<IAttributeRepository, AttributeRepository>()
             .AddScoped<ICategoryRepository, CategoryRepository>()
             .AddScoped<IPriceHistoryRepository, PriceHistoryRepository>()
+            .AddScoped<IProductBrandRepository, ProductBrandRepository>()
+            .AddScoped<IProductMovementRepository, ProductMovementRepository>()
+            .AddScoped<IProductPhotoRepository, ProductPhotoRepository>()
             .AddScoped<IProductRepository, ProductRepository>()
-            .AddScoped<IProductPhotoRepository, ProductPhotoRepository>();
+            .AddScoped<IVendorBrandRepository, VendorBrandRepository>()
+            .AddScoped<IVendorRepository, VendorRepository>();
         
         return services;
     }

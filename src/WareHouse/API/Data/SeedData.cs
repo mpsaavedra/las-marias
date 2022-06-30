@@ -17,85 +17,125 @@ public static class SeedData
 
     private static void EnsureSeedData(ApplicationDbContext context)
     {
-        if(!context.MeasureUnits.Any())
+        Category softDrinks;
+        Category naturalSoftDrinks;
+        Category artificialSoftDrinks;
+        Category juice;
+        Category naturalJuices;
+        Category artificialJuices;
+        Category drinks;
+        Category nonAlcoholDrinks;
+        Category withAlcoholDrinks;
+        Category meats;
+        Category curatedMeats;
+        Category freshMeats;
+        Category birdMeat;
+        Category animalMeat;
+        Category grains;
+        Category beans;
+        Category rice;
+        Category fish;
+        Category freshFish;
+        Category processedFish;
+        Category condiments;
+        Category naturalCondiments;
+        Category processedCondiments;
+        MeasureUnit onza;
+        MeasureUnit libra;
+        MeasureUnit kilogramo;
+        MeasureUnit tonelada;
+        MeasureUnit quintal;
+        MeasureUnit unidad;
+        MeasureUnit par;
+        MeasureUnit docena;
+        MeasureUnit vaso;
+        MeasureUnit copa;
+        MeasureUnit litro;
+        MeasureUnit galon;
+        MeasureUnit milimetro;
+        MeasureUnit centimetro;
+        MeasureUnit decimetro;
+        MeasureUnit metro;
+        MeasureUnit caja;
+        MeasureUnit paquete;
+        MeasureUnit parlet;
+        AttributeName weight;
+        AttributeName color;
+        AttributeName size;
+        AttributeName quantity;
+        AttributeName volumen;
+        Attribute colorW;
+        Attribute colorB;
+        Attribute colorY;
+        Attribute colorR;
+        Attribute size2Pack;
+        Attribute size1Box;
+        Attribute size12Pack;
+
+        if (!context.MeasureUnits.Any())
         {
+            onza = new MeasureUnit { Name = "Onza", Code = "onz", Cast = Cast.ToDecimal };
+            libra = new MeasureUnit { Name = "Libra", Code = "lib", Cast = Cast.ToDecimal };
+            kilogramo = new MeasureUnit { Name = "Kilogramo", Code = "kg", Cast = Cast.ToDecimal };
+            tonelada = new MeasureUnit { Name = "Tonelada", Code = "ton", Cast = Cast.ToDecimal };
+            quintal = new MeasureUnit { Name = "Quintal", Code = "qnt", Cast = Cast.ToDecimal };
+            unidad = new MeasureUnit { Name = "Unidad", Code = "u", Cast = Cast.ToDecimal };
+            par = new MeasureUnit { Name = "Par", Code = "par", Cast = Cast.ToDecimal };
+            docena = new MeasureUnit { Name = "Docena", Code = "dozen", Cast = Cast.ToDecimal };
+            vaso = new MeasureUnit { Name = "Vaso", Code = "vaso", Cast = Cast.ToDecimal };
+            copa = new MeasureUnit { Name = "Copa", Code = "copa", Cast = Cast.ToDecimal };
+            litro = new MeasureUnit { Name = "Litro", Code = "lt", Cast = Cast.ToDecimal };
+            galon = new MeasureUnit { Name = "Galon", Code = "gal", Cast = Cast.ToDecimal };
+            milimetro = new MeasureUnit { Name = "Milimetro", Code = "mm", Cast = Cast.ToDecimal };
+            centimetro = new MeasureUnit { Name = "Centimetro", Code = "cm", Cast = Cast.ToDecimal };
+            decimetro = new MeasureUnit { Name = "Decimetro", Code = "dcm", Cast = Cast.ToDecimal };
+            metro = new MeasureUnit { Name = "Metro", Code = "m", Cast = Cast.ToDecimal };
+            caja = new MeasureUnit { Name = "Caja", Code = "caja", Cast = Cast.ToDecimal };
+            paquete = new MeasureUnit { Name = "Paquete", Code = "paq", Cast = Cast.ToDecimal };
+            parlet = new MeasureUnit { Name = "Parlet", Code = "parlet", Cast = Cast.ToDecimal };
+
             context.MeasureUnits.AddRange(new MeasureUnit[]
             {
-                new MeasureUnit { Name = "Onza", Code = "onz" },
-                new MeasureUnit { Name = "Libra", Code = "lib" },
-                new MeasureUnit { Name = "Kilogramo", Code = "kg" },
-                new MeasureUnit { Name = "Tonelada", Code = "ton" },
-                new MeasureUnit { Name = "Quintal", Code = "qnt" },
-                new MeasureUnit { Name = "Unidad", Code = "u" },
-                new MeasureUnit { Name = "Par", Code = "par" },
-                new MeasureUnit { Name = "Docena", Code = "dozen" },
-                new MeasureUnit { Name = "Vaso", Code = "vaso" },
-                new MeasureUnit { Name = "Copa", Code = "copa" },
-                new MeasureUnit { Name = "Litro", Code = "lt" },
-                new MeasureUnit { Name = "Galon", Code = "gal" },
-                new MeasureUnit { Name = "Milimetro", Code = "mm" },
-                new MeasureUnit { Name = "Centimetro", Code = "cm" },
-                new MeasureUnit { Name = "Decimetro", Code = "dcm" },
-                new MeasureUnit { Name = "Metro", Code = "m" },
-                new MeasureUnit { Name = "Onza cubica", Code = "onz3" },
-                new MeasureUnit { Name = "Centimetro cubico", Code = "cm3" },
-                new MeasureUnit { Name = "Caja", Code = "caja" },
-                new MeasureUnit { Name = "Paquete", Code = "paq" },
-                new MeasureUnit { Name = "Parlet", Code = "parlet" }
+                onza, libra, kilogramo, tonelada, quintal, unidad, par, docena, vaso, copa, litro, 
+                galon, milimetro, centimetro, decimetro, metro, caja, paquete, parlet
             });
             context.SaveChanges();
         }
 
-        if(!context.Categories.Any())
+        if (!context.Categories.Any())
         {
-            var softDrinks = new Category { Name = "Refrescos", Code = "softdrinks" };
-            var naturalSoftDrinks = new Category { Name = "Refresco Natural", Code = "natural-softdrinks" };
-            var artificialSoftDrinks = new Category { Name = "Refresco Artificial", Code = "artificial-softdrinks" };
-            var juice = new Category { Name = "Jugos", Code = "juices" };
-            var naturalJuices = new Category { Name = "Jugos Naturales", Code = "natural-juices" };
-            var artificialJuices = new Category { Name = "Jugos Artificiales", Code = "artificial-juices" };
-            var drinks = new Category { Name = "Bebidas", Code = "beberage" };
-            var nonAlcoholDrinks = new Category { Name = "Bebidas sin alcohol", Code = "non-alcohol-drinks" };
-            var withAlcoholDrinks = new Category { Name = "Bebidas con alcohol", Code = "with-alcohol-drinks" };
-            var meats = new Category { Name = "Carnes", Code = "meats" };
-            var curatedMeats = new Category { Name = "Carnes Curadas", Code = "curated-meats" };
-            var freshMeats = new Category { Name = "Carnes frescas", Code = "fresh-meats" };
-            var birdMeat = new Category { Name = "Carne de aves", Code = "bird-meat" };
-            var animalMeat = new Category { Name = "Carne de animales", Code = "animal-meat" };
-            var grains = new Category { Name = "Granos", Code = "granes" };
-            var beans = new Category { Name = "Frijoles", Code = "beans" };
-            var rice = new Category { Name = "Arroz", Code = "rice" };
-            var fish = new Category { Name = "Pescado", Code = " fish" };
-            var freshFish = new Category { Name = "Pescado fresco", Code = "fresh-fish" };
-            var processedFish = new Category { Name = "Pescado procesado", Code = "processeds-fish" };
-            var condiments = new Category { Name = "Condimentos", Code = "condiments" };
-            var naturalCondiments = new Category { Name = "Condimentos naturales", Code = "natural-condiments" };
-            var processedCondiments = new Category { Name = "Condimentos procesados", Code = "processed-condiments" };
+            softDrinks = new Category { Name = "Refrescos", Code = "softdrinks" };
+            naturalSoftDrinks = new Category { Name = "Refresco Natural", Code = "natural-softdrinks" };
+            artificialSoftDrinks = new Category { Name = "Refresco Artificial", Code = "artificial-softdrinks" };
+            juice = new Category { Name = "Jugos", Code = "juices" };
+            naturalJuices = new Category { Name = "Jugos Naturales", Code = "natural-juices" };
+            artificialJuices = new Category { Name = "Jugos Artificiales", Code = "artificial-juices" };
+            drinks = new Category { Name = "Bebidas", Code = "beberage" };
+            nonAlcoholDrinks = new Category { Name = "Bebidas sin alcohol", Code = "non-alcohol-drinks" };
+            withAlcoholDrinks = new Category { Name = "Bebidas con alcohol", Code = "with-alcohol-drinks" };
+            meats = new Category { Name = "Carnes", Code = "meats" };
+            curatedMeats = new Category { Name = "Carnes Curadas", Code = "curated-meats" };
+            freshMeats = new Category { Name = "Carnes frescas", Code = "fresh-meats" };
+            birdMeat = new Category { Name = "Carne de aves", Code = "bird-meat" };
+            animalMeat = new Category { Name = "Carne de animales", Code = "animal-meat" };
+            grains = new Category { Name = "Granos", Code = "granes" };
+            beans = new Category { Name = "Frijoles", Code = "beans" };
+            rice = new Category { Name = "Arroz", Code = "rice" };
+            fish = new Category { Name = "Pescado", Code = " fish" };
+            freshFish = new Category { Name = "Pescado fresco", Code = "fresh-fish" };
+            processedFish = new Category { Name = "Pescado procesado", Code = "processeds-fish" };
+            condiments = new Category { Name = "Condimentos", Code = "condiments" };
+            naturalCondiments = new Category { Name = "Condimentos naturales", Code = "natural-condiments" };
+            processedCondiments = new Category { Name = "Condimentos procesados", Code = "processed-condiments" };
 
             // save all new categories
-            context.Categories.Add(softDrinks);
-            context.Categories.Add(naturalSoftDrinks);
-            context.Categories.Add(artificialSoftDrinks);
-            context.Categories.Add(juice);
-            context.Categories.Add(naturalJuices);
-            context.Categories.Add(artificialJuices);
-            context.Categories.Add(drinks);
-            context.Categories.Add(nonAlcoholDrinks);
-            context.Categories.Add(withAlcoholDrinks);
-            context.Categories.Add(meats);
-            context.Categories.Add(curatedMeats);
-            context.Categories.Add(freshMeats);
-            context.Categories.Add(birdMeat);
-            context.Categories.Add(animalMeat);
-            context.Categories.Add(grains);
-            context.Categories.Add(beans);
-            context.Categories.Add(rice);
-            context.Categories.Add(fish);
-            context.Categories.Add(freshFish);
-            context.Categories.Add(processedFish);
-            context.Categories.Add(condiments);
-            context.Categories.Add(naturalCondiments);
-            context.Categories.Add(processedCondiments);
+            context.Categories.AddRange( new Category[] 
+            {
+                softDrinks, naturalSoftDrinks, artificialSoftDrinks, juice, naturalJuices, 
+                artificialJuices, drinks, nonAlcoholDrinks, withAlcoholDrinks, meats, curatedMeats, 
+                freshMeats, birdMeat, animalMeat, grains, beans, rice, fish, freshFish, processedFish, 
+                condiments, naturalCondiments, processedCondiments
+            });
             context.SaveChanges();
 
             // create relations
@@ -118,9 +158,35 @@ public static class SeedData
             context.SaveChanges();
         }
 
-        if(!context.AttributeNames.Any())
+        if (!context.AttributeNames.Any())
         {
-            // var weight
+            weight = new AttributeName { Name = "Peso" };
+            color = new AttributeName { Name = "Color" };
+            size = new AttributeName { Name = "Tamaño" };
+            quantity = new AttributeName { Name = "Cantidad" };
+            volumen = new AttributeName { Name = "Volumen" };
+            context.AttributeNames.AddRange(new AttributeName[]
+            {
+                weight, color, size, quantity, volumen
+            });
+            context.SaveChanges();
+        }
+
+        if(!context.Attributes.Any())
+        {
+            weight = context.AttributeNames.FirstOrDefault(x => x.Name == "Peso");
+            color = context.AttributeNames.FirstOrDefault(x => x.Name == "Color");
+            size = context.AttributeNames.FirstOrDefault(x => x.Name == "Tamaño");
+            quantity = context.AttributeNames.FirstOrDefault(x => x.Name == "Cantidad");
+            volumen = context.AttributeNames.FirstOrDefault(x => x.Name == "Volumen");
+            
+            colorW = new Attribute { Value = "Color Blanco", AttributeName = color};
+            colorB = new Attribute { Value = "Color Negro", AttributeName = color};
+            colorY = new Attribute { Value = "Color Amarillo", AttributeName = color};
+            colorR = new Attribute { Value = "Color Rojo", AttributeName = color};
+            size2Pack = new Attribute { Value = "Pack de 2", AttributeName = size};
+            size1Box = new Attribute { Value = "1 Caja", AttributeName = size};
+            size12Pack = new Attribute { Value = "Pack de 12", AttributeName = size};
         }
     }
 }

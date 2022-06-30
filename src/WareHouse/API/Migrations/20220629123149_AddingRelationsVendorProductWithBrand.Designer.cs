@@ -3,6 +3,7 @@ using System;
 using LasMarias.WareHouse.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LasMarias.WareHouse.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220629123149_AddingRelationsVendorProductWithBrand")]
+    partial class AddingRelationsVendorProductWithBrand
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,6 +134,39 @@ namespace LasMarias.WareHouse.Migrations
                     b.HasIndex("Name");
 
                     b.ToTable("AttributeNames");
+                });
+
+            modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.Brand", b =>
+                {
+                    b.Property<long>("BrandId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("BrandId"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Enable")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RowVersion")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("BrandId");
+
+                    b.ToTable("Brand");
                 });
 
             modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.Category", b =>
@@ -354,6 +389,42 @@ namespace LasMarias.WareHouse.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.ProductBrand", b =>
+                {
+                    b.Property<long>("ProductBrandId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("ProductBrandId"));
+
+                    b.Property<long>("BrandId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<long>("ProductId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("RowVersion")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("ProductBrandId");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductBrand");
+                });
+
             modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.ProductMovement", b =>
                 {
                     b.Property<long>("ProductMovementId")
@@ -464,6 +535,42 @@ namespace LasMarias.WareHouse.Migrations
                     b.ToTable("Vendors");
                 });
 
+            modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.VendorBrand", b =>
+                {
+                    b.Property<long>("VendorBrandId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("VendorBrandId"));
+
+                    b.Property<long>("BrandId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("RowVersion")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<long>("VendorId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("VendorBrandId");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("VendorId");
+
+                    b.ToTable("VendorBrand");
+                });
+
             modelBuilder.Entity("AttributeProduct", b =>
                 {
                     b.HasOne("LasMarias.WareHouse.Domain.Models.Attribute", null)
@@ -557,6 +664,25 @@ namespace LasMarias.WareHouse.Migrations
                     b.Navigation("MeasureUnit");
                 });
 
+            modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.ProductBrand", b =>
+                {
+                    b.HasOne("LasMarias.WareHouse.Domain.Models.Brand", "Brand")
+                        .WithMany("ProductBrands")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LasMarias.WareHouse.Domain.Models.Product", "Product")
+                        .WithMany("ProductBrands")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.ProductMovement", b =>
                 {
                     b.HasOne("LasMarias.WareHouse.Domain.Models.Movement", "Movement")
@@ -587,9 +713,35 @@ namespace LasMarias.WareHouse.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.VendorBrand", b =>
+                {
+                    b.HasOne("LasMarias.WareHouse.Domain.Models.Brand", "Brand")
+                        .WithMany("VendorBrands")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LasMarias.WareHouse.Domain.Models.Vendor", "Vendor")
+                        .WithMany("VendorBrands")
+                        .HasForeignKey("VendorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Vendor");
+                });
+
             modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.AttributeName", b =>
                 {
                     b.Navigation("Attributes");
+                });
+
+            modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.Brand", b =>
+                {
+                    b.Navigation("ProductBrands");
+
+                    b.Navigation("VendorBrands");
                 });
 
             modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.Category", b =>
@@ -611,6 +763,8 @@ namespace LasMarias.WareHouse.Migrations
                 {
                     b.Navigation("PriceHistories");
 
+                    b.Navigation("ProductBrands");
+
                     b.Navigation("ProductMovements");
 
                     b.Navigation("ProductPhotos");
@@ -619,6 +773,8 @@ namespace LasMarias.WareHouse.Migrations
             modelBuilder.Entity("LasMarias.WareHouse.Domain.Models.Vendor", b =>
                 {
                     b.Navigation("Movements");
+
+                    b.Navigation("VendorBrands");
                 });
 #pragma warning restore 612, 618
         }

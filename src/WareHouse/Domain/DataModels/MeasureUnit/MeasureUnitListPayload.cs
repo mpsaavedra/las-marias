@@ -1,4 +1,4 @@
-namespace LasMarias.WareHouse.Domain.DataModels;
+namespace LasMarias.WareHouse.Domain.DataModels.MeasureUnit;
 
 using System.Collections.Generic;
 using LasMarias.WareHouse.Domain.Models;

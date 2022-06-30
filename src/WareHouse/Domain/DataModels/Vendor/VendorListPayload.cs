@@ -1,4 +1,4 @@
-namespace LasMarias.WareHouse.Domain.DataModels.Attribute;
+namespace LasMarias.WareHouse.Domain.DataModels.Vendor;
 
 using System.Linq;
 using LasMarias.WareHouse.Domain.Models;

@@ -7,6 +7,7 @@ public partial class MeasureUnit : BusinessEntity<long>
     public MeasureUnit()
     {
         Products = new HashSet<Product>();
+        Cast = Cast.ToString; // default cast to string
     }
 
     public long MeasureUnitId { get; set; }
@@ -14,6 +15,8 @@ public partial class MeasureUnit : BusinessEntity<long>
     public string Name { get; set; }
 
     public string Code { get; set; }
+
+    public Cast Cast { get; set; }
 
     public bool Enable { get; set; }
 

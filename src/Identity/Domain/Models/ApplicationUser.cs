@@ -12,6 +12,7 @@ public partial class ApplicationUser : IdentityUser, IApplicationUser
     public ApplicationUser()
     {
         Gender = Gender.NotDefined;
+        RowVersion = Guid.NewGuid().ToString();
     }
 
     public ApplicationUser(UserCreateInputModel input)
@@ -28,6 +29,7 @@ public partial class ApplicationUser : IdentityUser, IApplicationUser
         LastName = input.LastName;
         DNI = input.DNI;
         Gender = Gender.NotDefined;
+        RowVersion = Guid.NewGuid().ToString();
     }
 
     public string ReferralUserId { get; set; }
@@ -87,7 +89,7 @@ public partial class ApplicationUser : IdentityUser, IApplicationUser
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
 
-    public Guid RowVersion { get; set; }
+    public string RowVersion { get; set; }
 
     #endregion
 }
