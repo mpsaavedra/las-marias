@@ -9,13 +9,13 @@ public class ProductBrandEntityTypeConfiguration : IEntityTypeConfiguration<Prod
     public void Configure(EntityTypeBuilder<ProductBrand> builder)
     {
         builder.HasKey(x => x.ProductBrandId);
-        // builder
-        //     .HasOne(x => x.Brand)
-        //     .WithMany(x => x.ProductBrands)
-        //     .HasForeignKey(x => x.BrandId);
-        // builder
-        //     .HasOne(x => x.Product)
-        //     .WithMany(x => x.ProductBrands)
-        //     .HasForeignKey(x => x.ProductId);
+        builder
+            .HasOne(x => x.Brand)
+            .WithMany(x => x.ProductBrands)
+            .HasForeignKey(x => x.BrandId);
+        builder
+            .HasOne(x => x.Product)
+            .WithMany(x => x.ProductBrands)
+            .HasForeignKey(x => x.ProductId);
     }
 }

@@ -26,9 +26,9 @@ public class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
             .HasOne(x => x.MeasureUnit)
             .WithMany(x => x.Products)
             .HasForeignKey(x => x.MeasureUnitId);
-        // builder
-        //     .HasMany(x => x.ProductBrands)
-        //     .WithOne(x => x.Product)
-        //     .HasForeignKey(x => x.ProductId);
+        builder
+            .HasMany(x => x.ProductBrands)
+            .WithOne(x => x.Product)
+            .HasForeignKey(x => x.ProductId);
     }
 }

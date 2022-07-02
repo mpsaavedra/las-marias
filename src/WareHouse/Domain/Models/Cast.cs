@@ -8,7 +8,5 @@ public enum Cast
 
     ToDouble,
 
-    ToDecimal,
-
-    ToObject
+    ToDecimal
 }

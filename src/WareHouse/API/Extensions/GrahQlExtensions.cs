@@ -29,6 +29,7 @@ public static class GrahQlExtensions
             // adding queries
             .AddType<AttributeQuery>()
             .AddType<AttributeNameQuery>()
+            .AddType<BrandQuery>()
             .AddType<CategoryQuery>()
             .AddType<MeasureUnitQuery>()
             .AddType<MovementQuery>()

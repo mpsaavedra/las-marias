@@ -13,11 +13,13 @@ public partial class ProductMovement : BusinessEntity<long>
 
     public long MovementId { get; set; }
 
-    [UseFiltering]
-    [UseFiltering]
+    // [UseFiltering]
+    // [UseFiltering]
+    // [JsonIgnore]
     public virtual Product Product { get; set; }
 
-    [UseFiltering]
-    [UseSorting]
+    // [UseFiltering]
+    // [UseSorting]
+    // [JsonIgnore]
     public virtual Movement Movement { get; set; }
 }

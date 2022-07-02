@@ -10,7 +10,7 @@ public partial class Vendor : BusinessEntity<long>
     public Vendor()
     {
         Movements = new HashSet<Movement>();
-        // VendorBrands = new HashSet<VendorBrand>();
+        VendorBrands = new HashSet<VendorBrand>();
     }
 
     public long VendorId { get; set; }
@@ -21,7 +21,13 @@ public partial class Vendor : BusinessEntity<long>
 
     public bool Enable { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual ICollection<Movement> Movements { get; set; }
 
-    // public virtual ICollection<VendorBrand> VendorBrands { get; set; }
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
+    public virtual ICollection<VendorBrand> VendorBrands { get; set; }
 }

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LasMarias.WareHouse.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220629123149_AddingRelationsVendorProductWithBrand")]
-    partial class AddingRelationsVendorProductWithBrand
+    [Migration("20220702140657_InitialData")]
+    partial class InitialData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

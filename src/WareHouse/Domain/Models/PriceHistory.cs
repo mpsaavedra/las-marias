@@ -13,6 +13,7 @@ public partial class PriceHistory : BusinessEntity<long>
 
     [UseFiltering]
     [UseSorting]
+    [JsonIgnore]
     public virtual Product Product { get; set; }
 
     public decimal OldPrice { get; set; }

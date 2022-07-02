@@ -35,10 +35,14 @@ public partial class Movement : BusinessEntity<long>
 
     [UseFiltering]
     [UseSorting]
+    [JsonIgnore]
     public virtual ICollection<ProductMovement>? ProductMovements { get; set; }
 
     public long VendorId { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual Vendor Vendor { get; set; }
 
     /// <summary>

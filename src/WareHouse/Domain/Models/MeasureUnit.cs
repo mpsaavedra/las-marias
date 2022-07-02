@@ -1,6 +1,9 @@
 namespace LasMarias.WareHouse.Domain.Models;
 
 using Orun.Domain;
+using HotChocolate;
+using HotChocolate.Data;
+using System.Text.Json.Serialization;
 
 public partial class MeasureUnit : BusinessEntity<long>
 {
@@ -20,5 +23,8 @@ public partial class MeasureUnit : BusinessEntity<long>
 
     public bool Enable { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual ICollection<Product> Products { get; set; }
 }

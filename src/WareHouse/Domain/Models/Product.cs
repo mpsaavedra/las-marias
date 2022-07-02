@@ -14,7 +14,7 @@ public partial class Product : BusinessEntity<long>
         Categories = new HashSet<Category>();
         PriceHistories = new HashSet<PriceHistory>();
         ProductMovements = new HashSet<ProductMovement>();
-        // ProductBrands = new HashSet<ProductBrand>();
+        ProductBrands = new HashSet<ProductBrand>();
         ReOrderLevel = -1;
     }
 
@@ -42,6 +42,9 @@ public partial class Product : BusinessEntity<long>
 
     public long MeasureUnitId { get; set; }
 
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
     public virtual MeasureUnit? MeasureUnit { get; set; }
 
     [UseFiltering]
@@ -70,10 +73,10 @@ public partial class Product : BusinessEntity<long>
     public virtual ICollection<ProductMovement> ProductMovements { get; set; }
 
 
-    // [UseFiltering]
-    // [UseSorting]
-    // [JsonIgnore]
-    // public virtual ICollection<ProductBrand> ProductBrands { get; set; }
+    [UseFiltering]
+    [UseSorting]
+    [JsonIgnore]
+    public virtual ICollection<ProductBrand> ProductBrands { get; set; }
 
     /// <summary>
     /// return true if there are products available
