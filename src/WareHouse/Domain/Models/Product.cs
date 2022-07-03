@@ -36,6 +36,9 @@ public partial class Product : BusinessEntity<long>
     /// <summary>
     public decimal SellingPrice { get; set; }
 
+    /// <summary>
+    /// existence on the warehouse
+    /// </summary>
     public decimal? Amount { get; set; }
 
     public decimal? ReOrderLevel { get; set; }

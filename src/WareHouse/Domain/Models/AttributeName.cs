@@ -14,6 +14,7 @@ public partial class AttributeName : BusinessEntity<long>
     public AttributeName()
     {
         Attributes = new HashSet<Attribute>();
+        Enable = true;
     }
 
     public long AttributeNameId { get; set; }

@@ -21,5 +21,11 @@ public enum StandType
     Restaurant,
     
     [Display(Name = "Sala de conferencias")]
-    ConferenceRoom
+    ConferenceRoom,
+
+    [Display(Name = "Almacen")]
+    WareHouse,
+
+    [Display(Name = "Cocina")]
+    Kitchen
 }

@@ -1,7 +1,7 @@
 ﻿using HotChocolate;
 using Microsoft.Extensions.DependencyInjection;
 using LasMarias.WareHouse.Filters;
-// using LasMarias.WareHouse.Mutations;
+using LasMarias.WareHouse.Mutations;
 using LasMarias.WareHouse.Queries;
 
 namespace LasMarias.WareHouse.Extensions;
@@ -19,7 +19,7 @@ public static class GrahQlExtensions
         services
             .AddGraphQLServer()
             .AddQueryType(d => d.Name("Query"))
-            // .AddMutationType(m => m.Name("Mutation"))
+            .AddMutationType(m => m.Name("Mutation"))
             
             // add filters and navigations stuffs
             .AddFiltering()
@@ -42,6 +42,14 @@ public static class GrahQlExtensions
             .AddType<VendorQuery>()
             
             // adding mutations
+            .AddType<AttributeMutations>()
+            .AddType<AttributeNameMutations>()
+            .AddType<BrandMutations>()
+            .AddType<CategoryMutations>()
+            .AddType<MeasureUnitMutations>()
+            .AddType<MovementMutations>()
+            .AddType<ProductMutations>()
+            .AddType<VendorMutations>()
 
             .ModifyOptions( o => 
             {
