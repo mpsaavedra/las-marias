@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Category</AssemblyName>
+    <OutDir>..\..\plugins\Category</OutDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\src\Core\Core.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\src\Domain\Domain.csproj" />
+    <ProjectReference Include="..\..\Domain\LasMarias.WareHouse.Domain.csproj" />
+  </ItemGroup>
+
+  <Target Name="AfterBuildTarget" AfterTargets="Build">
+    <Exec Command="git rev-parse --short HEAD &gt; version.txt" />
+  </Target>
+
+</Project>

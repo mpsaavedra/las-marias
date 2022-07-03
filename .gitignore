@@ -351,9 +351,10 @@ MigrationBackup/
 
 # --> ignore project related stuffs
 .idea/
-version.txt
+**/version.txt
 /packages/
 **/*.~*
 **/*logs*
 .vs
+**/plugins/
 .vscode
