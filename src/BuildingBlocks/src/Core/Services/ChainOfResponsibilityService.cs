@@ -3,10 +3,16 @@ using Orun.Plugins;
 
 namespace Orun.Services
 {
+    /// <summary>
+    /// implements the IChainOfResponsiblityServicew
+    /// </summary>
     public class ChainOfResponsibilityService : IChainOfResponsibilityService
     {
         private readonly IPluginService _pluginService;
 
+        /// <summary>
+        /// returns a new instance of <see cref="ChainOfResponsibilityService"/>
+        /// </summary>
         public ChainOfResponsibilityService(IPluginService pluginService)
         {
             _pluginService = pluginService;

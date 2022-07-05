@@ -39,7 +39,7 @@ public partial class ProductMovementQuery
             Log.Debug("Retrieving ProductMovements names list");
             var data = new ProductMovementListPayload();
             var fail = await chain.ExecuteAsyncChain<ProductMovementListPayload, bool>(
-                "get-product-movements-list", 
+                "get-product-movement-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

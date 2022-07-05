@@ -174,19 +174,30 @@ public static class SeedData
 
         if(!context.Attributes.Any())
         {
-            weight = context.AttributeNames.FirstOrDefault(x => x.Name == "Peso");
-            color = context.AttributeNames.FirstOrDefault(x => x.Name == "Color");
-            size = context.AttributeNames.FirstOrDefault(x => x.Name == "Tamaño");
-            quantity = context.AttributeNames.FirstOrDefault(x => x.Name == "Cantidad");
-            volumen = context.AttributeNames.FirstOrDefault(x => x.Name == "Volumen");
+            weight = context?.AttributeNames.FirstOrDefault(x => x.Name == "Peso")!;
+            color = context?.AttributeNames.FirstOrDefault(x => x.Name == "Color")!;
+            size = context?.AttributeNames.FirstOrDefault(x => x.Name == "Tamaño")!;
+            quantity = context?.AttributeNames.FirstOrDefault(x => x.Name == "Cantidad")!;
+            volumen = context?.AttributeNames.FirstOrDefault(x => x.Name == "Volumen")!;
+
+            unidad = context.MeasureUnits.FirstOrDefault(x => x.Name == "Unidad");
+            caja = context.MeasureUnits.FirstOrDefault(x => x.Name == "Caja");
+            paquete = context.MeasureUnits.FirstOrDefault(x => x.Name == "Paquete");
             
             colorW = new Attribute { Value = "Color Blanco", AttributeName = color};
             colorB = new Attribute { Value = "Color Negro", AttributeName = color};
             colorY = new Attribute { Value = "Color Amarillo", AttributeName = color};
             colorR = new Attribute { Value = "Color Rojo", AttributeName = color};
-            size2Pack = new Attribute { Value = "Pack de 2", AttributeName = size};
-            size1Box = new Attribute { Value = "1 Caja", AttributeName = size};
-            size12Pack = new Attribute { Value = "Pack de 12", AttributeName = size};
+            size2Pack = new Attribute { Value = "Pack de 2", AttributeName = size, MeasureUnit = unidad};
+            size1Box = new Attribute { Value = "1 Caja", AttributeName = size, MeasureUnit = unidad};
+            size12Pack = new Attribute { Value = "Pack de 12", AttributeName = size, MeasureUnit = unidad};
+
+            context.Attributes.AddRange(new Attribute[]
+            {
+                colorW, colorB, colorY, colorR, size12Pack, size1Box, size12Pack
+            });
+
+            context.SaveChanges();
         }
     }
 }

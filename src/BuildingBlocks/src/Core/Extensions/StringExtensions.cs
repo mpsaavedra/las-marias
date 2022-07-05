@@ -12,6 +12,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
+/// <summary>
+/// String CLR type extensions
+/// </summary>
 public static class StringExtensions
 {
     /// <summary>
@@ -37,7 +40,7 @@ public static class StringExtensions
     /// remove possible accent from the string
     /// https://stackoverflow.com/questions/249087/how-do-i-remove-diacritics-accents-from-a-string-in-net
     /// </summary>
-    /// <param name="txt"></param>
+    /// <param name="text"></param>
     /// <returns></returns>
     public static string RemoveDiacritics(this string text)
     {
@@ -111,7 +114,7 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// <inheritdoc cref="HashPasswordPbdkf2"/> With 100 000 iterations.
+    /// <inheritdoc cref="StringExtensions.HashPasswordPbdkf2(string, int)"/> With 100 000 iterations.
     /// </summary>
     /// <param name="text"></param>
     /// <param name="salt"></param>
@@ -120,7 +123,7 @@ public static class StringExtensions
         HashPasswordPbdkf2(text, salt, 100000);
 
     /// <summary>
-    /// <inheritdoc cref="HashPasswordPbdkf2"/>, generate a random 128 bytes salt
+    /// <inheritdoc cref="HashPasswordPbdkf2(string, byte[], int)"/>, generate a random 128 bytes salt
     /// </summary>
     /// <param name="text"></param>
     /// <param name="iterations"></param>

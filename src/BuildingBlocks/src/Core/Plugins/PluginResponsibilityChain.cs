@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Orun.Plugins
 {
+    /// <summary>
+    /// implements a new sync responsibility chain 
+    /// </summary>
     public class PluginResponsibilityChain<TParameter, TReturn>: IPluginResponsibilityChain<TParameter, TReturn>
     {
         private List<object> _middlewares;

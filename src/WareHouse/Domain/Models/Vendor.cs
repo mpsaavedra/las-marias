@@ -24,10 +24,10 @@ public partial class Vendor : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<Movement> Movements { get; set; }
+    public virtual ICollection<Movement>? Movements { get; set; }
 
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<VendorBrand> VendorBrands { get; set; }
+    public virtual ICollection<VendorBrand>? VendorBrands { get; set; }
 }

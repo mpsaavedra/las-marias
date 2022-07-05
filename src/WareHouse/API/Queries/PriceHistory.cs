@@ -39,7 +39,7 @@ public partial class PriceHistoryQuery
             Log.Debug("Retrieving price histories names list");
             var data = new PriceHistoryListPayload();
             var fail = await chain.ExecuteAsyncChain<PriceHistoryListPayload, bool>(
-                "get-price-histories-list", 
+                "get-price-history-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

@@ -39,7 +39,7 @@ public partial class AttributeNameQuery
             Log.Debug("Retrieving attributes names list");
             var data = new AttributeNameListPayload();
             var fail = await chain.ExecuteAsyncChain<AttributeNameListPayload, bool>(
-                "get-attributes-names-list", 
+                "get-attribute-name-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

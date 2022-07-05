@@ -1,7 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Orun.Plugins;
 
 namespace Orun.Services
 {
+    /// <summary>
+    /// define the Chain of responsiblity service methos
+    /// </summary>
     public interface IChainOfResponsibilityService
     {
         /// <summary>
@@ -22,7 +26,7 @@ namespace Orun.Services
         /// ordered by the dependencies
         /// </summary>
         /// <param name="eventCode">code of event that calls chain</param>
-        /// <param name="parameter"><see cref="TParameter"/> parameter sent to chain</param>
+        /// <param name="parameter">parameter type sent to chain</param>
         /// <typeparam name="TParameter">typeof parameter sent to chain</typeparam>
         /// <typeparam name="TReturn">return type of the chain</typeparam>
         /// <returns></returns>

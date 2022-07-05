@@ -3,6 +3,7 @@ using System;
 using LasMarias.WareHouse.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LasMarias.WareHouse.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220705061330_SetOptionalsInData")]
+    partial class SetOptionalsInData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +77,7 @@ namespace LasMarias.WareHouse.Migrations
                     b.Property<bool>("Enable")
                         .HasColumnType("boolean");
 
-                    b.Property<long?>("MeasureUnitId")
+                    b.Property<long>("MeasureUnitId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("RowVersion")
@@ -609,7 +611,9 @@ namespace LasMarias.WareHouse.Migrations
 
                     b.HasOne("LasMarias.WareHouse.Domain.Models.MeasureUnit", "MeasureUnit")
                         .WithMany()
-                        .HasForeignKey("MeasureUnitId");
+                        .HasForeignKey("MeasureUnitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("AttributeName");
 

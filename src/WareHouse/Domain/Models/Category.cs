@@ -16,18 +16,21 @@ public partial class Category : BusinessEntity<long>
     {
         ChildCategories = new HashSet<Category>();
         Products = new HashSet<Product>();
+        Enable = true;
     }
 
     public Category(string name)
     {
         Name = name;
         Code = name.SplitPascal("-");
+        Enable = true;
     }
 
     public Category(string name, string code)
     {
         Name = name;
         Code = code;
+        Enable = true;
     }
 
     public long CategoryId { get; set; }    
@@ -38,7 +41,7 @@ public partial class Category : BusinessEntity<long>
 
     public bool Enable { get; set; }
 
-    public long ParentCategoryId { get; set; }
+    public long? ParentCategoryId { get; set; }
 
     public virtual Category? ParentCategory { get; set; }
 

@@ -1,14 +1,16 @@
 namespace LasMarias.WareHouse.Domain.DataModels.Attribute;
 
+using HotChocolate;
 using LasMarias.WareHouse.Domain.Models;
 
 public class AttributeUpdateInputModel
 {
-    public string? Value { get; set; }
+    public long Id { get; set; }
+    public Optional<string?> Value { get; set; }
 
-    public string? Description { get; set; }
+    public Optional<string?> Description { get; set; }
 
-    public long MeasureUnitId { get; set; }
+    public Optional<long> MeasureUnitId { get; set; }
 
-    public long AttributeNameId { get; set; }
+    public Optional<long> AttributeNameId { get; set; }
 }

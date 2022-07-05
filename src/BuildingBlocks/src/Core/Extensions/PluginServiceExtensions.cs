@@ -17,9 +17,9 @@ namespace Orun.Extensions
         /// </summary>
         /// <param name="app">Application Builder</param>
         /// <returns></returns>
-        public static IApplicationBuilder ConfigurePlugins(this IApplicationBuilder app)
+        public static WebApplication ConfigurePlugins(this WebApplication app)
         {
-            var pluginService = app.ApplicationServices.GetRequiredService<IPluginService>();
+            var pluginService = app.Services.GetRequiredService<IPluginService>();
             pluginService.ConfigurePlugins(app);
             return app;
         }

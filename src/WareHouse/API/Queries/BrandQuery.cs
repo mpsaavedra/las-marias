@@ -39,7 +39,7 @@ public partial class BrandQuery
             Log.Debug("Retrieving Brands names list");
             var data = new BrandListPayload();
             var fail = await chain.ExecuteAsyncChain<BrandListPayload, bool>(
-                "get-brands-list", 
+                "get-brand-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

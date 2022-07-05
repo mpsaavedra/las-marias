@@ -8,10 +8,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Orun.Plugins;
+using Orun.Extensions;
+using Serilog;
 
 namespace Orun.Services
 {
     // must be services.AddSingleton<IPluginService, PluginService>();
+    /// <summary>
+    /// implement the <see cred="IPluginService"/>
+    /// </summary>
     public partial class PluginService : IPluginService
     {
         private List<IPlugin> _plugins;
@@ -56,6 +61,7 @@ namespace Orun.Services
         {
             try
             {
+                Log.Debug($"Plugins: Loading plugins from file {pluginFile}");
                 var loader = PluginLoader.CreateFromAssemblyFile(pluginFile,
                     // this ensures that the plugin resolves to the same version of DependencyInjection
                     // and ASP.NET Core that the current app uses
@@ -67,17 +73,20 @@ namespace Orun.Services
                     if (typeof(IMiddlewarePlugin).IsAssignableFrom(type))
                     {
                         IMiddlewarePlugin? plugin = (IMiddlewarePlugin) Activator.CreateInstance(type)!;
+                        Log.Debug($"loading middleware plugin {plugin.EventCode}");
                         AddMiddlewarePlugin(plugin.EventCode!, plugin);
                     }
                     else
                     {
                         IPlugin? plugin = (IPlugin) Activator.CreateInstance(type)!;
+                        Log.Debug($"loading plugin {plugin.ShortName}");
                         AddPlugin(plugin);
                     }
                 }
             }
             catch (Exception ex)
             {
+                Log.Error($"Plugins: Could not load {pluginFile}: Exception: {ex.FullMessage()}");
                 throw new ApplicationException("An error has occurs while loading plugins", ex);
             }
         }
@@ -91,6 +100,7 @@ namespace Orun.Services
         {
             try
             {
+                Log.Information($"Loading plugins from {pluginsDirectory}");
                 foreach (var pluginDir in Directory.GetDirectories(pluginsDirectory))
                 {
                     var dirName = Path.GetFileName(pluginDir);
@@ -100,6 +110,7 @@ namespace Orun.Services
             }
             catch (Exception e)
             {
+                Log.Error($"Plugins: Exception loading plugins {e.FullMessage()}");
                 throw new ApplicationException("An error has occurs while loading plugin", e);
             }
         }
@@ -113,21 +124,25 @@ namespace Orun.Services
         {
             try
             {
+                Log.Information("Plugins: Configuring services for plugins");
                 foreach (var plugin in Plugins.Where(p => p.Enable))
                 {
+                    Log.Debug($"plugin: {plugin.ShortName}");
                     plugin.ConfigureServices(services);
                 }
 
                 foreach (var plugin in MiddlewarePlugins.SelectMany(middlewarePlugin =>
                     middlewarePlugin.Value.Where(p => p.Enable)))
                 {
+                    Log.Debug($"middleware plugin: {plugin.ShortName} eventcode: {plugin.EventCode}");
                     plugin.ConfigureServices(services);
                 }
-
+                
                 return services;
             }
             catch (Exception ex)
             {
+                Log.Error($"Plugins could ot be configured: {ex.FullMessage()}");
                 throw new ApplicationException(
                     "Plugins could not be configured, look at the innerException for more details", ex);
             }
@@ -138,18 +153,21 @@ namespace Orun.Services
         /// </summary>
         /// <param name="app"></param>
         /// <returns></returns>
-        public IApplicationBuilder ConfigurePlugins(IApplicationBuilder app)
+        public WebApplication ConfigurePlugins(WebApplication app)
         {
             try
             {
+                Log.Information("Plugins: Configuring application for use of plugins");
                 foreach (var plugin in Plugins.Where(p => p.Enable))
                 {
+                    Log.Debug($"plugin: {plugin.ShortName}");
                     plugin.Configure(app);
                 }
 
                 foreach (var plugin in MiddlewarePlugins.SelectMany(middlewarePlugin =>
                     middlewarePlugin.Value.Where(p => p.Enable)))
                 {
+                    Log.Debug($"middleware plugin: {plugin.ShortName} eventcode: {plugin.EventCode}");
                     plugin.Configure(app);
                 }
 
@@ -157,6 +175,7 @@ namespace Orun.Services
             }
             catch (Exception ex)
             {
+                Log.Error($"Plugins could ot be configured: {ex.FullMessage()}");
                 throw new ApplicationException(
                     "Plugins could not be configured, look at the innerException for more details", ex);
             }

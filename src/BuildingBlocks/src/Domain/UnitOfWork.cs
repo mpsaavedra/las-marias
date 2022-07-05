@@ -18,10 +18,13 @@ namespace Orun.BuildingBlocks.Domain
     public partial class UnitOfWork<TDbContext> : IUnitOfWork where TDbContext : DbContext
     {
         /// <inheritdoc cref="IUnitOfWork.Transaction"/>
-        public IDbContextTransaction Transaction { get; private set; }
+        public IDbContextTransaction? Transaction { get; private set; }
 
         private TDbContext Context { get; }
 
+        /// <summary>
+        /// returns a new instance of <see cref="UnitOfWork{TDbContext}"/>
+        /// </summary>
         public UnitOfWork(TDbContext context)
         {
             Context = context.IsNullOrEmpty($"{nameof(context)} could not be null or empty");
@@ -30,9 +33,9 @@ namespace Orun.BuildingBlocks.Domain
         /// <inheritdoc cref="IUnitOfWork.OpenTransaction()"/>
         public virtual async void OpenTransaction()
         {
-            if (!Is.NullOrEmpty(Transaction))
+            if (!Is.NullOrEmpty(Transaction!))
             {
-                Transaction.Dispose();
+                Transaction!.Dispose();
             }
 
             Transaction = await Context.Database.BeginTransactionAsync();
@@ -41,9 +44,9 @@ namespace Orun.BuildingBlocks.Domain
         /// <inheritdoc cref="IUnitOfWork.OpenTransactionAsync()"/>
         public virtual async Task OpenTransactionAsync()
         {
-            if (!Is.NullOrEmpty(Transaction))
+            if (!Is.NullOrEmpty(Transaction!))
             {
-                await Task.Run(async () => Transaction.Dispose());
+                await Task.Run(async () => Transaction!.Dispose());
             }
 
             Transaction = await Context.Database.BeginTransactionAsync();
@@ -93,9 +96,9 @@ namespace Orun.BuildingBlocks.Domain
                 
                 await Context.UseChangeTracker(useChangeTracker).SaveChangesAsync();
 
-                if (!Is.NullOrEmpty(Transaction))
+                if (!Is.NullOrEmpty(Transaction!))
                 {
-                    await Task.Run(async () => Transaction.Commit());
+                    await Task.Run(async () => Transaction!.Commit());
                 }
             }
             catch (Exception exception)
@@ -105,16 +108,22 @@ namespace Orun.BuildingBlocks.Domain
             }
         }
 
+        /// <summary>
+        /// close active transaction
+        /// </summary>
         public void CloseTransaction()
         {
             Transaction?.Dispose();
         }
 
+        /// <summary>
+        /// close active transaction async
+        /// </summary>
         public async Task CloseTransactionAsync()
         {
-            if (!Is.NullOrEmpty(Transaction))
+            if (!Is.NullOrEmpty(Transaction!))
             {
-                await Task.Run(async () => Transaction.Dispose());
+                await Task.Run(async () => Transaction!.Dispose());
             }
         }
 

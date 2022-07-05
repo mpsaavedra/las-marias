@@ -76,6 +76,12 @@ namespace Orun.BuildingBlocks.Domain
         /// <param name="includes">string array with the foreign related entities to include</param>
         /// <returns></returns>
         Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where, params string[] includes);
+
+        /// <summary>
+        /// returns a list of elements and include the foreign related entities. Included values are located
+        /// using string with dot notation. Resutl could be paginate by provided entity using the
+        /// <see cref="PaginationOptions"/> provideds
+        /// </summary>
         Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where, string property, 
             Action<PaginationOptions> options, params string[] includes);
 
@@ -85,8 +91,18 @@ namespace Orun.BuildingBlocks.Domain
         /// <param name="where">function Expression to filter entities</param>
         /// <returns></returns>
         Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where);
+
+        /// <summary>
+        /// returns the first element that satisfy the provided predicate
+        /// </summary>
         Task<TEntity> GetOne(Expression<Func<TEntity, bool>> where);
-        Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where, string property, Action<PaginationOptions> options);
+
+        /// <summary>
+        /// returns a list of entities satisfy the provided predicate, ordering results by
+        /// property and using the <see cref="PaginationOptions" />
+        /// </summary>
+        Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where, string property, 
+            Action<PaginationOptions> options);
 
         /// <summary>
         /// returns a list of elements
@@ -94,6 +110,11 @@ namespace Orun.BuildingBlocks.Domain
         /// <param name="includes">string array with the foreign related entities to include</param>
         /// <returns></returns>
         Task<IQueryable<TEntity>> Get(params string[] includes);
+
+        /// <summary>
+        /// returns a list of elements ordered by property and using the <see cref="PaginationOptions" /> options
+        /// and include the foreign related properties specified using dotted notation.
+        /// </summary>
         Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions> options, params string[] includes);
 
         /// <summary>

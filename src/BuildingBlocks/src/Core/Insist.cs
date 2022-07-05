@@ -116,7 +116,7 @@ namespace Orun
             
             // invoke constructor and throw the exception
 // #pragma warning disable CS8597 // Throw value may be null
-            throw (info?.Invoke(new[] { msg }) as TException);
+            throw (info?.Invoke(new[] { msg }) as TException)!;
 // #pragma warning restore CS8597 // Throw value may be null
         }
 

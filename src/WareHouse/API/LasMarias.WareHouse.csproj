@@ -48,4 +48,19 @@
     <PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
   </ItemGroup>
 
+  <Target Name="AfterBuildTarget" AfterTargets="Build">
+    <Exec Command="dotnet build ../BusinessLogic/Attribute/" />
+    <Exec Command="dotnet build ../BusinessLogic/AttributeName/" />
+    <Exec Command="dotnet build ../BusinessLogic/Category/" />
+    <Exec Command="dotnet build ../BusinessLogic/MeasureUnit/" />
+    <Exec Command="dotnet build ../BusinessLogic/Movement/" />
+    <Exec Command="dotnet build ../BusinessLogic/PriceHistory/" />
+    <Exec Command="dotnet build ../BusinessLogic/Product/" />
+    <Exec Command="dotnet build ../BusinessLogic/ProductBrand/" />
+    <Exec Command="dotnet build ../BusinessLogic/ProductMovement/" />
+    <Exec Command="dotnet build ../BusinessLogic/ProductPhoto/" />
+    <Exec Command="dotnet build ../BusinessLogic/Vendor/" />
+    <Exec Command="dotnet build ../BusinessLogic/VendorBrand/" />
+  </Target>
+
 </Project>

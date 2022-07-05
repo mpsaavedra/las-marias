@@ -10,9 +10,16 @@ using Orun.Extensions;
 
 namespace Orun.BuildingBlocks.Domain
 {
+    /// <summary>
+    /// Implements a generic repository that allows a simple access, following the
+    /// repository pattern specification.
+    /// </summary>
     public class Repository<TKey, TEntity> : IRepository<TKey, TEntity>
         where TEntity : class, IBusinessEntity<TKey>
     {
+        /// <summary>
+        /// return a new instance of <see cref="Repository{TKey, TEntity}"/>
+        /// </summary>
         public Repository(IMapper mapper, DbContext context)
         {
             Mapper = mapper;
@@ -30,6 +37,7 @@ namespace Orun.BuildingBlocks.Domain
         /// <inheritdoc cref="IRepository{TKey, TEntity}.Context"/>
         public DbContext Context { get; private set; }
         
+        /// <inheritdoc cref="IRepository{TKey, TEntity}.Mapper"/>
         public IMapper Mapper { get; private set; }
 
         /// <inheritdoc cref="IRepository{TKey, TEntity}.Create(TEntity)"/>
@@ -64,10 +72,13 @@ namespace Orun.BuildingBlocks.Domain
         public async Task<IQueryable<TEntity>> Get() =>
             await Task.FromResult(Query.AsQueryable());
 
+        /// <inheritdoc cref="IRepository{TKey, TEntity}.Get(string, Action{PaginationOptions})"/>
         public async Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions> options)
         {
             var opts = options.ConfigureOrDefault();
-            return await Task.FromResult(Query.ToPaged(property, opts.Ascending, opts.Index, opts.Size));
+            if(opts != null)
+                await Task.FromResult(Query);
+            return await Task.FromResult(Query.ToPaged(property, opts!.Ascending, opts.Index, opts.Size));
         }
 
         /// <inheritdoc cref="IRepository{TKey, TEntity}.Get(Expression{Func{TEntity, bool}}, string[])"/>
@@ -82,13 +93,17 @@ namespace Orun.BuildingBlocks.Domain
             return await Task.FromResult(Query
                 .ToWhere(where)
                 .ToInclude(includes)
-                .ToPaged(property, opts.Ascending, opts.Index, opts.Size));
+                .ToPaged(property, opts!.Ascending, opts.Index, opts.Size));
         }
 
-        /// <inheritdoc cref="IRepository{TKey, TEntity}.Get(Expression{Func{TEntity, bool}}"/>
+        // <inheritdoc cref="IRepository{TKey, TEntity}.Get(Expression{Func{TEntity, bool}}"/>
+        /// <summary>
+        /// returns a list of elements that satisfy the provided predicate
+        /// </summary>
         public async Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where) =>
             await Task.FromResult(Query.ToWhere(where));
 
+        /// <inheritdocs cref="IRepository{TKey, TEntity}.GetOne(Expression{Func{TEntity, bool}})"/>
         public async Task<TEntity> GetOne(Expression<Func<TEntity, bool>> where) =>
             await Query.ToWhere(where).FirstOrDefaultAsync();
 
@@ -99,20 +114,21 @@ namespace Orun.BuildingBlocks.Domain
             var opts = options.ConfigureOrDefault();
             return await Task.FromResult(Query
                 .ToWhere(where)
-                .ToPaged(property, opts.Ascending, opts.Index, opts.Size));
+                .ToPaged(property, opts!.Ascending, opts.Index, opts.Size));
         }
 
         /// <inheritdoc cref="IRepository{TKey, TEntity}.Get(string[])"/>
         public async Task<IQueryable<TEntity>> Get(params string[] includes) =>
             await Task.FromResult(Query.ToInclude(includes));
 
+        /// <inheritdocs cref="IRepository{TKey, TEntity}.Get(string, Action{PaginationOptions}, string[])"/>
         public async Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions> options,
             params string[] includes)
         {
             var opts = options.ConfigureOrDefault();
             return await Task.FromResult(Query
                 .ToInclude(includes)
-                .ToPaged(property, opts.Ascending, opts.Index, opts.Size));
+                .ToPaged(property, opts!.Ascending, opts.Index, opts.Size));
         }
 
         /// <summary>
@@ -121,6 +137,7 @@ namespace Orun.BuildingBlocks.Domain
         /// <param name="input"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
+        /// </summary>
         public virtual async Task Update(TKey id, TEntity input)
         {
             try

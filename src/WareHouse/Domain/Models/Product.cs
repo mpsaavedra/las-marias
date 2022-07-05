@@ -43,7 +43,7 @@ public partial class Product : BusinessEntity<long>
 
     public decimal? ReOrderLevel { get; set; }
 
-    public long MeasureUnitId { get; set; }
+    public long? MeasureUnitId { get; set; }
 
     [UseFiltering]
     [UseSorting]
@@ -53,33 +53,33 @@ public partial class Product : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<Attribute> Attributes { get; set; }
+    public virtual ICollection<Attribute>? Attributes { get; set; }
 
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<ProductPhoto> ProductPhotos { get; set; }
+    public virtual ICollection<ProductPhoto>? ProductPhotos { get; set; }
 
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<Category> Categories { get; set; }
+    public virtual ICollection<Category>? Categories { get; set; }
 
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<PriceHistory> PriceHistories { get; set; }
+    public virtual ICollection<PriceHistory>? PriceHistories { get; set; }
 
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<ProductMovement> ProductMovements { get; set; }
+    public virtual ICollection<ProductMovement>? ProductMovements { get; set; }
 
 
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<ProductBrand> ProductBrands { get; set; }
+    public virtual ICollection<ProductBrand>? ProductBrands { get; set; }
 
     /// <summary>
     /// return true if there are products available

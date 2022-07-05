@@ -10,10 +10,13 @@ public static class ReWareHouseitoryExtensions
     {
         
         // registering repositories
-        services
-            .AddScoped<IAttributeNameRepository, AttributeNameRepository>()
+        services 
             .AddScoped<IAttributeRepository, AttributeRepository>()
+            .AddScoped<IAttributeNameRepository, AttributeNameRepository>()
+            .AddScoped<IBrandRepository, BrandRepository>()
             .AddScoped<ICategoryRepository, CategoryRepository>()
+            .AddScoped<IMeasureUnitRepository, MeasureUnitRepository>()
+            .AddScoped<IMovementRepository, MovementRepository>()
             .AddScoped<IPriceHistoryRepository, PriceHistoryRepository>()
             .AddScoped<IProductBrandRepository, ProductBrandRepository>()
             .AddScoped<IProductMovementRepository, ProductMovementRepository>()

@@ -39,7 +39,7 @@ public partial class VendorBrandQuery
             Log.Debug("Retrieving vendor brands relations list");
             var data = new VendorBrandListPayload();
             var fail = await chain.ExecuteAsyncChain<VendorBrandListPayload, bool>(
-                "get-vendors-brands-list", 
+                "get-vendor-brand-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

@@ -16,7 +16,7 @@ namespace Orun.Services
         /// </summary>
         /// <param name="app"></param>
         /// <returns></returns>
-        IApplicationBuilder ConfigurePlugins(IApplicationBuilder app);
+        WebApplication ConfigurePlugins(WebApplication app);
         
         /// <summary>
         /// load plugin from a plugin file and shared types

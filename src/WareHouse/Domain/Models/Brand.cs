@@ -21,10 +21,10 @@ public partial class Brand : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<ProductBrand> ProductBrands { get; set; }
+    public virtual ICollection<ProductBrand>? ProductBrands { get; set; }
 
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual ICollection<VendorBrand> VendorBrands { get; set; }
+    public virtual ICollection<VendorBrand>? VendorBrands { get; set; }
 }

@@ -32,7 +32,7 @@ public partial class ApplicationUser : IdentityUser, IApplicationUser
         RowVersion = Guid.NewGuid().ToString();
     }
 
-    public string ReferralUserId { get; set; }
+    public string? ReferralUserId { get; set; }
 
     public string? ReferenceId { get; set; }
 
@@ -52,15 +52,15 @@ public partial class ApplicationUser : IdentityUser, IApplicationUser
     /// if some user refer business to this user
     /// </summary>
     [JsonIgnore]
-    public virtual IApplicationUser ReferralUser { get; set; }
+    public virtual IApplicationUser? ReferralUser { get; set; }
 
-    public virtual ICountry Country { get; set; }
+    public virtual ICountry? Country { get; set; }
 
     /// <summary>
     /// list of referred users by this user
     /// </summary>
     [JsonIgnore]
-    public virtual ICollection<IApplicationUser> ReferredUsers { get; set; }
+    public virtual ICollection<IApplicationUser>? ReferredUsers { get; set; }
 
     /// <summary>
     /// 4 digit token sent to the user when register request is done
@@ -80,7 +80,7 @@ public partial class ApplicationUser : IdentityUser, IApplicationUser
     [UseSorting]
     [JsonIgnore]
     // [InverseProperty("User")]
-    public virtual ICollection<IUserBenefit> UserBenefits { get; set; }
+    public virtual ICollection<IUserBenefit>? UserBenefits { get; set; } = new HashSet<IUserBenefit>();
 
 
     #region Business Entity members

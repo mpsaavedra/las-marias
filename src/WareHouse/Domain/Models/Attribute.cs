@@ -27,7 +27,7 @@ public partial class Attribute : BusinessEntity<long>
 
     public bool Enable { get; set; }
 
-    public long MeasureUnitId { get; set; }
+    public long? MeasureUnitId { get; set; }
 
     public virtual MeasureUnit? MeasureUnit { get; set; }
 
@@ -52,6 +52,9 @@ public partial class Attribute : BusinessEntity<long>
     {
         get
         {
+            if(MeasureUnit == null)
+                return (string)Value;
+                
             var ok = false;
             switch (MeasureUnit.Cast)
             {

@@ -11,7 +11,7 @@ namespace Orun.BuildingBlocks.Domain
         /// <summary>
         /// Transaction related value
         /// </summary>
-        IDbContextTransaction Transaction { get; }
+        IDbContextTransaction? Transaction { get; }
 
         /// <summary>
         /// Open a new database connection

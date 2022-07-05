@@ -51,6 +51,13 @@ namespace Orun.Plugins
         /// if true the plugin is enable to be use
         /// </summary>
         bool Enable { get; set; }
+
+        /// <summary>
+        /// set the level in execution 0 is first and growth up, this level
+        /// should be carefully keepm because data processing is important when 
+        /// accessing to formated data. so 0 is the first executed plugin.
+        /// </summary>
+        int Level { get; set; }
     
         /// <summary>
         /// Configure plugin IApplicationBuilder if required. This method could be used to call initialization
@@ -58,7 +65,7 @@ namespace Orun.Plugins
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
-        IApplicationBuilder? Configure(IApplicationBuilder builder);
+        WebApplication? Configure(WebApplication builder);
         
         /// <summary>
         /// Configure plugin services if required. This method could be used to call initialization

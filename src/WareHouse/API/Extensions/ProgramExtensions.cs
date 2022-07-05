@@ -82,8 +82,8 @@ public static class ProgramExtensions
         // When running in an orchestrator/K8s, it will take care of restarting failed services.
         if (bool.TryParse(configuration["RetryMigrations"], out bool retryMigrations))
         {
-            return Policy.Handle<Exception>().
-                WaitAndRetryForever(
+            return Policy.Handle<Exception>()
+                .WaitAndRetryForever(
                     sleepDurationProvider: retry => TimeSpan.FromSeconds(5),
                     onRetry: (exception, retry, timeSpan) =>
                     {
