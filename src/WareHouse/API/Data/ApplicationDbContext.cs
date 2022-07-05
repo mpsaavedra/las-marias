@@ -19,6 +19,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<AttributeName> AttributeNames => Set<AttributeName>();
 
+    public virtual DbSet<Brand> Brands => Set<Brand>();
+
     public virtual DbSet<Category> Categories => Set<Category>();
 
     public virtual DbSet<Movement> Movements => Set<Movement>();

@@ -71,6 +71,17 @@ public static class SeedData
         Attribute size2Pack;
         Attribute size1Box;
         Attribute size12Pack;
+        Brand sprite;
+        Brand pilsner;
+        Brand bravo;
+        Brand vitrales;
+        Brand bucanero;
+        Brand losPortales;
+        Vendor spriteCorp;
+        Vendor pilsnerDrink;
+        Vendor bravoMeat;
+        Vendor bucaneroDrinks;
+        Vendor losPortalesWater;
 
         if (!context.MeasureUnits.Any())
         {
@@ -195,6 +206,39 @@ public static class SeedData
             context.Attributes.AddRange(new Attribute[]
             {
                 colorW, colorB, colorY, colorR, size12Pack, size1Box, size12Pack
+            });
+
+            context.SaveChanges();
+        }
+
+        if(!context.Brands.Any())
+        {
+            sprite = new Brand{ Name = "Sprite"};
+            pilsner = new Brand{ Name = "Pilsner"};
+            bravo = new Brand{ Name = "Bravo"};
+            vitrales = new Brand{ Name = "Vitrales"};
+            bucanero = new Brand{ Name = "Bucanero"};
+            losPortales = new Brand{ Name = "Los Portales"};
+
+            context.Brands.AddRange(new Brand[]
+            {
+                sprite, pilsner, bravo, vitrales, bucanero, losPortales
+            });
+
+            context.SaveChanges();
+        }
+
+        if(!context.Vendors.Any())
+        {
+            spriteCorp = new Vendor { Name = "Sprite Drinks", Description = "Drinks Distributionn Corporation" };
+            pilsnerDrink = new Vendor { Name = "Pilsner Corporation", Description = "Drinks Distributionn Corporation" };
+            bravoMeat = new Vendor { Name = "Carnicos de CUba", Description = "FResh and Processed Meat Distributionn Corporation" };
+            bucaneroDrinks = new Vendor { Name = "Empresa de Cervezas y Refrescos", Description = "Beer and Soft-Drinks Distributionn Corporation" };
+            losPortalesWater = new Vendor { Name = "Embotelladora Los Portales", Description = "Bottled Water Distributionn Corporation" };
+
+            context.Vendors.AddRange(new Vendor[]
+            {
+                spriteCorp, pilsnerDrink, bravoMeat, bucaneroDrinks, losPortalesWater
             });
 
             context.SaveChanges();

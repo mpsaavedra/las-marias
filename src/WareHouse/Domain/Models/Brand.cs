@@ -10,6 +10,7 @@ public partial class Brand : BusinessEntity<long>
     {
         ProductBrands = new HashSet<ProductBrand>();
         VendorBrands = new HashSet<VendorBrand>();
+        Enable = true;
     }
 
     public long BrandId { get; set; }
