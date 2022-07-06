@@ -52,7 +52,7 @@ public class AttributeNameList : IAsyncMiddleware<AttributeNameListPayload, bool
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "get-attribute-name-list";
+        EventCode = "attribute-name-list";
     }
 
     public WebApplication? Configure(WebApplication builder)

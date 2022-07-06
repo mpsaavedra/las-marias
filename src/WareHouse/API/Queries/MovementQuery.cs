@@ -39,7 +39,7 @@ public partial class MovementQuery
             Log.Debug("Retrieving movements list");
             var data = new MovementListPayload();
             var fail = await chain.ExecuteAsyncChain<MovementListPayload, bool>(
-                "get-movement-list", 
+                "movement-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

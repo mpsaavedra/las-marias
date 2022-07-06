@@ -52,7 +52,7 @@ public class PriceHistoryist : IAsyncMiddleware<PriceHistoryListPayload, bool>, 
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "get-price-history-list";
+        EventCode = "price-history-list";
     }
 
     public WebApplication? Configure(WebApplication builder)

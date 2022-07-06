@@ -39,7 +39,7 @@ public partial class VendorQuery
             Log.Debug("Retrieving vendor list");
             var data = new VendorListPayload();
             var fail = await chain.ExecuteAsyncChain<VendorListPayload, bool>(
-                "get-vendor-list", 
+                "vendor-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

@@ -39,7 +39,7 @@ public partial class TableQuery
             Log.Debug("Retrieving tables list");
             var data = new TableListPayload();
             var fail = await chain.ExecuteAsyncChain<TableListPayload, bool>(
-                "get-tables-list", 
+                "tables-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

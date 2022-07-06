@@ -52,7 +52,7 @@ public class MeasureUnitList : IAsyncMiddleware<MeasureUnitListPayload, bool>, I
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "get-measure-unit-list";
+        EventCode = "measure-unit-list";
     }
 
     public WebApplication? Configure(WebApplication builder)

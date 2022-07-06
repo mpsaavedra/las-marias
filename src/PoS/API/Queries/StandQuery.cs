@@ -39,7 +39,7 @@ public partial class StandQuery
             Log.Debug("Retrieving stands list");
             var data = new StandListPayload();
             var fail = await chain.ExecuteAsyncChain<StandListPayload, bool>(
-                "get-stands-list", 
+                "stand-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

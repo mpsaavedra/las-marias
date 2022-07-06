@@ -22,7 +22,7 @@ public partial class Product : BusinessEntity<long>
 
     public string Name { get; set; }
 
-    public string? Decription { get; set; }
+    public string? Description { get; set; }
 
     public string? Note { get; set; }
 

@@ -52,7 +52,7 @@ public class ProductMovementList : IAsyncMiddleware<ProductMovementListPayload, 
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "get-product-movement-list";
+        EventCode = "product-movement-list";
     }
 
     public WebApplication? Configure(WebApplication builder)

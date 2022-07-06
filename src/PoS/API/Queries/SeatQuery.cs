@@ -39,7 +39,7 @@ public partial class SeatQuery
             Log.Debug("Retrieving seats list");
             var data = new SeatListPayload();
             var fail = await chain.ExecuteAsyncChain<SeatListPayload, bool>(
-                "get-seats-list", 
+                "seat-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

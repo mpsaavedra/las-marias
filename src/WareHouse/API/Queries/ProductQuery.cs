@@ -30,7 +30,7 @@ public partial class ProductQuery
     [UseFiltering]
     [UseSorting]
     [GraphQLDescription("List all available products")]
-    public async Task<IQueryable<Product>> GetProduct(
+    public async Task<IQueryable<Product>> GetProducts(
         [Service] IChainOfResponsibilityService chain
     )
     {
@@ -39,7 +39,7 @@ public partial class ProductQuery
             Log.Debug("Retrieving Products names list");
             var data = new ProductListPayload();
             var fail = await chain.ExecuteAsyncChain<ProductListPayload, bool>(
-                "get-product-list", 
+                "product-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

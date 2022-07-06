@@ -52,7 +52,7 @@ public class ProductList : IAsyncMiddleware<ProductListPayload, bool>, IMiddlewa
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "get-product-list";
+        EventCode = "product-list";
     }
 
     public WebApplication? Configure(WebApplication builder)

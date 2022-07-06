@@ -39,7 +39,7 @@ public partial class CategoryQuery
             Log.Debug("Retrieving Categories names list");
             var data = new CategoryListPayload();
             var fail = await chain.ExecuteAsyncChain<CategoryListPayload, bool>(
-                "get-category-list", 
+                "category-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

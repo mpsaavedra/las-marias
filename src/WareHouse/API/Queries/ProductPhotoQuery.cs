@@ -39,7 +39,7 @@ public partial class ProductPhotoQuery
             Log.Debug("Retrieving Product photos list");
             var data = new ProductPhotoListPayload();
             var fail = await chain.ExecuteAsyncChain<ProductPhotoListPayload, bool>(
-                "get-product-photo-list", 
+                "product-photo-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

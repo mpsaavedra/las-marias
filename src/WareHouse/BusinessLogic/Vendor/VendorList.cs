@@ -52,7 +52,7 @@ public class VendorList : IAsyncMiddleware<VendorListPayload, bool>, IMiddleware
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "get-vendor-list";
+        EventCode = "vendor-list";
     }
 
     public WebApplication? Configure(WebApplication builder)

@@ -39,7 +39,7 @@ public partial class MeasureUnitQuery
             Log.Debug("Retrieving measure units list");
             var data = new MeasureUnitListPayload();
             var fail = await chain.ExecuteAsyncChain<MeasureUnitListPayload, bool>(
-                "get-measure-unit-list", 
+                "measure-unit-list", 
                 data);
             return await Task.FromResult(data.Payload!);
         }

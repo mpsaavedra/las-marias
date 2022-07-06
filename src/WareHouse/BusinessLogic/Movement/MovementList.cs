@@ -52,7 +52,7 @@ public class MovementList : IAsyncMiddleware<MovementListPayload, bool>, IMiddle
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "get-movement-list";
+        EventCode = "movement-list";
     }
 
     public WebApplication? Configure(WebApplication builder)

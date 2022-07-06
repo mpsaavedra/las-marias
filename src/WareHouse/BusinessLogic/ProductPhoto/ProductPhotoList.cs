@@ -52,7 +52,7 @@ public class ProductPhotoList : IAsyncMiddleware<ProductPhotoListPayload, bool>,
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "get-product-photo-list";
+        EventCode = "product-photo-list";
     }
 
     public WebApplication? Configure(WebApplication builder)

@@ -52,7 +52,7 @@ public class CategoryList : IAsyncMiddleware<CategoryListPayload, bool>, IMiddle
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "get-category-list";
+        EventCode = "category-list";
     }
 
     public WebApplication? Configure(WebApplication builder)

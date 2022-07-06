@@ -82,6 +82,13 @@ public static class SeedData
         Vendor bravoMeat;
         Vendor bucaneroDrinks;
         Vendor losPortalesWater;
+        Product spriteOrange;
+        Product spriteLemon;;
+        Product pilsnerGolden;
+        Product pilsnerRegular;
+        Product pilsnerDark;
+        Product bucaneroCan;
+        Product waterPack;
 
         if (!context.MeasureUnits.Any())
         {
@@ -239,6 +246,81 @@ public static class SeedData
             context.Vendors.AddRange(new Vendor[]
             {
                 spriteCorp, pilsnerDrink, bravoMeat, bucaneroDrinks, losPortalesWater
+            });
+
+            context.SaveChanges();
+        }
+
+        if(!context.Products.Any())
+        {
+            spriteOrange = new Product 
+            { 
+                Name = "Orange Sprite Softdrinks", 
+                Description = "A sample product ready to be sold in the Points Of Sale", 
+                Note = "In the nnote you could specify some content about the product or else", 
+                Price = 1.10m, 
+                SellingPrice = 2.80m, 
+                Amount = 250 
+            };
+            spriteLemon = new Product 
+            { 
+                Name = "Lemon Sprite Softdrinks", 
+                Description = "A sample product ready to be sold in the Points Of Sale", 
+                Note = "In the nnote you could specify some content about the product or else", 
+                Price = 1.10m, 
+                SellingPrice = 2.50m, 
+                Amount = 50 
+            };
+            pilsnerGolden = new Product 
+            { 
+                Name = "Pilsner Golden Beer", 
+                Description = "A sample product ready to be sold in the Points Of Sale", 
+                Note = "In the nnote you could specify some content about the product or else", 
+                Price = 2.00m, 
+                SellingPrice = 2.60m, 
+                Amount = 500 
+            };
+            pilsnerRegular = new Product 
+            { 
+                Name = "Pilsner Regular Beer", 
+                Description = "A sample product ready to be sold in the Points Of Sale", 
+                Note = "In the nnote you could specify some content about the product or else", 
+                Price = 2.00m, 
+                SellingPrice = 2.60m, 
+                Amount = 500 
+            };
+            pilsnerDark = new Product 
+            { 
+                Name = "Pilsner Dark Beer", 
+                Description = "A sample product ready to be sold in the Points Of Sale", 
+                Note = "In the nnote you could specify some content about the product or else", 
+                Price = 2.00m, 
+                SellingPrice = 2.60m, 
+                Amount = 500 
+            };
+            bucaneroCan = new Product 
+            { 
+                Name = "Bucanero Beer Can", 
+                Description = "A sample product ready to be sold in the Points Of Sale", 
+                Note = "In the nnote you could specify some content about the product or else", 
+                Price = 1.10m, 
+                SellingPrice = 2.10m, 
+                Amount = 1500 
+            };
+            waterPack = new Product 
+            { 
+                Name = "Watter bottles 12 pack", 
+                Description = "A sample product ready to be sold in the Points Of Sale", 
+                Note = "In the nnote you could specify some content about the product or else", 
+                Price = 8.15m, 
+                SellingPrice = 8.50m, 
+                Amount = 200 
+            };
+
+            context.Products.AddRange(new Product[]
+            {
+                spriteOrange, spriteLemon, pilsnerGolden, pilsnerRegular, 
+                pilsnerDark, bucaneroCan, waterPack 
             });
 
             context.SaveChanges();
