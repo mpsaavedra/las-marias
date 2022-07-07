@@ -60,14 +60,14 @@ public partial class AttributeNameMutations
         }
     }
 
-    public async Task<bool> AttributeNameDelete(long id, 
+    public async Task<bool> AttributeNameDelete(AttributeNameDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Deleting attribute name {id}");
-            var response = await chain.ExecuteAsyncChain<long, bool>(
-                "attribute-name-delete", id
+            Log.Debug($"Deleting attribute name {input.Id}");
+            var response = await chain.ExecuteAsyncChain<AttributeNameDeleteInputModel, bool>(
+                "attribute-name-delete", input
             );
             return response;
         }

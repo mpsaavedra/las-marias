@@ -62,14 +62,14 @@ public partial class MeasureUnitMutations
         }
     }
 
-    public async Task<bool> MeasureUnitDelete(long id, 
+    public async Task<bool> MeasureUnitDelete(MeasureUnitDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Deleting Measure Unit {id}");
-            var response = await chain.ExecuteAsyncChain<long, bool>(
-                "measure-unit-delete", id
+            Log.Debug($"Deleting Measure Unit {input.Id}");
+            var response = await chain.ExecuteAsyncChain<MeasureUnitDeleteInputModel, bool>(
+                "measure-unit-delete", input
             );
             return response;
         }

@@ -62,14 +62,14 @@ public partial class CategoryMutations
         }
     }
 
-    public async Task<bool> CategoryDelete(long id, 
+    public async Task<bool> CategoryDelete(CategoryDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Deleting Category {id}");
-            var response = await chain.ExecuteAsyncChain<long, bool>(
-                "category-delete", id
+            Log.Debug($"Deleting Category {input.Id}");
+            var response = await chain.ExecuteAsyncChain<CategoryDeleteInputModel, bool>(
+                "category-delete", input
             );
             return response;
         }

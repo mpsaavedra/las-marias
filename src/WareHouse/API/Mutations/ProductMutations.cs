@@ -62,14 +62,14 @@ public partial class ProductMutations
         }
     }
 
-    public async Task<bool> ProductDelete(long id, 
+    public async Task<bool> ProductDelete(ProductDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Deleting Product {id}");
-            var response = await chain.ExecuteAsyncChain<long, bool>(
-                "product-delete", id
+            Log.Debug($"Deleting Product {input.Id}");
+            var response = await chain.ExecuteAsyncChain<ProductDeleteInputModel, bool>(
+                "product-delete", input
             );
             return response;
         }

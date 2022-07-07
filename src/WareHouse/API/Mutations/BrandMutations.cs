@@ -62,14 +62,14 @@ public partial class BrandMutations
         }
     }
 
-    public async Task<bool> BrandDelete(long id, 
+    public async Task<bool> BrandDelete(BrandDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Deleting Brand {id}");
-            var response = await chain.ExecuteAsyncChain<long, bool>(
-                "brand-delete", id
+            Log.Debug($"Deleting Brand {input.Id}");
+            var response = await chain.ExecuteAsyncChain<BrandDeleteInputModel, bool>(
+                "brand-delete", input
             );
             return response;
         }

@@ -62,14 +62,14 @@ public partial class MovementMutations
         }
     }
 
-    public async Task<bool> MovementDelete(long id, 
+    public async Task<bool> MovementDelete(MovementDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Deleting Movement {id}");
-            var response = await chain.ExecuteAsyncChain<long, bool>(
-                "movement-delete", id
+            Log.Debug($"Deleting Movement {input.Id}");
+            var response = await chain.ExecuteAsyncChain<MovementDeleteInputModel, bool>(
+                "movement-delete", input
             );
             return response;
         }

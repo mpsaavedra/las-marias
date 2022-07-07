@@ -62,14 +62,14 @@ public partial class AttributeMutations
         }
     }
 
-    public async Task<bool> AttributeDelete(long id, 
+    public async Task<bool> AttributeDelete(AttributeDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Deleting attribute {id}");
-            var response = await chain.ExecuteAsyncChain<long, bool>(
-                "attribute-delete", id
+            Log.Debug($"Deleting attribute {input.Id}");
+            var response = await chain.ExecuteAsyncChain<AttributeDeleteInputModel, bool>(
+                "attribute-delete", input
             );
             return response;
         }

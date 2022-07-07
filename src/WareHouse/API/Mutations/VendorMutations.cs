@@ -62,14 +62,14 @@ public partial class VendorMutations
         }
     }
 
-    public async Task<bool> VendorDelete(long id, 
+    public async Task<bool> VendorDelete(VendorDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Deleting Vendor {id}");
-            var response = await chain.ExecuteAsyncChain<long, bool>(
-                "vendor-delete", id
+            Log.Debug($"Deleting Vendor {input.Id}");
+            var response = await chain.ExecuteAsyncChain<VendorDeleteInputModel, bool>(
+                "vendor-delete", input
             );
             return response;
         }
