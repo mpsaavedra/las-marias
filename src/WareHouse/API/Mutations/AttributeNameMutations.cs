@@ -42,12 +42,12 @@ public partial class AttributeNameMutations
         }         
     }
 
-    public async Task<AttributeName> AttributeNameUpdate(long id, AttributeNameUpdateInputModel input,
+    public async Task<AttributeName> AttributeNameUpdate(AttributeNameUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Updating attribute name {id}");
+            Log.Debug($"Updating attribute name {input.Id}");
             var data = await chain.ExecuteAsyncChain<AttributeNameUpdateInputModel, AttributeName>(
                 "attribute-name-update", input
             );

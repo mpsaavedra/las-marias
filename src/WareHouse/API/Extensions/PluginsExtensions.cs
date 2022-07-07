@@ -72,31 +72,51 @@ public static class PluginsExtensions
                 typeof(AttributeCreateInputModel),
                 typeof(AttributeListPayload),
                 typeof(AttributeUpdateInputModel),
+                typeof(AttributeDeleteInputModel),
+
                 typeof(AttributeNameCreateInputModel),
                 typeof(AttributeNameListPayload),
                 typeof(AttributeNameUpdateInputModel),
+                typeof(AttributeNameDeleteInputModel),
+
                 typeof(BrandCreateInputModel),
                 typeof(BrandListPayload),
                 typeof(BrandUpdateInputModel),
+                typeof(BrandDeleteInputModel),
+
                 typeof(CategoryCreateInputModel),
                 typeof(CategoryListPayload),
                 typeof(CategoryUpdateInputModel),
+                typeof(CategoryDeleteInputModel),
+
                 typeof(MeasureUnitCreateInputModel),
                 typeof(MeasureUnitListPayload),
                 typeof(MeasureUnitUpdateInputModel),
+                typeof(MeasureUnitDeleteInputModel),
+
                 typeof(MovementCreateInputModel),
                 typeof(MovementListPayload),
-                typeof(MeasureUnitUpdateInputModel),
+                typeof(MovementUpdateInputModel),
+                typeof(MovementDeleteInputModel),
+
                 typeof(PriceHistoryListPayload),
+
                 typeof(ProductCreateInputModel),
                 typeof(ProductListPayload),
                 typeof(ProductUpdateInputModel),
+                typeof(ProductDeleteInputModel),
+
                 typeof(ProductBrandListPayload),
+
                 typeof(ProductMovementListPayload),
+
                 typeof(ProductPhotoListPayload),
+
                 typeof(VendorCreateInputModel),
                 typeof(VendorListPayload),
-                typeof(VendorCreateInputModel),
+                typeof(VendorUpdateInputModel),
+                typeof(VendorDeleteInputModel),
+                
                 typeof(VendorBrandListPayload)
             }
         );

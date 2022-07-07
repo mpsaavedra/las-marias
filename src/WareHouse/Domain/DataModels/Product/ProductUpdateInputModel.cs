@@ -2,6 +2,8 @@ namespace LasMarias.WareHouse.Domain.DataModels.Product;
 
 public class ProductUpdateInputModel
 {
+    public long Id { get; set; }
+
     public string? Name { get; set; }
 
     public string? Description { get; set; }

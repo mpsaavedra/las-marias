@@ -43,12 +43,12 @@ public partial class VendorMutations
         }         
     }
 
-    public async Task<LasMarias.WareHouse.Domain.Models.Vendor> VendorUpdate(long id, VendorUpdateInputModel input,
+    public async Task<LasMarias.WareHouse.Domain.Models.Vendor> VendorUpdate(VendorUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Updating Vendor {id}");
+            Log.Debug($"Updating Vendor {input.Id}");
             var data = await chain.ExecuteAsyncChain<VendorUpdateInputModel, 
                 LasMarias.WareHouse.Domain.Models.Vendor>(
                 "vendor-update", input

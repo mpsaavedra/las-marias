@@ -43,12 +43,12 @@ public partial class MeasureUnitMutations
         }         
     }
 
-    public async Task<LasMarias.WareHouse.Domain.Models.MeasureUnit> MeasureUnitUpdate(long id, MeasureUnitUpdateInputModel input,
+    public async Task<LasMarias.WareHouse.Domain.Models.MeasureUnit> MeasureUnitUpdate(MeasureUnitUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Updating MeasureUnit {id}");
+            Log.Debug($"Updating MeasureUnit {input.Id}");
             var data = await chain.ExecuteAsyncChain<MeasureUnitUpdateInputModel, 
                 LasMarias.WareHouse.Domain.Models.MeasureUnit>(
                 "measure-unit-update", input

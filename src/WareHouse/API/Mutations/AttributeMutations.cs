@@ -24,14 +24,14 @@ using AutoMapper;
 [ExtendObjectType("Mutation")]
 public partial class AttributeMutations
 {
-    public async Task<LasMarias.WareHouse.Domain.Models.Attribute> AttributeCreate(AttributeCreateInputModel input,
+    public async Task<Domain.Models.Attribute> AttributeCreate(AttributeCreateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
             Log.Debug("Creating a new attribute");
             var data = await chain.ExecuteAsyncChain<AttributeCreateInputModel, 
-                LasMarias.WareHouse.Domain.Models.Attribute>(
+                Domain.Models.Attribute>(
                 "attribute-create", input
             );
             return await Task.FromResult(data);
@@ -43,14 +43,14 @@ public partial class AttributeMutations
         }         
     }
 
-    public async Task<LasMarias.WareHouse.Domain.Models.Attribute> AttributeUpdate(long id, AttributeUpdateInputModel input,
+    public async Task<Domain.Models.Attribute> AttributeUpdate(AttributeUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Updating attribute {id}");
+            Log.Debug($"Updating attribute {input.Id}");
             var data = await chain.ExecuteAsyncChain<AttributeUpdateInputModel, 
-                LasMarias.WareHouse.Domain.Models.Attribute>(
+                Domain.Models.Attribute>(
                 "attribute-update", input
             );
             return await Task.FromResult(data);

@@ -43,12 +43,12 @@ public partial class MovementMutations
         }         
     }
 
-    public async Task<LasMarias.WareHouse.Domain.Models.Movement> MovementUpdate(long id, MovementUpdateInputModel input,
+    public async Task<LasMarias.WareHouse.Domain.Models.Movement> MovementUpdate(MovementUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Updating Movement {id}");
+            Log.Debug($"Updating Movement {input.Id}");
             var data = await chain.ExecuteAsyncChain<MovementUpdateInputModel, 
                 LasMarias.WareHouse.Domain.Models.Movement>(
                 "movement-update", input

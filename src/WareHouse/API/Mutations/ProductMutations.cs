@@ -43,12 +43,12 @@ public partial class ProductMutations
         }         
     }
 
-    public async Task<LasMarias.WareHouse.Domain.Models.Product> ProductUpdate(long id, ProductUpdateInputModel input,
+    public async Task<LasMarias.WareHouse.Domain.Models.Product> ProductUpdate(ProductUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Updating Product {id}");
+            Log.Debug($"Updating Product {input.Id}");
             var data = await chain.ExecuteAsyncChain<ProductUpdateInputModel, 
                 LasMarias.WareHouse.Domain.Models.Product>(
                 "product-update", input

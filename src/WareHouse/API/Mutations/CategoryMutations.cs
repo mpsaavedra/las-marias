@@ -43,12 +43,12 @@ public partial class CategoryMutations
         }         
     }
 
-    public async Task<LasMarias.WareHouse.Domain.Models.Category> CategoryUpdate(long id, CategoryUpdateInputModel input,
+    public async Task<LasMarias.WareHouse.Domain.Models.Category> CategoryUpdate(CategoryUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Updating Category {id}");
+            Log.Debug($"Updating Category {input.Id}");
             var data = await chain.ExecuteAsyncChain<CategoryUpdateInputModel, 
                 LasMarias.WareHouse.Domain.Models.Category>(
                 "category-update", input

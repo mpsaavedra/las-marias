@@ -5,7 +5,8 @@ using LasMarias.WareHouse.Domain.Models;
 
 public partial class AttributeNameUpdateInputModel
 {
-    public long id { get; set; }
+    public long Id { get; set; }
+
     public Optional<string> Name { get; set; }
 
     public Optional<bool> Enable { get; set; }

@@ -43,12 +43,12 @@ public partial class BrandMutations
         }         
     }
 
-    public async Task<LasMarias.WareHouse.Domain.Models.Brand> BrandUpdate(long id, BrandUpdateInputModel input,
+    public async Task<LasMarias.WareHouse.Domain.Models.Brand> BrandUpdate(BrandUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
         try
         {
-            Log.Debug($"Updating Brand {id}");
+            Log.Debug($"Updating Brand {input.Id}");
             var data = await chain.ExecuteAsyncChain<BrandUpdateInputModel, 
                 LasMarias.WareHouse.Domain.Models.Brand>(
                 "brand-update", input

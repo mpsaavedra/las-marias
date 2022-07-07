@@ -4,6 +4,8 @@ using LasMarias.WareHouse.Domain.Models;
 
 public class MovementUpdateInputModel
 {
+    public long Id { get; set; }
+    
     public decimal? Amount { get; set; }
 
     public decimal? Price { get; set; }
