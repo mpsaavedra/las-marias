@@ -1,9 +1,9 @@
-namespace LasMarias.WareHouse.Domain.DataModels.Product;
+namespace LasMarias.WareHouse.Domain.DataModels.Administration;
 
 using HotChocolate;
 using LasMarias.WareHouse.Domain.Models;
 
-public class ProductRegisterMovementInputModel
+public class ProductNewMovementInputModel
 {
     public long ProductId { get; set; }
 
