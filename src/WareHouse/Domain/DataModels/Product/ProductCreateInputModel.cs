@@ -20,11 +20,11 @@ public class ProductCreateInputModel
 
     public long MeasureUnitId { get; set; }
 
-    public Optional<ICollection<long>> AttributesIds { get; set; }
+    public ICollection<long>? AttributesIds { get; set; }
 
-    public Optional<ICollection<long>> CategoriesIds { get; set; }
+    public ICollection<long>? CategoriesIds { get; set; }
 
-    public Optional<ICollection<long>> ProductPhotosId { get; set; }
+    public ICollection<long>? ProductPhotosId { get; set; }
 
-    public Optional<ICollection<long>> ProductBrandsId { get; set; }
+    public ICollection<long>? ProductBrandsId { get; set; }
 }

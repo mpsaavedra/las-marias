@@ -15,12 +15,12 @@ using LasMarias.WareHouse.Domain.DataModels.Category;
 using LasMarias.WareHouse.Domain.Models;
 using LasMarias.WareHouse.Domain.Repositories;
 
-public class AttributeNameUpdate : 
-    IAsyncMiddleware<AttributeNameUpdateInputModel, Domain.Models.Category>, IMiddlewarePlugin
+public class CategoryUpdate : 
+    IAsyncMiddleware<CategoryUpdateInputModel, Domain.Models.Category>, IMiddlewarePlugin
 {
     private IServiceScope? _scope;
     
-    private IAttributeNameRepository? _repository;
+    private ICategoryRepository? _repository;
 
     public string Name { get; set; } 
 
@@ -42,13 +42,13 @@ public class AttributeNameUpdate :
 
     public ICollection<Dependency>? Dependencies { get; set; }
 
-    public AttributeNameUpdate()
+    public CategoryUpdate()
     {
         Name = "WareHouse Category Update Business Logic plugin";
         Version = "0.0.1";
         PluginId = Guid.NewGuid();
         Author = "Orun Innovations";
-        Description = "returns a updated attributeName";
+        Description = "returns a updated Category";
         ShortName = "WareHouse Category Update";
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
@@ -69,9 +69,8 @@ public class AttributeNameUpdate :
         return services;
     }
 
-    // >.Run(AttributeNameUpdateInputModel, Func<AttributeNameUpdateInputModel, Task<Category>>)
-    public async Task<Domain.Models.Category> Run(AttributeNameUpdateInputModel parameter, 
-        Func<AttributeNameUpdateInputModel, Task<Domain.Models.Category>> next)
+    public async Task<Domain.Models.Category> Run(CategoryUpdateInputModel parameter, 
+        Func<CategoryUpdateInputModel, Task<Domain.Models.Category>> next)
     {
         try
         {
@@ -79,13 +78,13 @@ public class AttributeNameUpdate :
             
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
 
-            _repository = (IAttributeNameRepository)_scope?.ServiceProvider.GetService<IAttributeNameRepository>();
+            _repository = (ICategoryRepository)_scope?.ServiceProvider.GetService<ICategoryRepository>();
             if(_repository == null)
             {
                 throw new NullReferenceException($"Repository could not be null");
             }
             
-            if(!(await _repository.Any(x => x.AttributeNameId == parameter.Id)))
+            if(!(await _repository.Any(x => x.CategoryId == parameter.Id)))
             {
                 throw new Exception($"Category with id {parameter.Id} was not found");
             }
@@ -99,7 +98,7 @@ public class AttributeNameUpdate :
             {    
                 // map entry into a real entity
                 var mappedEntity = _repository.Mapper.Map<Domain.Models.Category>(parameter);
-                entity = (Domain.Models.Category)(await _repository.GetOne(x => x.AttributeNameId == parameter.Id));
+                entity = (Domain.Models.Category)(await _repository.GetOne(x => x.CategoryId == parameter.Id));
 
                 if(entity == null)
                 {
@@ -109,9 +108,9 @@ public class AttributeNameUpdate :
                 // map properties
                 entity.Name = mappedEntity.Name.ThenIfNullOrEmpty(entity.Name);
                 entity.Code = mappedEntity.Code.ThenIfNullOrEmpty(entity.Code);
-                entity.ParentCagetoryId = mappedEntity.ParentCagetoryId.ThenIfNullOrEmpty(entity.ParentCagetoryId);
+                entity.ParentCategoryId = mappedEntity.ParentCategoryId.ThenIfNullOrEmpty(entity.ParentCategoryId);
 
-                await _repository.Update(entity.AttributeNameId, entity);
+                await _repository.Update(entity.CategoryId, entity);
             }
             
             // no exception throw so we are ready to save entity

@@ -134,7 +134,7 @@ public class ProductUpdate :
                 // register attributes
                 foreach(var attrId in parameter.AttributesIds)
                 {
-                    if(!(await _attrRepository.Any(x => x.AttributesId == attrId)))
+                    if(!(await _attrRepository.Any(x => x.AttributeId == attrId)))
                     {
                         throw new Exception($"Attribute with id: {attrId} was not found");
                     }
@@ -157,7 +157,7 @@ public class ProductUpdate :
                     var cat = await _catRepository.GetOne(x => x.CategoryId == catId);
                     if(!entity.Categories.Contains(cat))
                     {
-                        entity.Categoris.Add(cat);
+                        entity.Categories.Add(cat);
                     }
                 }
 
@@ -179,15 +179,15 @@ public class ProductUpdate :
                 // register product photos
                 foreach(var brandId in parameter.ProductBrandsIds)
                 {
-                    if(!(await _brandRepository.Any(x => x.ProductBrandId == brandId)))
+                    if(!(await _brandRepository.Any(x => x.BrandId == brandId)))
                     {
-                        throw new Exception($"Product Photo with id: {photoId} was not found");
+                        throw new Exception($"Brand with id: {brandId} was not found");
                     }
 
-                    var photo = await _prodPhotoRepository.GetOne(x => x.ProductBrandId == photoId);
-                    if(!entity.ProductBrands.Contains(photo))
+                    var brand = await _productBrandRepository.GetOne(x => x.BrandId == brandId);
+                    if(!entity.ProductBrands.Contains(brand))
                     {
-                        entity.ProductPhotos.Add(photo);
+                        entity.ProductBrands.Add(brand);
                     }
                 }
 

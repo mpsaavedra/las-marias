@@ -20,11 +20,11 @@ public class ProductUpdateInputModel
 
     public Optional<decimal> ReOrderLevel { get; set; }
 
-    public Optional<ICollection<long>> AttributesIds { get; set; }
+    public ICollection<long>? AttributesIds { get; set; }
 
-    public Optional<ICollection<long>> CategoriesIds { get; set; }
+    public ICollection<long>? CategoriesIds { get; set; }
 
-    public Optional<ICollection<long>> ProductPhotosIds { get; set; }
+    public ICollection<long>? ProductPhotosIds { get; set; }
 
-    public Optional<ICollection<long>> ProductBrandsIds { get; set; }
+    public ICollection<long>? ProductBrandsIds { get; set; }
 }
