@@ -238,7 +238,7 @@ namespace Orun.Services
             }
 
             var tmPlugin = _plugins.First(p => p.PluginId == guid);
-            return tmPlugin != null ? Task.FromResult((TPlugin) tmPlugin) : null;
+            return (tmPlugin != null ? Task.FromResult((TPlugin) tmPlugin) : null)!;
         }
         
         /// <summary>
@@ -259,7 +259,7 @@ namespace Orun.Services
             }
 
             var tmPlugin = _plugins.First(p => p.ShortName == shortName);
-            return tmPlugin != null ? Task.FromResult((TPlugin) tmPlugin) : null;
+            return (tmPlugin != null ? Task.FromResult((TPlugin) tmPlugin) : null)!;
         }
 
         /// <summary>

@@ -46,7 +46,7 @@ namespace Orun.BuildingBlocks.Domain
         {
             if (!Is.NullOrEmpty(Transaction!))
             {
-                await Task.Run(async () => Transaction!.Dispose());
+                await Task.Run(() => Transaction!.Dispose());
             }
 
             Transaction = await Context.Database.BeginTransactionAsync();
@@ -98,7 +98,7 @@ namespace Orun.BuildingBlocks.Domain
 
                 if (!Is.NullOrEmpty(Transaction!))
                 {
-                    await Task.Run(async () => Transaction!.Commit());
+                    await Task.Run(() => Transaction!.Commit());
                 }
             }
             catch (Exception exception)
@@ -123,7 +123,7 @@ namespace Orun.BuildingBlocks.Domain
         {
             if (!Is.NullOrEmpty(Transaction!))
             {
-                await Task.Run(async () => Transaction!.Dispose());
+                await Task.Run(() => Transaction!.Dispose());
             }
         }
 

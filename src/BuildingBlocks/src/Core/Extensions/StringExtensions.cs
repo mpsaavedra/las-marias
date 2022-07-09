@@ -130,9 +130,11 @@ public static class StringExtensions
     /// <returns>tuple (string, byte[]) with the encrypted text and the salt used</returns>
     public static (string, byte[]) HashPasswordPbdkf2(this string text, int iterations)
     {
-        byte[] salt = new byte[128 / 8];
-        using (var rngCsp = new RNGCryptoServiceProvider())
-            rngCsp.GetNonZeroBytes(salt);
+        // byte[] salt = new byte[128 / 8];
+        // using (var rngCsp = new RNGCryptoServiceProvider())
+        //     rngCsp.GetNonZeroBytes(salt);
+        // TODO: perhaps we need to improve security making a larger salt
+        var salt = RandomNumberGenerator.GetBytes(128 / 8);
 
         return (text.HashPasswordPbdkf2(salt, iterations), salt);
     }
