@@ -20,11 +20,13 @@ public class ProductNewMovement :
 {
     private IServiceScope? _scope;
 
-    private IProductMovementRepository? _repo;
+    private IMovementRepository? _movementRepository;
     
     private IProductRepository? _prodRepository;
 
     private IVendorRepository? _vendorRepository;
+
+    private IProductMovementRepository? _prodMovementRepository;
 
     public string Name { get; set; } 
 
@@ -73,17 +75,19 @@ public class ProductNewMovement :
         return services;
     }
 
-    public async Task<Domain.Models.ProductMovement> Run(ProductNewMovementInputMovement parameter, 
+    public async Task<Domain.Models.ProductMovement> Run(ProductNewMovementInputModel parameter, 
         Func<ProductNewMovementInputModel, Task<Domain.Models.ProductMovement>> next)
     {
         try
         {
             Domain.Models.ProductMovement result;
+            var movement = new Domain.Models.Movement();
             
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
 
-            _repo = (IProductMovementRepositoru)_scope?.ServiceProvider.GetService<IProductMovementRepository>();
-            _prodRepository = (IProductRepository)_scope?.ServiceProvider.GetService<IProductRepository>();
+            _movementRepository = (IMovementRepository)_scope?.ServiceProvider.GetService<IMovementRepository>()!;
+            _prodRepository = (IProductRepository)_scope?.ServiceProvider.GetService<IProductRepository>()!;
+            _prodMovementRepository = (IProductMovementRepository)_scope?.ServiceProvider.GetService<IProductMovementRepository>()!;
 
             if(_prodRepository == null)
             {
@@ -97,12 +101,10 @@ public class ProductNewMovement :
             // database, otherwise create it and save changes.
             if(result == null)
             {    
-                result = new Domain.Models.ProductMovement();
-
-                result.Amount = parameter.Amount.ThenIfNullOrEmpty(0);
-                result.MovementType = parameter.MovementType.ThenIfNullOrEmpty(MovementType.DeliverToStand);
-                result.ApplicationUserId = parameter.ApplicationUserId;
-                result.Price = parameter.Price;
+                if(parameter.ApplicationUserId == null)
+                {
+                    throw new Exception("WareHouse: Application User could not be null");
+                }
 
                 if(!(await _prodRepository.Any(x => x.ProductId == parameter.ProductId)))
                 {
@@ -110,25 +112,38 @@ public class ProductNewMovement :
                 }
 
 
-                if(parameter.VendorId.HasValue())
+                if(parameter.VendorId.HasValue)
                 {
-                    _vendorRepository = (IVendorRepository)_scope?.ServiceProvider.GetService<IVendorRepository>();
-                    if(!(_vendorRepository.Any(x => x.VendorId == parameter.VendorId.Value)))
+                    _vendorRepository = (IVendorRepository)_scope?.ServiceProvider.GetService<IVendorRepository>()!;
+                    if(!(await _vendorRepository.Any(x => x.VendorId == parameter.VendorId.Value)))
                     {
                         throw new Exception($"WareHouse : Vendor with id {parameter.VendorId.Value} was not found");
                     }
-                    result.VendorId = parameter.VendorId;
+                    movement.VendorId = parameter.VendorId;
                 }
+
+                movement.Amount = parameter.Amount.ThenIfNullOrEmpty(0);
+                movement.MovementType = parameter.MovementType.ThenIfNullOrEmpty(MovementType.DeliverToStand);
+                movement.StandType = parameter.StandType.Value.ThenIfNullOrEmpty(StandType.NotSpecified);
+                movement.ApplicationUserId = parameter.ApplicationUserId;
+                movement.Price = parameter.Price;
+                movement.Description = parameter.Description.Value.ThenIfNullOrEmpty("");
                 
-                
-                result = await _repository.Create(result);
+                movement = await _movementRepository.Create(movement);
+                await _movementRepository.UnitOfWork.SaveAsync();
             }
             
-            // no exception throw so we are ready to save entity
-            await _repository.UnitOfWork.SaveAsync();
+            // register relation
+            result = new ProductMovement
+            {
+                ProductId = parameter.ProductId,
+                MovementId = movement.MovementId
+            };
+            await _prodMovementRepository.Create(result);
+            await _prodMovementRepository.UnitOfWork.SaveAsync();
 
             // return the result of inserted data
-            return await Task.FromResult(result);
+            return await Task.FromResult(result!);
         }
         catch (Exception ex)
         {

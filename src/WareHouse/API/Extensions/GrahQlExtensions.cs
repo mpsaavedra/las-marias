@@ -42,6 +42,7 @@ public static class GrahQlExtensions
             .AddType<VendorQuery>()
             
             // adding mutations
+            .AddType<AdministrationMutations>()
             .AddType<AttributeMutations>()
             .AddType<AttributeNameMutations>()
             .AddType<BrandMutations>()

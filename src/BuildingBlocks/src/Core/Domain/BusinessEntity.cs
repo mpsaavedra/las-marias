@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
+using HotChocolate;
+
 // a little cheat ;)
 namespace Orun.Domain
 {
@@ -18,7 +20,7 @@ namespace Orun.Domain
         }
 
         /// <inheritdoc cref="IBusinessEntity{TKey}.Deleted"/>
-        [JsonPropertyName("deleted")]
+        [GraphQLIgnore] // do not show in grahql
         public bool Deleted { get; set; }
         
         /// <inheritdoc cref="IBusinessEntity{TKey}.CreatedAt"/>

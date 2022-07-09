@@ -27,5 +27,8 @@ public enum StandType
     WareHouse,
 
     [Display(Name = "Cocina")]
-    Kitchen
+    Kitchen,
+
+    [Display(Name = "Sin especificar")]
+    NotSpecified
 }

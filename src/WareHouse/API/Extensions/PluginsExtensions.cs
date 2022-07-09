@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using LasMarias.WareHouse.Filters;
 using LasMarias.WareHouse.Domain.Repositories;
 using LasMarias.WareHouse.Domain.Models;
+using LasMarias.WareHouse.Domain.DataModels.Administration;
 using LasMarias.WareHouse.Domain.DataModels.Attribute;
 using LasMarias.WareHouse.Domain.DataModels.AttributeName;
 using LasMarias.WareHouse.Domain.DataModels.Brand;
@@ -69,6 +70,8 @@ public static class PluginsExtensions
                 typeof(VendorBrand),
 
                 // data models
+                typeof(ProductNewMovementInputModel),
+
                 typeof(AttributeCreateInputModel),
                 typeof(AttributeListPayload),
                 typeof(AttributeUpdateInputModel),

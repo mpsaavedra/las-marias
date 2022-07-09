@@ -10,6 +10,7 @@ public partial class Movement : BusinessEntity<long>
     public Movement()
     {
         MovementType = MovementType.DeliverToStand;
+        StandType = StandType.NotSpecified;
         ProductMovements = new HashSet<ProductMovement>();
     }
 
