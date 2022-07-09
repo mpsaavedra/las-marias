@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 public class ConsoleQueryLogger : ExecutionDiagnosticEventListener
 {
-    private static Stopwatch _queryTimer;
+    // private static Stopwatch _queryTimer;
     private readonly ILogger<ConsoleQueryLogger> _logger;
     public ConsoleQueryLogger(ILogger<ConsoleQueryLogger> logger)
     {

@@ -63,7 +63,7 @@ namespace Orun.BuildingBlocks.Domain
         /// <param name="property">property to order by, default is Id</param>
         /// <param name="pagedOptions"><see cref="PaginationOptions"/> <see cref="Action{T}"/> with pagination parameters</param>
         /// <returns></returns>
-        Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions> pagedOptions);
+        Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions?> pagedOptions);
 
         /// <summary>
         /// Returns a list of elements and include foreign related entities. Included values are located
@@ -83,7 +83,7 @@ namespace Orun.BuildingBlocks.Domain
         /// <see cref="PaginationOptions"/> provideds
         /// </summary>
         Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where, string property, 
-            Action<PaginationOptions> options, params string[] includes);
+            Action<PaginationOptions?> options, params string[] includes);
 
         /// <summary>
         /// returns a list of elements
@@ -102,7 +102,7 @@ namespace Orun.BuildingBlocks.Domain
         /// property and using the <see cref="PaginationOptions" />
         /// </summary>
         Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where, string property, 
-            Action<PaginationOptions> options);
+            Action<PaginationOptions?> options);
 
         /// <summary>
         /// returns a list of elements
@@ -115,7 +115,7 @@ namespace Orun.BuildingBlocks.Domain
         /// returns a list of elements ordered by property and using the <see cref="PaginationOptions" /> options
         /// and include the foreign related properties specified using dotted notation.
         /// </summary>
-        Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions> options, params string[] includes);
+        Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions?> options, params string[] includes);
 
         /// <summary>
         /// updates an entity value

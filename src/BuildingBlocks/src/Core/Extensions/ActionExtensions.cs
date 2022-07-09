@@ -15,13 +15,13 @@ namespace Orun.Extensions
         /// <param name="action">custom options.</param>
         /// <param name="overrideDefaultOptions">options to overrider with.</param>
         /// <returns>TOptions | ApplicationException: if action is null.</returns>
-        public static TOptions ConfigureOrDefault<TOptions>(this Action<TOptions>? action,
-            TOptions overrideDefaultOptions = null!)
+        public static TOptions ConfigureOrDefault<TOptions>(this Action<TOptions?> action,
+            TOptions? overrideDefaultOptions = null!)
             where TOptions : class, new()
         {
             overrideDefaultOptions ??= new TOptions();
 
-            action?.Invoke(overrideDefaultOptions);
+            action.Invoke(overrideDefaultOptions);
 
             return overrideDefaultOptions;
         }

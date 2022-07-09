@@ -73,7 +73,7 @@ namespace Orun.BuildingBlocks.Domain
             await Task.FromResult(Query.AsQueryable());
 
         /// <inheritdoc cref="IRepository{TKey, TEntity}.Get(string, Action{PaginationOptions})"/>
-        public async Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions> options)
+        public async Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions?> options)
         {
             var opts = options.ConfigureOrDefault();
             if(opts != null)
@@ -87,7 +87,7 @@ namespace Orun.BuildingBlocks.Domain
 
         /// <inheritdoc cref="IRepository{TKey,TEntity}.Get(Expression{Func{TEntity,bool}},string, Action{PaginationOptions},string[])"/>
         public async Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where, string property,
-            Action<PaginationOptions> options, params string[] includes)
+            Action<PaginationOptions?> options, params string[] includes)
         {
             var opts = options.ConfigureOrDefault();
             return await Task.FromResult(Query
@@ -109,7 +109,7 @@ namespace Orun.BuildingBlocks.Domain
 
         /// <inheritdoc cref="IRepository{TKey,TEntity}.Get(Expression{System.Func{TEntity,bool}},string,System.Action{PaginationOptions})"/>
         public async Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where, string property,
-            Action<PaginationOptions> options)
+            Action<PaginationOptions?> options)
         {
             var opts = options.ConfigureOrDefault();
             return await Task.FromResult(Query
@@ -122,7 +122,7 @@ namespace Orun.BuildingBlocks.Domain
             await Task.FromResult(Query.ToInclude(includes));
 
         /// <inheritdocs cref="IRepository{TKey, TEntity}.Get(string, Action{PaginationOptions}, string[])"/>
-        public async Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions> options,
+        public async Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions?> options,
             params string[] includes)
         {
             var opts = options.ConfigureOrDefault();

@@ -157,21 +157,21 @@ public static class SeedData
             context.SaveChanges();
 
             // create relations
-            softDrinks.ChildCategories.Add(naturalSoftDrinks);
+            softDrinks.ChildCategories!.Add(naturalSoftDrinks);
             softDrinks.ChildCategories.Add(artificialSoftDrinks);
-            juice.ChildCategories.Add(naturalJuices);
+            juice.ChildCategories!.Add(naturalJuices);
             juice.ChildCategories.Add(artificialJuices);
-            drinks.ChildCategories.Add(nonAlcoholDrinks);
+            drinks.ChildCategories!.Add(nonAlcoholDrinks);
             drinks.ChildCategories.Add(withAlcoholDrinks);
-            meats.ChildCategories.Add(curatedMeats);
+            meats.ChildCategories!.Add(curatedMeats);
             meats.ChildCategories.Add(freshMeats);
             meats.ChildCategories.Add(birdMeat);
             meats.ChildCategories.Add(animalMeat);
-            grains.ChildCategories.Add(beans);
+            grains.ChildCategories!.Add(beans);
             grains.ChildCategories.Add(rice);
-            fish.ChildCategories.Add(freshFish);
+            fish.ChildCategories!.Add(freshFish);
             fish.ChildCategories.Add(processedFish);
-            condiments.ChildCategories.Add(naturalCondiments);
+            condiments.ChildCategories!.Add(naturalCondiments);
             condiments.ChildCategories.Add(processedCondiments);
             context.SaveChanges();
         }
@@ -198,9 +198,9 @@ public static class SeedData
             quantity = context?.AttributeNames.FirstOrDefault(x => x.Name == "Cantidad")!;
             volumen = context?.AttributeNames.FirstOrDefault(x => x.Name == "Volumen")!;
 
-            unidad = context.MeasureUnits.FirstOrDefault(x => x.Name == "Unidad");
-            caja = context.MeasureUnits.FirstOrDefault(x => x.Name == "Caja");
-            paquete = context.MeasureUnits.FirstOrDefault(x => x.Name == "Paquete");
+            unidad = (context!.MeasureUnits.FirstOrDefault(x => x.Name == "Unidad"))!;
+            caja = (context.MeasureUnits.FirstOrDefault(x => x.Name == "Caja"))!;
+            paquete = (context.MeasureUnits.FirstOrDefault(x => x.Name == "Paquete"))!;
             
             colorW = new Attribute { Value = "Color Blanco", AttributeName = color};
             colorB = new Attribute { Value = "Color Negro", AttributeName = color};
