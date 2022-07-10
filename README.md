@@ -4,6 +4,8 @@
 
 This repository contains **Las Maria's Hotel & Resort** management systems it currently contains the definition of all projects that are part of this managemente system.
 
+![Build status](https://github.com/mpsaavedra/las-marias/actions/workflows/build-dev.yml/badge.svg?branch=dev)
+
 ## Which systems are included
 
 We include all systems that are and will be implemented or are in some part of the implementation process. This does not means that design would not change over time but this is the basic idea of what is available and which systems we intentend to develop in the future.
