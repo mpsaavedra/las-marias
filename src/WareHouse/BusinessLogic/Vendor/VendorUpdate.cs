@@ -58,14 +58,12 @@ public class VendorUpdate :
 
     public WebApplication? Configure(WebApplication builder)
     {
-        Log.Debug($"Configure plugin {ShortName}: event {EventCode}");
         _scope = builder.Services.CreateScope();
         return builder;
     }
         
     public IServiceCollection? ConfigureServices(IServiceCollection services)
     {
-        Log.Debug($"Configure services for plugin {ShortName}: event {EventCode}");
         return services;
     }
 

@@ -1,5 +1,5 @@
 #nullable enable
-namespace LasMarias.WareHouse.BusinessLogic.Vendor;
+namespace LasMarias.WareHouse.BusinessLogic.Vouce;
 
 using System;
 using System.Collections.Generic;
@@ -11,16 +11,16 @@ using Microsoft.Extensions.DependencyModel;
 using Orun;
 using Orun.Plugins;
 using Orun.Extensions;
-using LasMarias.WareHouse.Domain.DataModels.Vendor;
+using LasMarias.WareHouse.Domain.DataModels.Vouce;
 using LasMarias.WareHouse.Domain.Models;
 using LasMarias.WareHouse.Domain.Repositories;
 
-public class VendorDelete : 
-    IAsyncMiddleware<VendorDeleteInputModel, bool>, IMiddlewarePlugin
+public class VouceDelete : 
+    IAsyncMiddleware<VouceDeleteInputModel, bool>, IMiddlewarePlugin
 {
     private IServiceScope? _scope;
     
-    private IVendorRepository? _repository;
+    private IVouceRepository? _repository;
 
     public string Name { get; set; } 
 
@@ -42,18 +42,18 @@ public class VendorDelete :
 
     public ICollection<Dependency>? Dependencies { get; set; }
 
-    public VendorDelete()
+    public VouceDelete()
     {
-        Name = "WareHouse Vendor Delete Business Logic plugin";
+        Name = "WareHouse Vouce Delete Business Logic plugin";
         Version = "0.0.1";
         PluginId = Guid.NewGuid();
         Author = "Orun Innovations";
-        Description = "deletes an existing Vendor";
-        ShortName = "WareHouse Vendor Delete";
+        Description = "deletes an existing Vouce";
+        ShortName = "WareHouse Vouce Delete";
         Enable = true;
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
-        EventCode = "vendor-delete";
+        EventCode = "vouce-delete";
     }
 
     public WebApplication? Configure(WebApplication builder)
@@ -67,15 +67,15 @@ public class VendorDelete :
         return services;
     }
 
-    public async Task<bool> Run(VendorDeleteInputModel parameter, 
-        Func<VendorDeleteInputModel, Task<bool>> next)
+    public async Task<bool> Run(VouceDeleteInputModel parameter, 
+        Func<VouceDeleteInputModel, Task<bool>> next)
     {
         try
         {
             var result = true;
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
 
-            _repository = (IVendorRepository)_scope?.ServiceProvider.GetService<IVendorRepository>();
+            _repository = (IVouceRepository)_scope?.ServiceProvider.GetService<IVouceRepository>();
             if(_repository == null)
             {
                 throw new NullReferenceException($"Repository could not be null");

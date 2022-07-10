@@ -24,6 +24,7 @@ using AutoMapper;
 [ExtendObjectType("Mutation")]
 public partial class VouceMutations
 {
+    [GraphQLDescription("Creates a new Vouce")]
     public async Task<Vouce> VouceCreate(VouceCreateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -42,24 +43,45 @@ public partial class VouceMutations
         }         
     }
 
-    // public async Task<Vouce> VouceUpdate(VouceUpdateInputModel input,
-    //     [Service] IChainOfResponsibilityService chain)
-    // {
-    //     try
-    //     {
-    //         Log.Debug($"Updating attribute name {input.Id}");
-    //         var data = await chain.ExecuteAsyncChain<VouceUpdateInputModel, Vouce>(
-    //             "vouce-update", input
-    //         );
-    //         return await Task.FromResult(data);
-    //     }
-    //     catch (System.Exception ex)
-    //     {
-    //         Insist.Throw<Exception>(ex.FullMessage());
-    //         throw;
-    //     }
-    // }
+    [GraphQLDescription("Adds a new product to an existing vouce")]
+    public async Task<Vouce> VouceAddProduct(VouceAddProductMovementInputModel input,
+        [Service] IChainOfResponsibilityService chain)
+    {
+        try
+        {
+            Log.Debug($"Adding product to vouce {input.VouceId}");
+            var data = await chain.ExecuteAsyncChain<VouceAddProductMovementInputModel, Vouce>(
+                "vouce-add-product-movement", input
+            );
+            return await Task.FromResult(data);
+        }
+        catch (System.Exception ex)
+        {
+            Insist.Throw<Exception>(ex.FullMessage());
+            throw;
+        }
+    }
 
+    [GraphQLDescription("Remove a new product to an existing vouce")]
+    public async Task<Vouce> VouceRemoveProduct(VouceRemoveProductInputModel input,
+        [Service] IChainOfResponsibilityService chain)
+    {
+        try
+        {
+            Log.Debug($"Adding product to vouce {input.VouceId}");
+            var data = await chain.ExecuteAsyncChain<VouceRemoveProductInputModel, Vouce>(
+                "vouce-remove-product-movement", input
+            );
+            return await Task.FromResult(data);
+        }
+        catch (System.Exception ex)
+        {
+            Insist.Throw<Exception>(ex.FullMessage());
+            throw;
+        }
+    }
+
+    [GraphQLDescription("Delete an existing Vouce")]
     public async Task<bool> VouceDelete(VouceDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
