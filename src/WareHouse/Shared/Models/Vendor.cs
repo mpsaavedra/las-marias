@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using Orun.Domain;
 using System.Text.Json.Serialization;
+using HotChocolate;
 using HotChocolate.Data;
 
 namespace LasMarias.WareHouse.Domain.Models;
 
+[GraphQLDescription("Product vendor, describes a common product provider or distributor")]
 public partial class Vendor : BusinessEntity<long>
 {
     public Vendor()
@@ -13,19 +15,25 @@ public partial class Vendor : BusinessEntity<long>
         VendorBrands = new HashSet<VendorBrand>();
     }
 
+    [GraphQLDescription("this vendor Id")]
     public long VendorId { get; set; }
 
+    [GraphQLDescription("name of the vendor")]
     public string Name { get; set; }
 
+    [GraphQLDescription("description about this vendor")]
     public string? Description { get; set; }
 
+    [GraphQLDescription("if true this vendor is available to the system")]
     public bool Enable { get; set; }
 
+    [GraphQLDescription("List of movements made by this vendor")]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<Movement>? Movements { get; set; }
 
+    [GraphQLDescription("List of relations that describes the brands distributed by this vendor")]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

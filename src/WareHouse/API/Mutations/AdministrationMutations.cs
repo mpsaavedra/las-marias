@@ -37,6 +37,7 @@ using AutoMapper;
 [ExtendObjectType("Mutation")]
 public partial class AdministrationMutations
 {
+    [GraphQLDescription("register a new product movement")]
     public async Task<Domain.Models.ProductMovement> AdminProductNewMovement(
         ProductNewMovementInputModel input,
         [Service] IChainOfResponsibilityService chain)

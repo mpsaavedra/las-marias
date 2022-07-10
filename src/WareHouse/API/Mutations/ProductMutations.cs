@@ -24,6 +24,7 @@ using AutoMapper;
 [ExtendObjectType("Mutation")]
 public partial class ProductMutations
 {
+    [GraphQLDescription("create a new product")]
     public async Task<LasMarias.WareHouse.Domain.Models.Product> ProductCreate(ProductCreateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -43,6 +44,7 @@ public partial class ProductMutations
         }         
     }
 
+    [GraphQLDescription("update and existing product")]
     public async Task<LasMarias.WareHouse.Domain.Models.Product> ProductUpdate(ProductUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -62,6 +64,7 @@ public partial class ProductMutations
         }
     }
 
+    [GraphQLDescription("delete an existing product")]
     public async Task<bool> ProductDelete(ProductDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {

@@ -24,6 +24,7 @@ using AutoMapper;
 [ExtendObjectType("Mutation")]
 public partial class MovementMutations
 {
+    [GraphQLDescription("creates a new product movement")]
     public async Task<LasMarias.WareHouse.Domain.Models.Movement> MovementCreate(MovementCreateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -43,6 +44,7 @@ public partial class MovementMutations
         }         
     }
 
+    [GraphQLDescription("update an existing product movement")]
     public async Task<LasMarias.WareHouse.Domain.Models.Movement> MovementUpdate(MovementUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -62,6 +64,7 @@ public partial class MovementMutations
         }
     }
 
+    [GraphQLDescription("delete an existing movement")]
     public async Task<bool> MovementDelete(MovementDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {

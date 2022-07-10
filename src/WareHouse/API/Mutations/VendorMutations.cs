@@ -24,6 +24,7 @@ using AutoMapper;
 [ExtendObjectType("Mutation")]
 public partial class VendorMutations
 {
+    [GraphQLDescription("creates a new vendor")]
     public async Task<LasMarias.WareHouse.Domain.Models.Vendor> VendorCreate(VendorCreateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -43,6 +44,7 @@ public partial class VendorMutations
         }         
     }
 
+    [GraphQLDescription("update a vendor")]
     public async Task<LasMarias.WareHouse.Domain.Models.Vendor> VendorUpdate(VendorUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -62,6 +64,7 @@ public partial class VendorMutations
         }
     }
 
+    [GraphQLDescription("deletes a vendor")]
     public async Task<bool> VendorDelete(VendorDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
