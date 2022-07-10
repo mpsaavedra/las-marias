@@ -35,6 +35,7 @@ namespace Orun.BuildingBlocks.Domain
         /// Async save operation data into the database.
         /// </summary>
         /// <param name="useChangeTracker">if true it will use Change tracking mechanism</param>
+        /// <param name="cancellationToken">task cancellation token</param>
         /// <returns>Task.</returns>
         Task SaveAsync(bool useChangeTracker = true, CancellationToken cancellationToken = default);
 
