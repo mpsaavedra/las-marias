@@ -84,7 +84,7 @@ public class AttributeDelete :
             var entity = await _repository.Get(parameter.Id);
             if(entity == null)
             {
-                throw new Exception($"Attribute with id {id} was not found");
+                throw new Exception($"Attribute with id {parameter.Id} was not found");
             }
             
             await next(parameter);
