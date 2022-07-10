@@ -63,11 +63,14 @@ namespace LasMarias.WareHouse.Migrations
                     b.Property<long>("AttributeNameId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -82,7 +85,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Value")
@@ -106,11 +109,14 @@ namespace LasMarias.WareHouse.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("AttributeNameId"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Enable")
                         .HasColumnType("boolean");
@@ -124,7 +130,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("AttributeNameId");
@@ -142,11 +148,14 @@ namespace LasMarias.WareHouse.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("BrandId"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Enable")
                         .HasColumnType("boolean");
@@ -159,7 +168,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("BrandId");
@@ -178,11 +187,14 @@ namespace LasMarias.WareHouse.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Enable")
                         .HasColumnType("boolean");
@@ -198,7 +210,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("CategoryId");
@@ -223,11 +235,14 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Enable")
                         .HasColumnType("boolean");
@@ -240,7 +255,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("MeasureUnitId");
@@ -263,11 +278,14 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -285,7 +303,7 @@ namespace LasMarias.WareHouse.Migrations
                     b.Property<int>("StandType")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long?>("VendorId")
@@ -307,11 +325,14 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<decimal>("NewPrice")
                         .HasColumnType("numeric");
@@ -326,7 +347,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("PriceHistoryId");
@@ -345,11 +366,14 @@ namespace LasMarias.WareHouse.Migrations
                     b.Property<decimal?>("Amount")
                         .HasColumnType("numeric");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -377,7 +401,7 @@ namespace LasMarias.WareHouse.Migrations
                     b.Property<decimal>("SellingPrice")
                         .HasColumnType("numeric");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("ProductId");
@@ -398,11 +422,14 @@ namespace LasMarias.WareHouse.Migrations
                     b.Property<long>("BrandId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("ProductId")
                         .HasColumnType("bigint");
@@ -411,7 +438,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("ProductBrandId");
@@ -431,11 +458,14 @@ namespace LasMarias.WareHouse.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("ProductMovementId"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("MovementId")
                         .HasColumnType("bigint");
@@ -447,7 +477,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("ProductMovementId");
@@ -464,11 +494,14 @@ namespace LasMarias.WareHouse.Migrations
                     b.Property<long>("ProductPhotoId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("DesignColor")
                         .HasColumnType("text");
@@ -489,7 +522,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("ProductPhotoId");
@@ -505,11 +538,14 @@ namespace LasMarias.WareHouse.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("VendorId"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -525,7 +561,7 @@ namespace LasMarias.WareHouse.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("VendorId");
@@ -544,17 +580,20 @@ namespace LasMarias.WareHouse.Migrations
                     b.Property<long>("BrandId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("Deleted")
                         .HasColumnType("boolean");
 
+                    b.Property<DateTimeOffset?>("DeletedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("RowVersion")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTimeOffset?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("VendorId")

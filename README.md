@@ -29,6 +29,12 @@ Also some points are set, like define interfaces to shared data structures and m
 
 We make a heavy use of the **Orun Building Blocks** packages, which include a wide range of helper classes, extensions and design patterns that are used in the system for easier development.
 
+## Documentation for developers
+
+Event this is a requested project we include some documentation to allow to future developers to understand better how the system has been designed and how it works.
+
+This is still a work in progress and it could be consulted in [here](./docs/index.md)
+
 ## Developers and Authors
 
 Well we are humans and we all want that in some way our work been recognize by other so here we go:

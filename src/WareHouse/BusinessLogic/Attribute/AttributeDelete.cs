@@ -58,14 +58,12 @@ public class AttributeDelete :
 
     public WebApplication? Configure(WebApplication builder)
     {
-        Log.Debug($"Configure plugin {ShortName}: event {EventCode}");
         _scope = builder.Services.CreateScope();
         return builder;
     }
         
     public IServiceCollection? ConfigureServices(IServiceCollection services)
     {
-        Log.Debug($"Configure services for plugin {ShortName}: event {EventCode}");
         return services;
     }
 
@@ -86,7 +84,7 @@ public class AttributeDelete :
             var entity = await _repository.Get(parameter.Id);
             if(entity == null)
             {
-                throw new Exception($"");
+                throw new Exception($"Attribute with id {id} was not found");
             }
             
             await next(parameter);

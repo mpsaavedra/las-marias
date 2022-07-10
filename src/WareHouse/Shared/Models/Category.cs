@@ -3,7 +3,6 @@ using Orun.Domain;
 using Orun.Extensions;
 using HotChocolate.Data;
 using System.Text.Json.Serialization;
-using LasMarias.WareHouse.Domain.Repositories;
 
 namespace LasMarias.WareHouse.Domain.Models;
 

@@ -1,0 +1,10 @@
+query GetAttributes {
+    attributes {
+        nodes {
+            value
+            attributeName {
+                name
+            }
+        }
+    }
+}
