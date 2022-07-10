@@ -5,6 +5,11 @@ using LasMarias.WareHouse.Domain.Models;
 
 public partial class VouceCreateInputModel
 {
+    public VouceCreateInputModel()
+    {
+        ProductMovements = new HashSet<VouceProductMovementInputModel>();
+    }
+
     public Optional<string> Note { get; set; }
 
     public string ApplicationUserId { get; set; }

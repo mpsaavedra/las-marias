@@ -18,5 +18,8 @@ public enum MovementType
     DeliverToStand,
     
     [Display(Name = "Fecha de caducidad")]
-    Expiration
+    Expiration,
+
+    [Display(Name = "Not defined")]
+    NotDefined
 }

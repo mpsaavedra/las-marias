@@ -22,6 +22,12 @@ public class VouceCreate :
     
     private IVouceRepository? _repository;
 
+    private IProductRepository? _prodRepository;
+
+    private IVendorRepository? _vendorRepository;
+
+    private IChainOfResponsibility _chain;
+
     public string Name { get; set; } 
 
     public string Version { get; set; } 
@@ -42,7 +48,7 @@ public class VouceCreate :
 
     public ICollection<Dependency>? Dependencies { get; set; }
 
-    public VouceCreate()
+    public VouceCreate(IChainOfResponsibility chain)
     {
         Name = "WareHouse Vouce Create Business Logic plugin";
         Version = "0.0.1";
@@ -54,6 +60,7 @@ public class VouceCreate :
         Level = 0; // this MUST be the first plugn to execute
         Dependencies = new List<Dependency>();
         EventCode = "vouce-create";
+        _chain = chain.IsNullOrEmpty(nameof(chain));
     }
 
     public WebApplication? Configure(WebApplication builder)
@@ -77,6 +84,9 @@ public class VouceCreate :
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
 
             _repository = (IVouceRepository)_scope?.ServiceProvider.GetService<IVouceRepository>();
+            _prodRepository = (IProductRepository)_scope?.ServiceProvider.GetService<IProductRepository>();
+            _vendorRepository = (IVendorRepository)_scope?.ServiceProvider.GetService<IVendorRepository>();
+
             if(_repository == null)
             {
                 throw new NullReferenceException($"Repository could not be null");
@@ -89,10 +99,40 @@ public class VouceCreate :
             // database, otherwise create it and save changes.
             if(result == null)
             {    
-                // TODO: implement the creation functionality
-                // map entry into a real entity
-                var mappedEntity = _repository.Mapper.Map<Vouce>(parameter);
-                result = await _repository.Create(mappedEntity);
+                var applicationUserId = parameter.ApplicationUserId.IsNullOrEmpty("Application User Id could not be null");
+                var note = parameter.Note.ThenIfNulltOrEmpty("");
+                var movType = parameter.MovementType.Value.ThenIfNullOrEmpty(MovementType.NotDefined);
+                var standType = parameter.StandType.Value.ThenIfNullOrEmpty(StandType.NotDefined);
+                
+                result = new Vouce
+                {
+                    applicationUserId = applicationUserId,
+                    Note = note,
+                    MovementType = movType,
+                    StandType = standType
+                };
+
+                foreach(var movement in parameter.ProductMovements)
+                {
+                    var input = new ProductNewMovementInputModel
+                    {
+                        ApplicationUserId = applicationUserId,
+                        MovementType = movType,
+                        StandType = standType,
+                        Amount = movement.Amount,
+                        Price = movement.Price,
+                        VendorId = movement.VendorId,
+                        Description = movement.Description
+                    };
+                    // we use specialized business logic
+                    var productMovement = await chain.ExecuteAsyncChain<ProductNewMovementInputModel, ProductMovement>(
+                        "admin-product-new-movement", input
+                    );
+
+                    // TODO: check first if the product movement is for the same stand
+                    result.ProductMovements.Add(productMovement);
+                }
+                await _repository.Create(result);
             }
             
             // no exception throw so we are ready to save entity

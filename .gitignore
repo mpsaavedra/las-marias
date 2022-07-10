@@ -357,4 +357,3 @@ MigrationBackup/
 **/*logs*
 .vs
 **/plugins/
-.vscode
