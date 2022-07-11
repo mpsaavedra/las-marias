@@ -1,4 +1,4 @@
-# Las Maria's Management Control systems
+# Las Maria's Management Systems
 
 ![Las Maria's Hotel & Resort](./docs/images/logo.jpg)
 
@@ -8,9 +8,11 @@ This repository contains **Las Maria's Hotel & Resort** management systems it cu
 
 ## Which systems are included
 
-We include all systems that are and will be implemented or are in some part of the implementation process. This does not means that design would not change over time but this is the basic idea of what is available and which systems we intentend to develop in the future.
+We include all systems that are and will be implemented or are in some stage of the implementation process. This does not means that design would not change over time but this is the basic idea of what is available and which systems we intentend to develop in the future, but the real bases of how system will be implemented are already set. So things like an almost flat server with basic functionalities and all business logic splitted among multiple plugins are the steps to follow. A more detailed idea could be seen in the [documentation section](./docs/index.md) of this repository.
 
-Systems are:
+Even when there are several systems involve in the management system we are currently focus in three main system that we thinks are the core. Those systems are **Hub**, **WareHouse** and **Point of Sale**, this three systema are -at the time of this revision- included in this repository.
+
+All systems we are intend to complete are:
 
 - **Hub**: Is used as a centralized authentication and permission validation system that ``does not`` only authenticate users, also includes some information about the users/clients that will be share over the different subsystems so clients stay could be more personal and ease.
 - **PoS**: Point Of Sale, as simple system that handles the different point of sales, it includes orders that are send to the kitchen and keep a track of clients orders.
@@ -21,7 +23,7 @@ Systems are:
 
 ## Used technologies
 
-Because of the level of professionality required by this systems the better choice was to used ``.Net6`` for the backend/APIs and ``ReactJS`` for the frontend application. Both with a heavy production stability. In all cases Integration and Unitary tests are included to avoid posible errors.
+Because of the level of professionality required by this systems the better choice was to used ``.Net6`` for the backend/APIs and ``ReactJS`` for the frontend application. Both with a heavy production stability. In all cases Integration and Unitary tests are included to avoid posible errors. The API has been designed -at least up to this point- using GraphQL, mostly because of the reursive relation and the strict data retrievement that allows for the frontend and backend developers. We use PostgreSQL database which is a very secure and stable RDBMS.
 
 ## System design and architecture
 
