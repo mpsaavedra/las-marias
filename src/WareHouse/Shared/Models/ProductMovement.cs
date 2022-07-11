@@ -18,6 +18,9 @@ public partial class ProductMovement : BusinessEntity<long>
     [GraphQLDescription("movement id")]
     public long MovementId { get; set; }
 
+    [GraphQLDescription("vouce's id")]
+    public long VouceId { get; set; }
+
     // [UseFiltering]
     // [UseFiltering]
     // [JsonIgnore]
@@ -29,4 +32,7 @@ public partial class ProductMovement : BusinessEntity<long>
     // [JsonIgnore]
     [GraphQLDescription("Movement data")]
     public virtual Movement Movement { get; set; }
+
+    [GraphQLDescription("vouce object")]
+    public virtual Vouce Vouce { get; set; }
 }

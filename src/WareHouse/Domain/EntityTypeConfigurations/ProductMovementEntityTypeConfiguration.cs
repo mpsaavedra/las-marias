@@ -17,5 +17,9 @@ public class ProductMovementEntityTypeConfiguration : IEntityTypeConfiguration<P
             .HasOne(x => x.Movement)
             .WithMany(x => x.ProductMovements)
             .HasForeignKey(x => x.MovementId);
+        builder
+            .HasOne(x => x.Vouce)
+            .WithMany(x => x.ProductMovements)
+            .HasForeignKey(x => x.VouceId);
     }
 }
