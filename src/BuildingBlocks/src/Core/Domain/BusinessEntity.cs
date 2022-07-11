@@ -25,11 +25,14 @@ namespace Orun.Domain
         
         /// <inheritdoc cref="IBusinessEntity{TKey}.CreatedAt"/>
         [JsonPropertyName("createdAt")]
-        public DateTime CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
         
         /// <inheritdoc cref="IBusinessEntity{TKey}.UpdatedAt"/>
         [JsonPropertyName("updateAt")]
-        public DateTime? UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
+
+        /// <inheritdoc cref="IBusinessEntity{TKey}.DeletedAt"/>
+        public DateTimeOffset? DeletedAt { get; set; }
 
         /// <inheritdoc cref="IBusinessEntity{TKey}.RowVersion" />
         [JsonPropertyName("rowVersion")]

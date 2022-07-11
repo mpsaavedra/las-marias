@@ -40,6 +40,7 @@ public static class GrahQlExtensions
             .AddType<ProductQuery>()
             .AddType<VendorBrandQuery>()
             .AddType<VendorQuery>()
+            .AddType<VouceQuery>()
             
             // adding mutations
             .AddType<AdministrationMutations>()
@@ -51,6 +52,7 @@ public static class GrahQlExtensions
             .AddType<MovementMutations>()
             .AddType<ProductMutations>()
             .AddType<VendorMutations>()
+            .AddType<VouceMutations>()
 
             .ModifyOptions( o => 
             {

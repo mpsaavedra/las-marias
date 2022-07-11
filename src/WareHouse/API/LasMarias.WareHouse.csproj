@@ -10,6 +10,7 @@
     <ProjectReference Include="..\..\BuildingBlocks\src\Core\Core.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\src\Domain\Domain.csproj" />
     <ProjectReference Include="..\Domain\LasMarias.WareHouse.Domain.csproj" />
+    <ProjectReference Include="..\Shared\LasMarias.WareHouse.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

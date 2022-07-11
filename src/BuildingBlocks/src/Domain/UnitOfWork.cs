@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -69,12 +70,11 @@ namespace Orun.BuildingBlocks.Domain
             }
         }
 
-        /// <inheritdoc cref="IUnitOfWork.SaveAsync(bool)"/>
-        public virtual async Task SaveAsync(bool useChangeTracker = true)
+        /// <inheritdoc cref="IUnitOfWork.SaveAsync(bool, CancellationToken)"/>
+        public virtual async Task SaveAsync(bool useChangeTracker = true, CancellationToken cancellationToken = default)
         {
             try
             {
-                // TODO: implement a method to automatically save CreatedAt and UpdatedAt fields
                 var entries = Context.ChangeTracker.Entries()
                     .Where(x =>
                     {
@@ -87,11 +87,13 @@ namespace Orun.BuildingBlocks.Domain
                 {
                     if (entry.State == EntityState.Added)
                     {
-                        // set default values, this is necessary if generator is used to create the api
-                        ((IBusinessEntity<object>)entry.Entity).CreatedAt = DateTime.UtcNow;
+                        ((IBusinessEntity<object>)entry.Entity).CreatedAt = DateTimeOffset.UtcNow;
                     }
-                
-                    ((IBusinessEntity<object>)entry.Entity).UpdatedAt = DateTime.UtcNow;
+
+                    if (entry.State == EntityState.Modified)
+                    {
+                        ((IBusinessEntity<object>)entry.Entity).UpdatedAt = DateTimeOffset.UtcNow;
+                    }            
                 }
                 
                 await Context.UseChangeTracker(useChangeTracker).SaveChangesAsync();

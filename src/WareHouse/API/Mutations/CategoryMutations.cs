@@ -24,6 +24,7 @@ using AutoMapper;
 [ExtendObjectType("Mutation")]
 public partial class CategoryMutations
 {
+    [GraphQLDescription("create a new category")]
     public async Task<LasMarias.WareHouse.Domain.Models.Category> CategoryCreate(CategoryCreateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -43,6 +44,7 @@ public partial class CategoryMutations
         }         
     }
 
+    [GraphQLDescription("update an existing category")]
     public async Task<LasMarias.WareHouse.Domain.Models.Category> CategoryUpdate(CategoryUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -62,6 +64,7 @@ public partial class CategoryMutations
         }
     }
 
+    [GraphQLDescription("delete an existing category")]
     public async Task<bool> CategoryDelete(CategoryDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {

@@ -73,13 +73,13 @@ namespace Orun.Services
                     if (typeof(IMiddlewarePlugin).IsAssignableFrom(type))
                     {
                         IMiddlewarePlugin? plugin = (IMiddlewarePlugin) Activator.CreateInstance(type)!;
-                        Log.Debug($"loading middleware plugin {plugin.EventCode}");
+                        Log.Debug($"\t event code: {plugin.EventCode}");
                         AddMiddlewarePlugin(plugin.EventCode!, plugin);
                     }
                     else
                     {
                         IPlugin? plugin = (IPlugin) Activator.CreateInstance(type)!;
-                        Log.Debug($"loading plugin {plugin.ShortName}");
+                        Log.Debug($"\t plugin: {plugin.ShortName}");
                         AddPlugin(plugin);
                     }
                 }
@@ -127,14 +127,14 @@ namespace Orun.Services
                 Log.Information("Plugins: Configuring services for plugins");
                 foreach (var plugin in Plugins.Where(p => p.Enable))
                 {
-                    Log.Debug($"plugin: {plugin.ShortName}");
+                    Log.Debug($"\t plugin: {plugin.ShortName}");
                     plugin.ConfigureServices(services);
                 }
 
                 foreach (var plugin in MiddlewarePlugins.SelectMany(middlewarePlugin =>
                     middlewarePlugin.Value.Where(p => p.Enable)))
                 {
-                    Log.Debug($"middleware plugin: {plugin.ShortName} eventcode: {plugin.EventCode}");
+                    Log.Debug($"\t event code: {plugin.EventCode}");
                     plugin.ConfigureServices(services);
                 }
                 
@@ -160,14 +160,14 @@ namespace Orun.Services
                 Log.Information("Plugins: Configuring application for use of plugins");
                 foreach (var plugin in Plugins.Where(p => p.Enable))
                 {
-                    Log.Debug($"plugin: {plugin.ShortName}");
+                    Log.Debug($"\t plugin: {plugin.ShortName}");
                     plugin.Configure(app);
                 }
 
                 foreach (var plugin in MiddlewarePlugins.SelectMany(middlewarePlugin =>
                     middlewarePlugin.Value.Where(p => p.Enable)))
                 {
-                    Log.Debug($"middleware plugin: {plugin.ShortName} eventcode: {plugin.EventCode}");
+                    Log.Debug($"\t event code: {plugin.EventCode}");
                     plugin.Configure(app);
                 }
 

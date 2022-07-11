@@ -1,0 +1,136 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": ".NET Core Launch (Conference)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_conference",
+            "program": "${workspaceFolder}/src/Conference/API/bin/Debug/net6.0/LasMarias.Conference.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Conference/API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Launch (Hotel)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_hotel",
+            "program": "${workspaceFolder}/src/Hotel/API/bin/Debug/net6.0/LasMarias.Hotel.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Hotel/API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Launch (Identity)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_identity",
+            "program": "${workspaceFolder}/src/Identity/API/bin/Debug/net6.0/LasMarias.Identity.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Identity/API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Launch (Pools)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_pools",
+            "program": "${workspaceFolder}/src/Pools/API/bin/Debug/net6.0/LasMarias.Pools.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Pools/API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Launch (PoS)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_pos",
+            "program": "${workspaceFolder}/src/PoS/API/bin/Debug/net6.0/LasMarias.PoS.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/PoS/API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Launch (WareHouse)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_warehouse",
+            "program": "${workspaceFolder}/src/WareHouse/API/bin/Debug/net6.0/LasMarias.WareHouse.dll",
+            "args": [
+                "/seed"
+            ],
+            "cwd": "${workspaceFolder}/src/WareHouse/API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}

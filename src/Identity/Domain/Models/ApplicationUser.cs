@@ -86,8 +86,12 @@ public partial class ApplicationUser : IdentityUser, IApplicationUser
     #region Business Entity members
 
     public bool Deleted { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime? UpdatedAt { get; set; }
+
+    public DateTimeOffset CreatedAt { get; set; }
+
+    public DateTimeOffset? UpdatedAt { get; set; }
+
+    public DateTimeOffset? DeletedAt { get; set; }
 
     public string RowVersion { get; set; }
 

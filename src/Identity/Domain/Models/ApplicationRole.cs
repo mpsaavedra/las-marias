@@ -15,8 +15,11 @@ public partial class ApplicationRole: IdentityRole, IApplicationRole
     #region Business entity members
 
     public bool Deleted { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime? UpdatedAt { get; set; }
+
+    public DateTimeOffset CreatedAt { get; set; }
+    public DateTimeOffset? UpdatedAt { get; set; }
+
+    public DateTimeOffset? DeletedAt { get; set; }
 
     public string RowVersion { get; set; } = Guid.NewGuid().ToString();
 

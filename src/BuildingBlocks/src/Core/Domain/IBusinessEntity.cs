@@ -21,13 +21,19 @@ namespace Orun.Domain
         /// creation date
         /// </summary>
         [JsonPropertyName("createdAt")]
-        DateTime CreatedAt { get; set; }
+        DateTimeOffset CreatedAt { get; set; }
         
         /// <summary>
         /// last modification date
         /// </summary>
         [JsonPropertyName("updateAt")]
-        DateTime? UpdatedAt { get; set; }
+        DateTimeOffset? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// when the entity was soft deleted
+        /// </summary>
+        [JsonPropertyName("deletedAt")]
+        DateTimeOffset? DeletedAt { get; set; }
 
         /// <summary>
         /// Version to avoid possible mismatch

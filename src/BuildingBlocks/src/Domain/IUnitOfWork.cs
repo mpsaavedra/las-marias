@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Orun.BuildingBlocks.Domain
@@ -34,8 +35,9 @@ namespace Orun.BuildingBlocks.Domain
         /// Async save operation data into the database.
         /// </summary>
         /// <param name="useChangeTracker">if true it will use Change tracking mechanism</param>
+        /// <param name="cancellationToken">task cancellation token</param>
         /// <returns>Task.</returns>
-        Task SaveAsync(bool useChangeTracker = true);
+        Task SaveAsync(bool useChangeTracker = true, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Close active transaction

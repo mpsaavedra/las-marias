@@ -161,7 +161,27 @@ namespace Orun.BuildingBlocks.Domain
             {
                 await UnitOfWork.OpenTransactionAsync();
                 var entity = await Context.Set<TEntity>().FindAsync(id);
-                Context.Set<TEntity>().Remove(entity);
+                entity.Deleted = true;
+                entity.DeletedAt = DateTimeOffset.UtcNow;
+                Context.Set<TEntity>().Update(entity);
+            }
+            catch (Exception e)
+            {
+                await UnitOfWork.CloseTransactionAsync();
+                Insist.Throw<ApplicationException>(e.FullMessage());
+            }
+        }
+
+        /// <inheritdoc cref="IRepository{TKey, TEntity}.DeletePermanently(TKey)"/>
+        public async Task DeletePermanently(TKey id)
+        {
+            try
+            {
+                await UnitOfWork.OpenTransactionAsync();
+                var entity = await Context.Set<TEntity>().FindAsync(id);
+                entity.Deleted = true;
+                entity.DeletedAt = DateTimeOffset.UtcNow;
+                Context.Set<TEntity>().Update(entity);
             }
             catch (Exception e)
             {

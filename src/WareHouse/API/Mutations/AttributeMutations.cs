@@ -24,6 +24,7 @@ using AutoMapper;
 [ExtendObjectType("Mutation")]
 public partial class AttributeMutations
 {
+    [GraphQLDescription("create a new attribute")]
     public async Task<Domain.Models.Attribute> AttributeCreate(AttributeCreateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -43,6 +44,7 @@ public partial class AttributeMutations
         }         
     }
 
+    [GraphQLDescription("update an existing attribute")]
     public async Task<Domain.Models.Attribute> AttributeUpdate(AttributeUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -62,6 +64,7 @@ public partial class AttributeMutations
         }
     }
 
+    [GraphQLDescription("deletes an existing attribute")]
     public async Task<bool> AttributeDelete(AttributeDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {

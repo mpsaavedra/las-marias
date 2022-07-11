@@ -126,11 +126,18 @@ namespace Orun.BuildingBlocks.Domain
         Task Update(TKey id, TEntity input);
 
         /// <summary>
-        /// Deletes an entity from the database
+        /// Soft Deletes an entity from the database
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         Task Delete(TKey id);
+
+        /// <summary>
+        /// Deletes permanently an entity from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task DeletePermanently(TKey id);
 
         /// <summary>
         /// Returns if theres any result

@@ -24,6 +24,7 @@ using AutoMapper;
 [ExtendObjectType("Mutation")]
 public partial class MeasureUnitMutations
 {
+    [GraphQLDescription("creates a new measure unit")]
     public async Task<LasMarias.WareHouse.Domain.Models.MeasureUnit> MeasureUnitCreate(MeasureUnitCreateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -43,6 +44,7 @@ public partial class MeasureUnitMutations
         }         
     }
 
+    [GraphQLDescription("update an existing measure unit")]
     public async Task<LasMarias.WareHouse.Domain.Models.MeasureUnit> MeasureUnitUpdate(MeasureUnitUpdateInputModel input,
         [Service] IChainOfResponsibilityService chain)
     {
@@ -62,6 +64,7 @@ public partial class MeasureUnitMutations
         }
     }
 
+    [GraphQLDescription("deletes an existing measure unit")]
     public async Task<bool> MeasureUnitDelete(MeasureUnitDeleteInputModel input, 
         [Service] IChainOfResponsibilityService chain)
     {
