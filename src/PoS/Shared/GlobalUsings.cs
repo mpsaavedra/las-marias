@@ -1,0 +1,12 @@
+global using System;
+global using System.Collections;
+global using System.Collections.Generic;
+global using Orun;
+global using Orun.Domain;
+global using Orun.Extensions;
+global using System.Text.Json.Serialization;
+global using HotChocolate;
+global using HotChocolate.Data;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using LasMarias.PoS.Domain.Models;

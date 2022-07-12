@@ -1,8 +1,3 @@
-using System.Collections.Generic;
-using Orun.Domain;
-using System.Text.Json.Serialization;
-using HotChocolate.Data;
-
 namespace LasMarias.PoS.Domain.Models;
 
 public partial class Table : BusinessEntity<long>
@@ -12,12 +7,16 @@ public partial class Table : BusinessEntity<long>
         Seats = new HashSet<Seat>();
     }
 
+    [GraphQLDescription("id of table")]
     public long TableId { get; set; }
 
+    [GraphQLDescription("Table name like, table1, table2")]
     public string Name { get; set; }
 
+    [GraphQLDescription("if true table is ocuppied by clients")]
     public bool IsOcuppied { get; set; }
 
+    [GraphQLDescription("Seats available for this table")]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
@@ -25,8 +24,12 @@ public partial class Table : BusinessEntity<long>
 
     public long StandId { get; set; }
 
+    [GraphQLDescription("Stand this table belongs to")]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual Stand? Stand { get; set; }
+
+    [GraphQLDescription("inventary number")]
+    public string? InventaryNumber { get; set; }
 }

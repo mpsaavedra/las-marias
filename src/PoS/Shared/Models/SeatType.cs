@@ -17,5 +17,14 @@ public enum SeatType
     Bench,
     
     [Display(Name = "Cama de playa o piscina")]
-    BeachBed
+    BeachBed,
+
+    [Display(Name = "Silla de conferencia")]
+    ConferenceChair,
+
+    [Display(Name = "Silla de oficina")]
+    OfficeChair,
+
+    [Display(Name = "No especificado")]
+    NotSpecified
 }

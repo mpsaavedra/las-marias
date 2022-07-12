@@ -11,10 +11,9 @@ public class TableEntityTypeConfiguration : IEntityTypeConfiguration<Table>
         builder.HasKey(x => x.TableId);
         builder
             .HasOne(x => x.Stand)
-            .WithMany(x => x.Tables)
-            .HasForeignKey(x => x.TableId);
+            .WithMany(x => x!.Tables);
         builder
             .HasMany(x => x.Seats)
-            .WithOne(x => x.Table);
+            .WithOne(x => x.Table!);
     }
 }

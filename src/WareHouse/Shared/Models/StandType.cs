@@ -3,7 +3,6 @@ namespace LasMarias.WareHouse.Domain.Models;
 using HotChocolate;
 using System.ComponentModel.DataAnnotations;
 
-// THIS class is share with PoS do not change or change both to keep identical
 [GraphQLDescription("Different stands avalaible to this system")]
 public enum StandType
 {

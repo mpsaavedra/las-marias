@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\BuildingBlocks\src\Domain\Domain.csproj" />
+    <ProjectReference Include="..\..\WareHouse\Shared\LasMarias.WareHouse.Shared.csproj" />
   </ItemGroup>
 
 </Project>
