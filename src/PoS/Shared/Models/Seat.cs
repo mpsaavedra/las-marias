@@ -9,11 +9,13 @@ namespace LasMarias.PoS.Domain.Models;
 public partial class Seat : BusinessEntity<long>
 {
     private int _capacity;
+    private int _ocuppied;
 
     public Seat()
     {
         SeatType = SeatType.NotSpecified;
         _capacity = 0;
+        _ocuppied = 0;
     }
 
     [GraphQLDescription("id of seat")]
@@ -47,13 +49,21 @@ public partial class Seat : BusinessEntity<long>
     public SeatType SeatType { get; set; }
 
     [GraphQLDescription("number of seats taken if there is more than one")]
-    public int Occupied { get; set; }
+    public int Occupied 
+    { 
+        get => _ocuppied;
+        set
+        {
+            if(value > Capacity)
+            {
+                throw new Exception("The specified amount is bigger than the the seat capacity");
+            }
+            _ocuppied = value;
+        }
+    }
 
-    [GraphQLDescription("Capacity of the seat")]
-    public int Capacity => _capacity;
-
-    [GraphQLDescription("Available positions for this seat, it depends on the SeatType, allows to set different capacities when is a banch or else")]
-    public int Positions 
+    [GraphQLDescription("Available capacity for this seat, it depends on the SeatType, allows to set different capacities when is a banch or else")]
+    public int Capacity
     { 
         get => _capacity;
         set 
@@ -61,6 +71,9 @@ public partial class Seat : BusinessEntity<long>
             switch (SeatType)
             {
                 case SeatType.Single:
+                case SeatType.OfficeChair:
+                case SeatType.BeachBed:
+                case SeatType.ConferenceChair:
                     _capacity = 1;
                     break;
                 case SeatType.Double:
@@ -68,6 +81,13 @@ public partial class Seat : BusinessEntity<long>
                     break;
                 case SeatType.Triple:
                     _capacity = 3;
+                    break;
+                case SeatType.Bench:
+                    if(value <= 3)
+                    {
+                        throw new Exception("Seat capacity is incorrect because is unconsistent with the SeatType");
+                    }
+                    _capacity = value;
                     break;
                 default:
                     _capacity = 0;
