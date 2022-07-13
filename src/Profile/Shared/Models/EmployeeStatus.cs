@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 
 /// <summary>
-/// define the current status of a worker, this could be used
-/// for workers checkin or checkout
+/// define the current status of a Employee, this could be used
+/// for Employees checkin or checkout
 /// </summary>
-public enum WorkerStatus
+public enum EmployeeStatus
 { 
     [Display(Name = "No trabajando")]
     NotWorking,

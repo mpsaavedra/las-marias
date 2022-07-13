@@ -11,4 +11,3 @@ global using HotChocolate.Types;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using LasMarias.Profile.Domain.Models;
-global using LasMarias.Profile.Domain.EntityTypeConfigurations;

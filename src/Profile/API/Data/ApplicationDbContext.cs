@@ -21,7 +21,7 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
 
     public virtual DbSet<UserBenefit> UserBenefits => Set<UserBenefit>();
 
-    public virtual DbSet<Worker> Workers => Set<Worker>();
+    public virtual DbSet<Employee> Employees => Set<Employee>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -30,6 +30,6 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
         modelBuilder.ApplyConfiguration(new BenefitEntityTypeConfiguration());
         modelBuilder.ApplyConfiguration(new CountryEntityTypeConfiguration());
         modelBuilder.ApplyConfiguration(new UserBenefitEntityConfiguration());
-        modelBuilder.ApplyConfiguration(new WorkerEntityTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new EmployeeEntityTypeConfiguration());
     }
 }
