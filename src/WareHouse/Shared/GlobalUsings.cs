@@ -10,4 +10,4 @@ global using HotChocolate.Data;
 global using HotChocolate.Types;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
-global using LasMarias.PoS.Domain.Models;
+global using LasMarias.WareHouse.Domain.Models;

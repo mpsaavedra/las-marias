@@ -17,4 +17,13 @@ public partial class MenuPlate: BusinessEntity<long>
 
     [GraphQLDescription("Menu")]
     public virtual Menu Menu { get; set; }
+
+    [GraphQLDescription("Plate cost")]
+    public decimal Cost => Plate.Cost;
+
+    [GraphQLDescription("Plate selling price")]
+    public decimal SellingPrice => Plate.SellingPrice;
+
+    [GraphQLDescription("Plate earning (Selling price - cost price)")]
+    public decimal Earning => Plate.Earning;
 }

@@ -59,4 +59,7 @@ public partial class Plate: BusinessEntity<long>
             return price;
         }
     }
+
+    [GraphQLDescription("Plate Earning (Selling price - Cost price)")]
+    public decimal Earning => SellingPrice - Cost;
 }

@@ -56,7 +56,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
             icon={icon}
             active={key === collapseName}
             noCollapse={noCollapse}
-          />
+          />sd
         </Link>
       ) : (
         <NavLink key={key} to={route}>
