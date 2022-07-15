@@ -65,7 +65,7 @@ namespace Orun.BuildingBlocks.Domain
                 .FindAsync(id);
                 // .FirstOrDefaultAsync(e => e.IsKeyEqualTo(id));
 
-            return await Task.FromResult(entity);
+            return await Task.FromResult(entity!);
         }
 
         /// <inheritdoc cref="IRepository{TKey, TEntity}.Get()"/>
@@ -138,7 +138,7 @@ namespace Orun.BuildingBlocks.Domain
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
         /// </summary>
-        public virtual async Task Update(TKey id, TEntity input)
+        public virtual async Task<bool> Update(TKey id, TEntity input)
         {
             try
             {
@@ -146,34 +146,42 @@ namespace Orun.BuildingBlocks.Domain
                 var entity = await Get(id);
                 entity.IsNullOrEmpty($"entity with id {id} could was not found");
                 Context.Set<TEntity>().Update(entity);
+                return true;
             }
             catch (Exception e)
             {
                 await UnitOfWork.CloseTransactionAsync();
                 Insist.Throw<ApplicationException>(e.FullMessage());
+                return false;
             }
         }
 
         /// <inheritdoc cref="IRepository{TKey, TEntity}.Delete(TKey)"/>
-        public async Task Delete(TKey id)
+        public async Task<bool> Delete(TKey id)
         {
             try
             {
                 await UnitOfWork.OpenTransactionAsync();
                 var entity = await Context.Set<TEntity>().FindAsync(id);
+                if(entity == null)
+                {
+                    throw new Exception($"Could not found entity id {id} was not found");
+                }
                 entity.Deleted = true;
                 entity.DeletedAt = DateTimeOffset.UtcNow;
                 Context.Set<TEntity>().Update(entity);
+                return true;
             }
             catch (Exception e)
             {
                 await UnitOfWork.CloseTransactionAsync();
                 Insist.Throw<ApplicationException>(e.FullMessage());
+                return false;
             }
         }
 
         /// <inheritdoc cref="IRepository{TKey, TEntity}.DeletePermanently(TKey)"/>
-        public async Task DeletePermanently(TKey id)
+        public async Task<bool> DeletePermanently(TKey id)
         {
             try
             {
@@ -182,11 +190,13 @@ namespace Orun.BuildingBlocks.Domain
                 entity.Deleted = true;
                 entity.DeletedAt = DateTimeOffset.UtcNow;
                 Context.Set<TEntity>().Update(entity);
+                return true;
             }
             catch (Exception e)
             {
                 await UnitOfWork.CloseTransactionAsync();
                 Insist.Throw<ApplicationException>(e.FullMessage());
+                return false;
             }
         }
 

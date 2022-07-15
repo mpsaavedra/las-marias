@@ -7,6 +7,18 @@ public partial class Category : BusinessEntity<long>
     public Category()
     {
         ChildCategories =  new HashSet<Category>();
+        PlateCategories = new HashSet<PlateCategory>();
+        Name = "";
+        Enable = true;
+    }
+
+    public Category(string name, string description)
+    {
+        ChildCategories =  new HashSet<Category>();
+        PlateCategories = new HashSet<PlateCategory>();
+        Name = name;
+        Description = description;
+        Enable = true;
     }
 
     [GraphQLDescription("id of category")]

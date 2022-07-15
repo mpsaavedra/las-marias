@@ -9,6 +9,14 @@ public partial class Menu : BusinessEntity<long>
     public Menu()
     {
         MenuPlates = new HashSet<MenuPlate>();
+        Name = "";
+    }
+
+    public Menu(string name, string description)
+    {
+        MenuPlates = new HashSet<MenuPlate>();
+        Name = name;
+        Description = description;
     }
 
     [GraphQLDescription("id of the Menu")]
@@ -16,6 +24,9 @@ public partial class Menu : BusinessEntity<long>
     
     [GraphQLDescription("Name of the menu")]
     public string Name { get; set; }
+
+    [GraphQLDescription("A basic description about the menu")]
+    public string? Description { get; set; }
 
     [GraphQLDescription("if true menu is available")]
     public bool Available { get; set; }

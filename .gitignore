@@ -357,3 +357,5 @@ MigrationBackup/
 **/*logs*
 .vs
 **/plugins/
+**/*.db*
+**/*.db-wal*
