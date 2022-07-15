@@ -8,6 +8,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\src\Core\Core.csproj" />
     <ProjectReference Include="..\..\BuildingBlocks\src\Domain\Domain.csproj" />
     <ProjectReference Include="..\Shared\LasMarias.PoS.Shared.csproj" />
   </ItemGroup>

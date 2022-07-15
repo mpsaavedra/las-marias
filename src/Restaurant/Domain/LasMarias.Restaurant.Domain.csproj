@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\src\Core\Core.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\src\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Shared\LasMarias.Restaurant.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
