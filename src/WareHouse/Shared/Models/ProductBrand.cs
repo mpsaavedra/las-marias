@@ -1,11 +1,5 @@
 namespace LasMarias.WareHouse.Domain.Models;
 
-using Orun.Domain;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using HotChocolate;
-using HotChocolate.Data;
-
 [GraphQLDescription("Describe a relation between product and brand")]
 public partial class ProductBrand : BusinessEntity<long>
 {

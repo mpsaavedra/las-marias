@@ -1,10 +1,3 @@
-
-using Orun.Domain;
-using Orun.Extensions;
-using HotChocolate;
-using HotChocolate.Data;
-using System.Text.Json.Serialization;
-
 namespace LasMarias.WareHouse.Domain.Models;
 
 /// <summary>
@@ -15,6 +8,7 @@ public partial class Category : BusinessEntity<long>
 {
     public Category()
     {
+        Name = "";
         ChildCategories = new HashSet<Category>();
         Products = new HashSet<Product>();
         Enable = true;

@@ -23,14 +23,14 @@ namespace Orun.Services
         /// </summary>
         /// <param name="pluginFile"></param>
         /// <param name="sharedTypes"></param>
-        void LoadPlugin(string pluginFile, Type[] sharedTypes);
+        bool LoadPlugin(string pluginFile, Type[] sharedTypes);
 
         /// <summary>
         /// load plugins from given directory
         /// </summary>
         /// <param name="pluginsDirectory"></param>
         /// <param name="sharedTypes"></param>
-        void LoadPlugins(string pluginsDirectory, Type[] sharedTypes);
+        bool LoadPlugins(string pluginsDirectory, Type[] sharedTypes);
 
         /// <summary>
         /// returns a given plugin located within his <see cref="IPlugin.PluginId"/>. It

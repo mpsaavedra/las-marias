@@ -37,8 +37,11 @@ namespace Orun.Services
             _plugins = new List<IPlugin>();
             _noEventMiddlewares = new List<IMiddlewarePlugin>();
             _middlewares = new Dictionary<string, ICollection<IMiddlewarePlugin>>();
-            LoadPlugins(pluginsDir, sharedTypes);
-            ConfigurePlugins(services);
+            var loaded = LoadPlugins(pluginsDir, sharedTypes);
+            if(loaded)
+            {
+                ConfigurePlugins(services);
+            }
         }
 
         /// <summary>
@@ -57,7 +60,7 @@ namespace Orun.Services
         /// </summary>
         /// <param name="pluginFile"></param>
         /// <param name="sharedTypes"></param>
-        public void LoadPlugin(string pluginFile, Type[] sharedTypes)
+        public bool LoadPlugin(string pluginFile, Type[] sharedTypes)
         {
             try
             {
@@ -83,6 +86,7 @@ namespace Orun.Services
                         AddPlugin(plugin);
                     }
                 }
+                return true;
             }
             catch (Exception ex)
             {
@@ -96,10 +100,15 @@ namespace Orun.Services
         /// </summary>
         /// <param name="pluginsDirectory"></param>
         /// <param name="sharedTypes"></param>
-        public void LoadPlugins(string pluginsDirectory, Type[] sharedTypes)
+        public bool LoadPlugins(string pluginsDirectory, Type[] sharedTypes)
         {
             try
             {
+                if(!Directory.Exists(pluginsDirectory))
+                {
+                    return false;
+                }
+
                 Log.Information($"Loading plugins from {pluginsDirectory}");
                 foreach (var pluginDir in Directory.GetDirectories(pluginsDirectory))
                 {
@@ -107,11 +116,13 @@ namespace Orun.Services
                     var pluginFile = Path.Combine(pluginDir, dirName + ".dll");
                     LoadPlugin(pluginFile, sharedTypes);
                 }
+                return true;
             }
             catch (Exception e)
             {
                 Log.Error($"Plugins: Exception loading plugins {e.FullMessage()}");
-                throw new ApplicationException("An error has occurs while loading plugin", e);
+                // throw new ApplicationException("An error has occurs while loading plugin", e);
+                return false;
             }
         }
 

@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using Orun.Domain;
-using HotChocolate;
-using HotChocolate.Data;
-using System.Text.Json.Serialization;
+
 
 namespace LasMarias.WareHouse.Domain.Models;
 
@@ -15,9 +11,18 @@ public partial class AttributeName : BusinessEntity<long>
 {
     public AttributeName()
     {
+        Name = "";
         Attributes = new HashSet<Attribute>();
         Enable = true;
     }
+
+    public AttributeName(string name)
+    {
+        Name = name;
+        Attributes = new HashSet<Attribute>();
+        Enable = true;
+    }
+
     [GraphQLDescription("id of the attribute name")]
     public long AttributeNameId { get; set; }
 

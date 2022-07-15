@@ -1,9 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using Orun.Domain;
-using System.Text.Json.Serialization;
-using HotChocolate;
-
 namespace LasMarias.WareHouse.Domain.Models;
 
 [GraphQLDescription("Types of movements")]

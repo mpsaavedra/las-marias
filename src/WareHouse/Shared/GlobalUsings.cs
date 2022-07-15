@@ -1,6 +1,7 @@
 global using System;
 global using System.Collections;
 global using System.Collections.Generic;
+global using System.ComponentModel.DataAnnotations;
 global using Orun;
 global using Orun.Domain;
 global using Orun.Extensions;
@@ -11,3 +12,4 @@ global using HotChocolate.Types;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using LasMarias.WareHouse.Domain.Models;
+global using System.Text.Json.Serialization;

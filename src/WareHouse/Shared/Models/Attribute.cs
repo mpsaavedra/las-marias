@@ -1,10 +1,5 @@
 namespace LasMarias.WareHouse.Domain.Models;
 
-using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using HotChocolate;
-using HotChocolate.Data;
-using Orun.Domain;
 
 [GraphQLDescription("attribute of the product")]
 public partial class Attribute : BusinessEntity<long>
@@ -12,7 +7,15 @@ public partial class Attribute : BusinessEntity<long>
     public Attribute()
     {
         Products = new HashSet<Product>();
+        Value = "";
     }
+
+    public Attribute(string value)
+    {
+        Value = value;
+        Products = new HashSet<Product>();
+    }
+
     [GraphQLDescription("id of the attribute")]
     public long AttributeId { get; set; }
 

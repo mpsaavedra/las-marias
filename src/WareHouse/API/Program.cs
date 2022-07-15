@@ -5,12 +5,17 @@ using Orun.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 var isDevelopment = builder.Environment.IsDevelopment();
+const string APP_NAME = "WareHouse";
 
 builder.Services.AddAutoMapper(typeof(Program));
+
 // Add services to the container.
 builder
-    .AddCustomSerilog()
-    .AddCustomDatabase()
+    .AddCustomSerilog(APP_NAME)
+    .AddCustomDatabase<ApplicationDbContext>(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        isDevelopment
+    )
     .AddCustomHealthChecks();
 
 if(isDevelopment)
@@ -53,7 +58,7 @@ app.UseWebSockets();
 app.MapControllers();
 
 app
-    .ApplyDatabaseMigration()
+    .ApplyDatabaseMigration<ApplicationDbContext>()
     .UseGraphQL()
     .UsePlugIns();
 

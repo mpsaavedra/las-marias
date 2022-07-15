@@ -1,10 +1,5 @@
 namespace LasMarias.WareHouse.Domain.Models;
 
-using Orun.Domain;
-using System.Text.Json.Serialization;
-using HotChocolate;
-using HotChocolate.Data;
-
 [GraphQLDescription("Product photo relations")]
 public partial class ProductPhoto : BusinessEntity<long>
 {

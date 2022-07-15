@@ -1,9 +1,3 @@
-using System.Collections.Generic;
-using Orun.Domain;
-using System.Text.Json.Serialization;
-using HotChocolate;
-using HotChocolate.Data;
-
 namespace LasMarias.WareHouse.Domain.Models;
 
 [GraphQLDescription("Product movement data, where amount, price and many other information")]
@@ -14,6 +8,15 @@ public partial class Movement : BusinessEntity<long>
         MovementType = MovementType.DeliverToStand;
         StandType = StandType.NotSpecified;
         ProductMovements = new HashSet<ProductMovement>();
+        ApplicationUserId = "";
+    }
+
+    public Movement(string applicationUserId, MovementType movementType, StandType standType)
+    {
+        MovementType = movementType;
+        StandType = standType;
+        ProductMovements = new HashSet<ProductMovement>();
+        ApplicationUserId = applicationUserId;
     }
 
     [GraphQLDescription("id of the movement")]

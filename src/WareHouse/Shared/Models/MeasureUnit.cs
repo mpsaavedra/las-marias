@@ -1,10 +1,5 @@
 namespace LasMarias.WareHouse.Domain.Models;
 
-using Orun.Domain;
-using HotChocolate;
-using HotChocolate.Data;
-using System.Text.Json.Serialization;
-
 [GraphQLDescription("Measure unit used in product quiantities")]
 public partial class MeasureUnit : BusinessEntity<long>
 {
@@ -12,6 +7,24 @@ public partial class MeasureUnit : BusinessEntity<long>
     {
         Products = new HashSet<Product>();
         Cast = Cast.ToString; // default cast to string
+        Name = "";
+        Code = "";
+    }
+
+    public MeasureUnit(string name)
+    {
+        Products = new HashSet<Product>();
+        Cast = Cast.ToString; // default cast to string
+        Name = name;
+        Code = "";
+    }
+
+    public MeasureUnit(string name, string code)
+    {
+        Products = new HashSet<Product>();
+        Cast = Cast.ToString; // default cast to string
+        Name = name;
+        Code = code;
     }
 
     [GraphQLDescription("id of the measure unit")]

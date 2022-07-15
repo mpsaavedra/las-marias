@@ -1,28 +1,30 @@
 ﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://0.0.0.0:54630",
-      "sslPort": 44397
+      "applicationUrl": "http://localhost:19325",
+      "sslPort": 44306
     }
   },
   "profiles": {
     "LasMarias.Profile": {
       "commandName": "Project",
-      "launchBrowser": false,
-      "applicationUrl": "https://0.0.0.0:7244;http://0.0.0.0:5050",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7126;http://localhost:5221",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": false,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }

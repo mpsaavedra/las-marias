@@ -1,9 +1,3 @@
-using System.Collections.Generic;
-using Orun.Domain;
-using System.Text.Json.Serialization;
-using HotChocolate;
-using HotChocolate.Data;
-
 namespace LasMarias.WareHouse.Domain.Models;
 
 [GraphQLDescription("describe the product")]

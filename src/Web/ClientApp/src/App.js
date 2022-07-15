@@ -1,53 +1,26 @@
-import { useState, useEffect, useMemo } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import Icon from "@mui/material/Icon";
-import Box from "./components/Box";
-import Sidenav from "./components/Sidenav";
-import theme from "./assets/theme";
-import { CacheProvider } from "@emotion/react";
-import createCache from "@emotion/cache";
-import routes from "./routes";
-import { useApplicationUIController } from "./context";
+import React, { Component } from 'react';
+import { Route } from 'react-router';
+import { Layout } from './components/Layout';
+import { Home } from './components/Home';
+import { FetchData } from './components/FetchData';
+import { Counter } from './components/Counter';
+import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
+import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
+import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
 
-// images
-import brandWhite from "./assets/images/logo-ct.png";
-import brandDark from "./assets/images/logo-ct-dark.png";
+import './custom.css'
 
-export default function App(){
-  const [controller, dispatch] = useApplicationUIController();
-  const {
-    layout
-  } = controller;
-  const { pathname } = useLocation();
+export default class App extends Component {
+  static displayName = App.name;
 
-  // Setting page scroll to 0 when changing the route
-  useEffect(() => {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-  }, [pathname]);
-
-  const getRoutes = (allRoutes) =>
-    allRoutes.map((route) => {
-      if (route.collapse) {
-        return getRoutes(route.collapse);
-      }
-
-      if (route.route) {
-        return <Route exact path={route.route} element={route.component} key={route.key} />;
-      }
-
-      return null;
-    });
-
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Routes>
-        {getRoutes(routes)}
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-      </Routes>
-    </ThemeProvider>
-  );
+  render () {
+    return (
+      <Layout>
+        <Route exact path='/' component={Home} />
+        <Route path='/counter' component={Counter} />
+        <AuthorizeRoute path='/fetch-data' component={FetchData} />
+        <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
+      </Layout>
+    );
+  }
 }

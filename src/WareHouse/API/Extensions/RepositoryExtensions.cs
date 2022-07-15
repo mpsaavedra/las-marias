@@ -4,7 +4,7 @@ using LasMarias.WareHouse.Domain.Repositories;
 
 namespace LasMarias.WareHouse.Extensions;
 
-public static class ReWareHouseitoryExtensions
+public static class WareHouseRepositoryExtensions
 {
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {

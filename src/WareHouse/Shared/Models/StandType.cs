@@ -1,8 +1,5 @@
 namespace LasMarias.WareHouse.Domain.Models;
 
-using HotChocolate;
-using System.ComponentModel.DataAnnotations;
-
 [GraphQLDescription("Different stands avalaible to this system")]
 public enum StandType
 {
