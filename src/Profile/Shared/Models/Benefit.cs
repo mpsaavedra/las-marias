@@ -9,14 +9,16 @@ public partial class Benefit : BusinessEntity<long>
         DiscountAmount = 0m;
         Name = "";
         UserBenefits = new HashSet<UserBenefit>();
+        Over = BenefitOver.Cost;
     }
 
-    public Benefit(string name, decimal discountAmount)
+    public Benefit(string name, decimal discountAmount, BenefitOver over)
     {
         Name = name;
         DiscountAmount = discountAmount;
         Enable = true;
         UserBenefits = new HashSet<UserBenefit>();
+        Over = over;
     }
 
     [GraphQLDescription("id of benefit")]
@@ -33,6 +35,9 @@ public partial class Benefit : BusinessEntity<long>
 
     [GraphQLDescription("Discount amout that will be applied to the final bill")]
     public decimal DiscountAmount { get; set; }
+
+    [GraphQLDescription("over with value apply the benefit discount")]
+    public BenefitOver Over { get; set; }
 
     [GraphQLDescription("list of user with this benefit")]
     [UseProjection]

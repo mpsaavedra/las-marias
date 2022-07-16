@@ -7,6 +7,8 @@ public partial class Employee : BusinessEntity<long>
     {
         ReleaseReason = Models.ReleaseReason.NotSpecified;
         EmployeeType = EmployeeType.Employee; // employee as default
+        Status = Models.EmployeeStatus.Hired; // recently hired
+        HiredDate = DateOnly.FromDateTime(DateTime.UtcNow);
     }
 
     public Employee(User user, EmployeeType employeeType, DateOnly dateOfBirth, EmployeeStatus status,

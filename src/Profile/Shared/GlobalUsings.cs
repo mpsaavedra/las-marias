@@ -20,3 +20,8 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using LasMarias.Profile.Domain.Models;
+global using LasMarias.Profile.Domain.DataModels.Benefit;
+global using LasMarias.Profile.Domain.DataModels.Country;
+global using LasMarias.Profile.Domain.DataModels.Employee;
+global using LasMarias.Profile.Domain.DataModels.User;
+global using LasMarias.Profile.Domain.DataModels.UserBenefit;

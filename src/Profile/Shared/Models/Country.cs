@@ -1,3 +1,4 @@
+
 namespace LasMarias.Profile.Domain.Models;
 
 [GraphQLDescription("Country")]
@@ -11,6 +12,14 @@ public partial class Country : BusinessEntity<long>
         Code = "";
     }
 
+    public Country(string name, string code, Region region)
+    {
+        Name = name;
+        Code = code;
+        Region = region;
+        Users = new HashSet<User>();
+    }
+
     [GraphQLDescription("id of country")]
     public long CountryId { get; set; }
 
@@ -18,7 +27,10 @@ public partial class Country : BusinessEntity<long>
     public string Name { get; set; }
 
     [GraphQLDescription("short code of the country: like CU for Cuba")]
-    public string Code { get; set; }
+    public string? Code { get; set; }
+
+    [GraphQLDescription("phone code")]
+    public int PhoneCode { get; set; }
 
     [GraphQLDescription("Region this country belongs to")]
     public Region Region { get; set; }

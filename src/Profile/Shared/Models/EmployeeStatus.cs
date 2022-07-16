@@ -7,6 +7,9 @@ namespace LasMarias.Profile.Domain.Models;
 [GraphQLDescription("Employee status")]
 public enum EmployeeStatus
 {
+    [Display(Name = "Contratado")]
+    Hired = 1,
+
     [Display(Name = "No trabajando")]
     NotWorking,
 
