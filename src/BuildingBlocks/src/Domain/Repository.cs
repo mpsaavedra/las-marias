@@ -36,7 +36,7 @@ namespace Orun.BuildingBlocks.Domain
 
         /// <inheritdoc cref="IRepository{TKey, TEntity}.Context"/>
         public DbContext Context { get; private set; }
-        
+
         /// <inheritdoc cref="IRepository{TKey, TEntity}.Mapper"/>
         public IMapper Mapper { get; private set; }
 
@@ -63,7 +63,7 @@ namespace Orun.BuildingBlocks.Domain
             var entity = await Context.Set<TEntity>()
                 // .Where(e => e.IsKeyEqualTo(id))
                 .FindAsync(id);
-                // .FirstOrDefaultAsync(e => e.IsKeyEqualTo(id));
+            // .FirstOrDefaultAsync(e => e.IsKeyEqualTo(id));
 
             return await Task.FromResult(entity!);
         }
@@ -76,7 +76,7 @@ namespace Orun.BuildingBlocks.Domain
         public async Task<IQueryable<TEntity>> Get(string property, Action<PaginationOptions?> options)
         {
             var opts = options.ConfigureOrDefault();
-            if(opts != null)
+            if (opts != null)
                 await Task.FromResult(Query);
             return await Task.FromResult(Query.ToPaged(property, opts!.Ascending, opts.Index, opts.Size));
         }
@@ -105,7 +105,7 @@ namespace Orun.BuildingBlocks.Domain
 
         /// <inheritdocs cref="IRepository{TKey, TEntity}.GetOne(Expression{Func{TEntity, bool}})"/>
         public async Task<TEntity> GetOne(Expression<Func<TEntity, bool>> where) =>
-            await Query.ToWhere(where).FirstOrDefaultAsync();
+            await Query.ToWhere(where).FirstAsync();
 
         /// <inheritdoc cref="IRepository{TKey,TEntity}.Get(Expression{System.Func{TEntity,bool}},string,System.Action{PaginationOptions})"/>
         public async Task<IQueryable<TEntity>> Get(Expression<Func<TEntity, bool>> where, string property,
@@ -163,7 +163,7 @@ namespace Orun.BuildingBlocks.Domain
             {
                 await UnitOfWork.OpenTransactionAsync();
                 var entity = await Context.Set<TEntity>().FindAsync(id);
-                if(entity == null)
+                if (entity == null)
                 {
                     throw new Exception($"Could not found entity id {id} was not found");
                 }

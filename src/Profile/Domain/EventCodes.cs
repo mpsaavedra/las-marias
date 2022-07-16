@@ -11,7 +11,7 @@ public class EventCodes
 
     public static string BenefitCreate = "benefit-create";
 
-    public static string BenefitRead = "benefit-list";
+    public static string BenefitList = "benefit-list";
 
     public static string BenefitUpdate = "benefit-update";
 
@@ -23,7 +23,7 @@ public class EventCodes
 
     public static string CountryCreate = "country-create";
 
-    public static string CountryRead = "country-list";
+    public static string CountryList = "country-list";
 
     public static string CountryUpdate = "country-update";
 
@@ -34,7 +34,7 @@ public class EventCodes
 
     public static string EmployeeCreate = "employee-create";
 
-    public static string EmployeeRead = "employee-list";
+    public static string EmployeeList = "employee-list";
 
     public static string EmployeeUpdate = "employee-update";
 
@@ -45,7 +45,7 @@ public class EventCodes
 
     public static string UserCreate = "user-create";
 
-    public static string UserRead = "user-list";
+    public static string UserList = "user-list";
 
     public static string UserUpdate = "user-update";
 
@@ -57,7 +57,13 @@ public class EventCodes
 
     #region UserBenefit
 
-    public static string UserList = "user-benefit-list";
+    public static string UserBenefitCreate = "user-benefit-create";
+
+    public static string UserBenefitList = "user-benefit-list";
+
+    public static string UserBenefitUpdate = "user-benefit-update";
+
+    public static string UserBenefitDelete = "user-benefit-delete";
 
     #endregion
 }

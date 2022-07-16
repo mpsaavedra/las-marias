@@ -4,7 +4,7 @@ namespace LasMarias.Profile.Domain.DataModels.Benefit;
 public class BenefitUpdateInputModel
 {
     [GraphQLDescription("id of benefit to update")]
-    public long BenefitId { get; set; }
+    public long Id { get; set; }
 
     [GraphQLDescription("name")]
     public Optional<string> Name { get; set; }

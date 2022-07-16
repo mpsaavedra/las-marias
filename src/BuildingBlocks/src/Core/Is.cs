@@ -76,12 +76,12 @@ namespace Orun
             if (!source.IsNullable())
                 return source;
             return source;
-            
+
             // !NullOrEmpty(source) ? (
             //     source.IsNullable() ? source : source
             // ) : optional;
         }
-        
+
 
         /// <summary>
         /// Check if values are not null and contain any element.
@@ -120,6 +120,39 @@ namespace Orun
         }
 
         /// <summary>
+        /// returns true if any of the provided values is not null
+        /// </summary>
+        public static bool NotNullOrAnyNotNull(params object[] values)
+        {
+            var fails = values.Where(value =>
+            {
+                if (value != null)
+                {
+                    return true;
+                }
+
+                if (value!.InstanceOfType(typeof(string)))
+                {
+                    return ((string)value!).Length > 1;
+                }
+
+                if (value!.InstanceOfType(typeof(Array)))
+                {
+                    return ((Array)value!).Length > 1;
+                }
+
+                if (value!.InstanceOfType(typeof(ICollection<>)))
+                {
+                    return ((ICollection)value!).Count > 1;
+                }
+
+                return false;
+            });
+
+            return fails.Any();
+        }
+
+        /// <summary>
         /// check if any of provided values is null or has a null value, if true it will
         /// launch an exception
         /// </summary>
@@ -127,7 +160,7 @@ namespace Orun
         /// <typeparam name="TSource"></typeparam>
         /// <returns></returns>
         public static TSource IsNullOrAnyNull<TSource>(this TSource source) =>
-            source.Throw(() => Is.NullOrAnyNull(source!), 
+            source.Throw(() => Is.NullOrAnyNull(source!),
                 $"{nameof(source)} could not be null or contain a null value");
 
         /// <summary>

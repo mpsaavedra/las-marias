@@ -12,5 +12,8 @@ public class BenefitCreateInputModel
     [GraphQLDescription("Desciption of the benefit, when and how to use it")]
     public Optional<string> Description { get; set; }
 
+    [GraphQLDescription("over which value apply the benefit")]
+    public Optional<BenefitOver> Over { get; set; }
+
     public Optional<bool> Enable { get; set; }
 }
