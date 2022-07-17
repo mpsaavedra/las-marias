@@ -10,22 +10,22 @@ public static class GrahQlExtensions
 {
     public static IServiceCollection AddGraphQlConfiguration(this IServiceCollection services, bool isDevelopment)
     {
-        
+
         // a custom Error filter to display more info bout the error
         // thi should be used only in debug
         services.AddErrorFilter<GraphQLErrorFilter>();
-        
+
         // and here we go
         services
             .AddGraphQLServer()
             .AddQueryType(d => d.Name("Query"))
             .AddMutationType(m => m.Name("Mutation"))
-            
+
             // add filters and navigations stuffs
             .AddFiltering()
             .AddSorting()
             .AddProjections()
-            
+
             // adding queries
             .AddType<AttributeQuery>()
             .AddType<AttributeNameQuery>()
@@ -41,7 +41,7 @@ public static class GrahQlExtensions
             .AddType<VendorBrandQuery>()
             .AddType<VendorQuery>()
             .AddType<VouceQuery>()
-            
+
             // adding mutations
             .AddType<AdministrationMutations>()
             .AddType<AttributeMutations>()
@@ -54,15 +54,15 @@ public static class GrahQlExtensions
             .AddType<VendorMutations>()
             .AddType<VouceMutations>()
 
-            .ModifyOptions( o => 
+            .ModifyOptions(o =>
             {
                 o.RemoveUnreachableTypes = true;
             })
-            .ModifyRequestOptions( opts => 
+            .ModifyRequestOptions(opts =>
             {
                 opts.IncludeExceptionDetails = isDevelopment;
             });
-       
+
         return services;
     }
 

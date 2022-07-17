@@ -17,6 +17,11 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Orun.Filters;
+using HotChocolate.Data.Filters;
+using HotChocolate.Data.Projections;
+using HotChocolate.Data.Sorting;
+using HotChocolate.Execution.Configuration;
 
 /// <summary>
 /// Program extensions
@@ -45,5 +50,67 @@ public static class ProgramExtensions
 
         builder.Host.UseSerilog();
         return builder;
+    }
+
+    /// <summary>
+    /// adds custom graphql objects and other types.
+    /// </summary>
+    ///  builder
+    ///     .AddCustomGraphQL(
+    ///         queries =>
+    ///             queries
+    ///                 .AddType<EmployeeQueries>()
+    ///                 .AddType<EarningQueries>(),
+    ///         mutations =>
+    ///             mutations
+    ///                 .AddType<EmployeeMutations>()
+    ///     );
+    public static IRequestExecutorBuilder AddCustomGraphQL(
+        this WebApplicationBuilder builder,
+        bool isDevelopmentEnvironment,
+        Action<IRequestExecutorBuilder>? queries = null,
+        Action<IRequestExecutorBuilder>? mutations = null,
+        Action<IRequestExecutorBuilder>? subscriptions = null
+    )
+    {
+        // a custom Error filter to display more info bout the error
+        // thi should be used only in debug
+        builder.Services.AddErrorFilter<GraphQLErrorFilter>();
+
+        var executor = builder.Services
+            .AddGraphQLServer();
+
+        if (queries != null)
+        {
+            executor.AddQueryType(d => d.Name("Query"));
+            queries.Invoke(executor);
+        }
+
+        if (mutations != null)
+        {
+            executor.AddMutationType(s => s.Name("Mutation"));
+            mutations.Invoke(executor);
+        }
+
+        if (subscriptions != null)
+        {
+            executor.AddSubscriptionType(d => d.Name("Subscription"));
+            subscriptions.Invoke(executor);
+        }
+
+        executor
+            .AddFiltering()
+            .AddSorting()
+            .AddProjections()
+            .ModifyOptions(o =>
+            {
+                o.RemoveUnreachableTypes = true;
+            })
+            .ModifyRequestOptions(opts =>
+            {
+                opts.IncludeExceptionDetails = isDevelopmentEnvironment;
+            });
+
+        return executor;
     }
 }
