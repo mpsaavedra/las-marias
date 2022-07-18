@@ -3,6 +3,7 @@ global using System.Collections;
 global using System.Collections.Generic;
 global using Orun;
 global using Orun.Domain;
+global using Orun.BuildingBlocks.Domain;
 global using Orun.Extensions;
 global using System.Text.Json.Serialization;
 global using HotChocolate;
