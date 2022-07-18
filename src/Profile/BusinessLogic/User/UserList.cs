@@ -33,7 +33,7 @@ public class UserList : IAsyncMiddleware<UserListPayload, bool>, IMiddlewarePlug
         PluginId = Guid.NewGuid();
         Author = "Orun Innovations LLC";
         Description = "returns list with all available users";
-        ShortName = "Profile Benefit List";
+        ShortName = "Profile User List";
         Enable = true;
         Level = 0;
         Dependencies = new List<Dependency>();

@@ -39,7 +39,7 @@ public class UserBenefitCreate
         return services;
     }
 
-    public UserBenefitCreate(IChainOfResponsibilityService chain)
+    public UserBenefitCreate()
     {
         Name = "Profile Create User Benefit relation Business Logic plugin";
         Version = "0.0.1";
@@ -51,7 +51,6 @@ public class UserBenefitCreate
         Level = 0;
         Dependencies = new List<Dependency>();
         EventCode = EventCodes.UserBenefitCreate;
-        _chain = chain;
     }
 
     public async Task<Domain.Models.UserBenefit> Run(
@@ -62,6 +61,7 @@ public class UserBenefitCreate
         {
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
             _repository = _scope?.ServiceProvider.GetService<IUserBenefitRepository>();
+            _chain = _scope?.ServiceProvider.GetService<IChainOfResponsibilityService>()!;
 
             if (_repository == null)
             {

@@ -23,7 +23,7 @@ public partial class User : BusinessEntity<long>
     public string ApplicationUserId { get; set; }
 
     [GraphQLDescription("id of user that reference business to this user")]
-    public string? ReferralUserId { get; set; }
+    public long? ReferralUserId { get; set; }
 
     [GraphQLDescription("id of the country")]
     public long? CountryId { get; set; }
@@ -77,7 +77,7 @@ public partial class User : BusinessEntity<long>
     public bool Enable { get; set; }
 
     [GraphQLDescription("Id of Employee if user is Employee")]
-    public string? EmployeeId { get; set; }
+    public long? EmployeeId { get; set; }
 
     [GraphQLDescription("user data as Employee")]
     public virtual Employee? Employee { get; set; }

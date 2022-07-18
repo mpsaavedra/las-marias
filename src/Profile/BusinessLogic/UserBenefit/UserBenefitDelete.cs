@@ -39,7 +39,7 @@ public class UserBenefitDelete : IAsyncMiddleware<long, bool>, IMiddlewarePlugin
         return services;
     }
 
-    public UserBenefitDelete(IChainOfResponsibilityService chain)
+    public UserBenefitDelete()
     {
         Name = "Profile User Benefit relation Business Logic plugin";
         Version = "0.0.1";
@@ -51,7 +51,6 @@ public class UserBenefitDelete : IAsyncMiddleware<long, bool>, IMiddlewarePlugin
         Level = 0;
         Dependencies = new List<Dependency>();
         EventCode = EventCodes.UserBenefitDelete;
-        _chain = chain;
     }
 
     public async Task<bool> Run(long id, Func<long, Task<bool>> next)
@@ -60,6 +59,7 @@ public class UserBenefitDelete : IAsyncMiddleware<long, bool>, IMiddlewarePlugin
         {
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
             _repository = _scope?.ServiceProvider.GetService<IUserBenefitRepository>();
+            _chain = _scope?.ServiceProvider.GetService<IChainOfResponsibilityService>()!;
 
             if (_repository == null)
             {

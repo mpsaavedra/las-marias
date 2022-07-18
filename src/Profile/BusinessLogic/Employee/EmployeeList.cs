@@ -44,7 +44,7 @@ public class EmployeeList : IAsyncMiddleware<EmployeeListPayload, bool>, IMiddle
         PluginId = Guid.NewGuid();
         Author = "Orun Innovations LLC";
         Description = "returns list with all available employees";
-        ShortName = "Profile User List";
+        ShortName = "Profile Employee List";
         Enable = true;
         Level = 0;
         Dependencies = new List<Dependency>();

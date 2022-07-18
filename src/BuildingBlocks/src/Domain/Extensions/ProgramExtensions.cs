@@ -47,7 +47,7 @@ public static class ProgramExtensions
         // recommended for production scenarios. Consider generating SQL scripts from
         // migrations instead.
         using var scope = app.Services.CreateScope();
-        
+
         var retryPolicy = CreateRetryPolicy(app.Configuration, Log.Logger);
         var context = scope.ServiceProvider.GetRequiredService<TContext>();
 
@@ -68,21 +68,21 @@ public static class ProgramExtensions
             bool isDevelopment
     ) where TContext : DbContext
     {
-        builder.Services.AddDbContext<TContext>(options => 
+        builder.Services.AddDbContext<TContext>(options =>
         {
             options.EnableSensitiveDataLogging(isDevelopment);
             options.UseLazyLoadingProxies();
             options.UseNpgsql(connectionString);
         });
 
-        if(isDevelopment)
+        if (isDevelopment)
         {
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
         return builder;
     }
-    
+
     private static Policy CreateRetryPolicy(IConfiguration configuration, Serilog.ILogger logger)
     {
         // Only use a retry policy if configured to do so.
@@ -105,5 +105,18 @@ public static class ProgramExtensions
         }
 
         return Policy.NoOp();
+    }
+    /// <summary>
+    /// add the grapphql endpoint 
+    /// </summary>
+    public static WebApplication UseGraphQL(this WebApplication app)
+    {
+        app.UseWebSockets();
+        app.UseRouting();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapGraphQL();
+        });
+        return app;
     }
 }

@@ -39,7 +39,7 @@ public class UserUpdate : IAsyncMiddleware<Domain.DataModels.User.UserUpdateInpu
         return services;
     }
 
-    public UserUpdate(IChainOfResponsibilityService chain)
+    public UserUpdate()
     {
         Name = "Profile User Update Business Logic plugin";
         Version = "0.0.1";
@@ -51,7 +51,6 @@ public class UserUpdate : IAsyncMiddleware<Domain.DataModels.User.UserUpdateInpu
         Level = 0;
         Dependencies = new List<Dependency>();
         EventCode = EventCodes.UserUpdate;
-        _chain = chain;
     }
 
     public async Task<Domain.Models.User> Run(
@@ -64,6 +63,8 @@ public class UserUpdate : IAsyncMiddleware<Domain.DataModels.User.UserUpdateInpu
         {
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
             _repository = _scope?.ServiceProvider.GetService<IUserRepository>();
+            _chain = _scope?.ServiceProvider.GetService<IChainOfResponsibilityService>()!;
+
             if (_repository == null)
             {
                 throw new NullReferenceException($"User Create: Repository could not be null");

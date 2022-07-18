@@ -40,7 +40,7 @@ public class UserCreate : IAsyncMiddleware<UserCreateInputModel,
         return services;
     }
 
-    public UserCreate(IChainOfResponsibilityService chain)
+    public UserCreate()
     {
         Name = "Profile User Create Business Logic plugin";
         Version = "0.0.1";
@@ -52,7 +52,6 @@ public class UserCreate : IAsyncMiddleware<UserCreateInputModel,
         Level = 0;
         Dependencies = new List<Dependency>();
         EventCode = EventCodes.UserCreate;
-        _chain = chain;
     }
 
     public async Task<Domain.Models.User> Run(UserCreateInputModel parameter,
@@ -63,6 +62,8 @@ public class UserCreate : IAsyncMiddleware<UserCreateInputModel,
         {
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
             _repository = _scope?.ServiceProvider.GetService<IUserRepository>();
+            _chain = _scope?.ServiceProvider.GetService<IChainOfResponsibilityService>()!;
+
             if (_repository == null)
             {
                 throw new NullReferenceException($"User Create: Repository could not be null");

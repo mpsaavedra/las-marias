@@ -40,7 +40,7 @@ public class EmployeeCreate : IAsyncMiddleware<EmployeeCreateInputModel,
         return services;
     }
 
-    public EmployeeCreate(IChainOfResponsibilityService chain)
+    public EmployeeCreate()
     {
         Name = "Profile Employee Create Business Logic plugin";
         Version = "0.0.1";
@@ -52,7 +52,6 @@ public class EmployeeCreate : IAsyncMiddleware<EmployeeCreateInputModel,
         Level = 0;
         Dependencies = new List<Dependency>();
         EventCode = EventCodes.EmployeeCreate;
-        _chain = chain;
     }
 
     public async Task<Domain.Models.Employee> Run(EmployeeCreateInputModel parameter,
@@ -62,6 +61,8 @@ public class EmployeeCreate : IAsyncMiddleware<EmployeeCreateInputModel,
         {
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
             _repository = _scope?.ServiceProvider.GetService<IEmployeeRepository>();
+            _chain = _scope?.ServiceProvider.GetService<IChainOfResponsibilityService>()!;
+
             if (_repository == null)
             {
                 throw new NullReferenceException($"Employee Create: Repository could not be null");

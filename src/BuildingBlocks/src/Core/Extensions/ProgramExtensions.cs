@@ -55,16 +55,16 @@ public static class ProgramExtensions
     /// <summary>
     /// adds custom graphql objects and other types.
     /// </summary>
-    ///  builder
-    ///     .AddCustomGraphQL(
-    ///         queries =>
-    ///             queries
-    ///                 .AddType<EmployeeQueries>()
-    ///                 .AddType<EarningQueries>(),
-    ///         mutations =>
-    ///             mutations
-    ///                 .AddType<EmployeeMutations>()
-    ///     );
+    //  builder
+    //     .AddCustomGraphQL(
+    //         queries =>
+    //             queries
+    //                 .AddType<EmployeeQueries>()
+    //                 .AddType<EarningQueries>(),
+    //         mutations =>
+    //             mutations
+    //                 .AddType<EmployeeMutations>()
+    //     );
     public static IRequestExecutorBuilder AddCustomGraphQL(
         this WebApplicationBuilder builder,
         bool isDevelopmentEnvironment,
@@ -78,7 +78,10 @@ public static class ProgramExtensions
         builder.Services.AddErrorFilter<GraphQLErrorFilter>();
 
         var executor = builder.Services
-            .AddGraphQLServer();
+            .AddGraphQLServer()
+            .AddFiltering()
+            .AddSorting()
+            .AddProjections();
 
         if (queries != null)
         {
@@ -99,9 +102,6 @@ public static class ProgramExtensions
         }
 
         executor
-            .AddFiltering()
-            .AddSorting()
-            .AddProjections()
             .ModifyOptions(o =>
             {
                 o.RemoveUnreachableTypes = true;

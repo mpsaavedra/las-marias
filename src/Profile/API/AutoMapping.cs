@@ -1,8 +1,8 @@
-namespace LasMarias.Profile.Domain;
+namespace LasMarias.Profile;
 
-public class MappingProfile : AutoMapper.Profile
+public partial class AutoMapping : AutoMapper.Profile
 {
-    public MappingProfile()
+    public AutoMapping()
     {
         // benefit mapping
         CreateMap<Domain.DataModels.Benefit.BenefitCreateInputModel, Domain.Models.Benefit>()

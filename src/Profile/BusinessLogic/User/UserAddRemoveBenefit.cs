@@ -1,6 +1,6 @@
 namespace LasMarias.Profile.BusinessLogic.User;
 
-public class UserAddRemoveBenefit : IAsyncMiddleware<Domain.DataModels.User.UserAddRemoveBenefit, Domain.Models.User>, IMiddlewarePlugin
+public class UserAddRemoveBenefit : IAsyncMiddleware<Domain.DataModels.User.UserAddRemoveBenefitInputModel, Domain.Models.User>, IMiddlewarePlugin
 {
     private IServiceScope? _scope;
 
@@ -43,33 +43,35 @@ public class UserAddRemoveBenefit : IAsyncMiddleware<Domain.DataModels.User.User
         return services;
     }
 
-    public UserAddRemoveBenefit(IChainOfResponsibilityService chain)
+    public UserAddRemoveBenefit()
     {
         Name = "Profile User Update Business Logic plugin";
         Version = "0.0.1";
         PluginId = Guid.NewGuid();
         Author = "Orun Innovations LLC";
         Description = "Updates an existing User";
-        ShortName = "Profile Update User";
+        ShortName = "Profile Add Remove User";
         Enable = true;
         Level = 0;
         Dependencies = new List<Dependency>();
         EventCode = EventCodes.UserUpdate;
-        _chain = chain;
     }
 
     public async Task<Domain.Models.User> Run(
-        Domain.DataModels.User.UserAddRemoveBenefit parameter,
-        Func<Domain.DataModels.User.UserAddRemoveBenefit, Task<Domain.Models.User>> next
+        Domain.DataModels.User.UserAddRemoveBenefitInputModel parameter,
+        Func<Domain.DataModels.User.UserAddRemoveBenefitInputModel, Task<Domain.Models.User>> next
     )
     {
         long userBenefit = 0;
         try
         {
             Log.Debug($"Executing plugin '{ShortName}': event '{EventCode}'");
+
             _repository = _scope?.ServiceProvider.GetService<IUserRepository>();
             _userBenefitRepository = _scope?.ServiceProvider.GetService<IUserBenefitRepository>();
             _userBenefitRepository = _scope?.ServiceProvider.GetService<IUserBenefitRepository>();
+            _chain = _scope?.ServiceProvider.GetService<IChainOfResponsibilityService>()!;
+
 
             if (_repository == null || _userBenefitRepository == null || _userBenefitRepository == null)
             {

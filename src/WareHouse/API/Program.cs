@@ -18,8 +18,8 @@ builder
     )
     .AddCustomHealthChecks();
 
-if(isDevelopment)
-{    
+if (isDevelopment)
+{
     builder.AddPluginsServices(System.IO.Path.Combine(System.Environment.CurrentDirectory, "..", "plugins"));
 }
 else
@@ -59,11 +59,11 @@ app.MapControllers();
 
 app
     .ApplyDatabaseMigration<ApplicationDbContext>()
-    .UseGraphQL()
+    // .UseGraphQL()
     .UsePlugIns();
 
 // this seeding is only for the template to bootstrap the DB and users.
-    // in production you will likely want a different approach.
+// in production you will likely want a different approach.
 if (args.Contains("/seed"))
 {
     Log.Information("Seeding database...");

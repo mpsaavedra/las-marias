@@ -33,7 +33,7 @@ public class UserBenefitList : IAsyncMiddleware<UserBenefitListPayload, bool>, I
         PluginId = Guid.NewGuid();
         Author = "Orun Innovations LLC";
         Description = "returns list with all available user benefits";
-        ShortName = "Profile Benefit List";
+        ShortName = "Profile User Benefit List";
         Enable = true;
         Level = 0;
         Dependencies = new List<Dependency>();

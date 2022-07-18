@@ -1,6 +1,6 @@
 namespace LasMarias.Profile.Domain.DataModels.User;
 
-public class UserAddRemoveBenefit
+public class UserAddRemoveBenefitInputModel
 {
     public long Id { get; set; }
 

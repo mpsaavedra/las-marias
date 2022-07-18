@@ -44,7 +44,7 @@ public class CountryList : IAsyncMiddleware<CountryListPayload, bool>, IMiddlewa
         PluginId = Guid.NewGuid();
         Author = "Orun Innovations LLC";
         Description = "returns list with all available Countrys";
-        ShortName = "Profile User List";
+        ShortName = "Profile Country List";
         Enable = true;
         Level = 0;
         Dependencies = new List<Dependency>();

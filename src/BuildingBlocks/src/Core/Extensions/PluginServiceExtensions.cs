@@ -23,7 +23,7 @@ namespace Orun.Extensions
             pluginService.ConfigurePlugins(app);
             return app;
         }
-        
+
         /// <summary>
         /// Adds plugins service
         /// </summary>
@@ -36,11 +36,11 @@ namespace Orun.Extensions
         {
             services.AddSingleton<IPluginService>(new PluginService(
                 pluginsDirectory,
-                sharedTypes, 
+                sharedTypes,
                 services));
 
             services.AddScoped<IChainOfResponsibilityService, ChainOfResponsibilityService>();
-            
+
             return services;
         }
 

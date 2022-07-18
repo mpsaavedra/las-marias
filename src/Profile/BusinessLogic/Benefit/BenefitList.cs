@@ -44,7 +44,7 @@ public class BenefitList : IAsyncMiddleware<BenefitListPayload, bool>, IMiddlewa
         PluginId = Guid.NewGuid();
         Author = "Orun Innovations LLC";
         Description = "returns list with all available Benefits";
-        ShortName = "Profile User List";
+        ShortName = "Profile Benefit List";
         Enable = true;
         Level = 0;
         Dependencies = new List<Dependency>();

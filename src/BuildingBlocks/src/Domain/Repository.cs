@@ -187,9 +187,11 @@ namespace Orun.BuildingBlocks.Domain
             {
                 await UnitOfWork.OpenTransactionAsync();
                 var entity = await Context.Set<TEntity>().FindAsync(id);
-                entity.Deleted = true;
-                entity.DeletedAt = DateTimeOffset.UtcNow;
-                Context.Set<TEntity>().Update(entity);
+                if (entity == null)
+                {
+                    throw new Exception($"Entity with id {id} was not found");
+                }
+                Context.Set<TEntity>().Remove(entity);
                 return true;
             }
             catch (Exception e)
