@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Plate</AssemblyName>
+    <OutDir>..\..\plugins\Plate</OutDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\src\Core\Core.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\src\Domain\Domain.csproj" />
+    <ProjectReference Include="..\..\Domain\LasMarias.PoS.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared\LasMarias.PoS.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

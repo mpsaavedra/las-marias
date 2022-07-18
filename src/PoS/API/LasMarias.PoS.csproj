@@ -50,8 +50,17 @@
     <PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
   </ItemGroup>
 
-  <!--Target Name="AfterBuildTarget" AfterTargets="Build">
-    <Exec Command="dotnet build ../BusinessLogic/Administration/" />
-  </Target-->
+  <Target Name="AfterBuildTarget" AfterTargets="Build">
+    <Exec Command="dotnet build ../BusinessLogic/Category/" />
+    <Exec Command="dotnet build ../BusinessLogic/Menu/" />
+    <Exec Command="dotnet build ../BusinessLogic/MenuPlate/" />
+    <Exec Command="dotnet build ../BusinessLogic/Plate/" />
+    <Exec Command="dotnet build ../BusinessLogic/PlateCategory/" />
+    <Exec Command="dotnet build ../BusinessLogic/PlatePhoto/" />
+    <Exec Command="dotnet build ../BusinessLogic/PlateProduct/" />
+    <Exec Command="dotnet build ../BusinessLogic/Seat/" />
+    <Exec Command="dotnet build ../BusinessLogic/Stand/" />
+    <Exec Command="dotnet build ../BusinessLogic/Table/" />
+  </Target>
 
 </Project>

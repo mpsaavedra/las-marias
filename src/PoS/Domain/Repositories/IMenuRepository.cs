@@ -1,6 +1,6 @@
 namespace LasMarias.PoS.Domain.Repositories;
 
-public partial interface MenuRepository : IRepository<long, Menu>
+public partial interface IMenuRepository : IRepository<long, Menu>
 {
 
 }

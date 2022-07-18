@@ -1,4 +1,4 @@
-namespace LasMarias.PoS.Domain.PlatePhoto;
+namespace LasMarias.PoS.Domain.DataModels.PlatePhoto;
 
 public class PlatePhotoListPayload
 {
