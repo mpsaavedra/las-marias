@@ -1,29 +1,29 @@
 namespace LasMarias.PoS.Domain.Models;
 
 [GraphQLDescription("defines the Menu plate relations")]
-public partial class MenuPlate: BusinessEntity<long>
+public partial class MenuPlate : BusinessEntity<long>
 {
     [GraphQLDescription("Id of menu plate")]
-    public long MenuPlateId{ get; set; }
+    public long? MenuPlateId { get; set; }
 
     [GraphQLDescription("id of plate")]
-    public long PlateId { get; set; }
+    public long? PlateId { get; set; }
 
     [GraphQLDescription("id of menu")]
-    public long MenuId { get; set; }
+    public long? MenuId { get; set; }
 
     [GraphQLDescription("Plate")]
-    public virtual Plate Plate { get; set; }
+    public virtual Plate? Plate { get; set; }
 
     [GraphQLDescription("Menu")]
-    public virtual Menu Menu { get; set; }
+    public virtual Menu? Menu { get; set; }
 
     [GraphQLDescription("Plate cost")]
-    public decimal Cost => Plate.Cost;
+    public decimal Cost => Plate != null ? Plate.Cost : 0m;
 
     [GraphQLDescription("Plate selling price")]
-    public decimal SellingPrice => Plate.SellingPrice;
+    public decimal SellingPrice => Plate != null ? Plate.SellingPrice : 0m;
 
     [GraphQLDescription("Plate earning (Selling price - cost price)")]
-    public decimal Earning => Plate.Earning;
+    public decimal Earning => Plate != null ? Plate.Earning : 0m;
 }

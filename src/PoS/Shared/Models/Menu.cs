@@ -1,4 +1,4 @@
-namespace  LasMarias.PoS.Domain.Models;
+namespace LasMarias.PoS.Domain.Models;
 
 using LasMarias.WareHouse.Domain.Models;
 
@@ -10,6 +10,10 @@ public partial class Menu : BusinessEntity<long>
     {
         MenuPlates = new HashSet<MenuPlate>();
         Name = "";
+        Available = true;
+        Offer = false;
+        StandType = StandType.NotSpecified;
+        SellingPrice = 0m;
     }
 
     public Menu(string name, string description)
@@ -17,11 +21,15 @@ public partial class Menu : BusinessEntity<long>
         MenuPlates = new HashSet<MenuPlate>();
         Name = name;
         Description = description;
+        Available = true;
+        Offer = false;
+        StandType = StandType.NotSpecified;
+        SellingPrice = 0m;
     }
 
     [GraphQLDescription("id of the Menu")]
     public long MenuId { get; set; }
-    
+
     [GraphQLDescription("Name of the menu")]
     public string Name { get; set; }
 

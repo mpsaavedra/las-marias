@@ -1,8 +1,8 @@
 namespace LasMarias.PoS.Domain.EntityTypeConfigurations;
 
-public class PlatePhotoEntityConfiguration: IEntityTypeConfiguration<PlatePhoto>
+public class PlatePhotoEntityConfiguration : IEntityTypeConfiguration<Models.PlatePhoto>
 {
-    public void Configure(EntityTypeBuilder<PlatePhoto> builder)
+    public void Configure(EntityTypeBuilder<Models.PlatePhoto> builder)
     {
         builder.HasKey(x => x.PlatePhotoId);
         builder

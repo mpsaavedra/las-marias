@@ -1,12 +1,12 @@
 namespace LasMarias.PoS.Domain.Models;
 
 // TODO: move this entity into the restaurant service
-[GraphQLDescription("Cateory of plates")]
+[GraphQLDescription("Plate's categories")]
 public partial class Category : BusinessEntity<long>
 {
     public Category()
     {
-        ChildCategories =  new HashSet<Category>();
+        ChildCategories = new HashSet<Category>();
         PlateCategories = new HashSet<PlateCategory>();
         Name = "";
         Enable = true;
@@ -14,7 +14,7 @@ public partial class Category : BusinessEntity<long>
 
     public Category(string name, string description)
     {
-        ChildCategories =  new HashSet<Category>();
+        ChildCategories = new HashSet<Category>();
         PlateCategories = new HashSet<PlateCategory>();
         Name = name;
         Description = description;

@@ -31,5 +31,5 @@ public partial class PlatePhoto : BusinessEntity<long>
     public long? PlateId { get; set; }
 
     [GraphQLDescription("plate this photo belong")]
-    public virtual Plate Plate { get; set; }
+    public virtual Plate? Plate { get; set; }
 }

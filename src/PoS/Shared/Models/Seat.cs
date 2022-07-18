@@ -39,22 +39,21 @@ public partial class Seat : BusinessEntity<long>
     [GraphQLDescription("stand this seat is located")]
     [UseFiltering]
     [UseSorting]
-    [JsonIgnore]
     public virtual Stand Stand { get; set; }
 
     [GraphQLDescription("inventary number")]
     public string? InventaryNumber { get; set; }
-    
+
     [GraphQLDescription("seat type")]
     public SeatType SeatType { get; set; }
 
     [GraphQLDescription("number of seats taken if there is more than one")]
-    public int Occupied 
-    { 
+    public int Occupied
+    {
         get => _ocuppied;
         set
         {
-            if(value > Capacity)
+            if (value > Capacity)
             {
                 throw new Exception("The specified amount is bigger than the the seat capacity");
             }
@@ -64,9 +63,9 @@ public partial class Seat : BusinessEntity<long>
 
     [GraphQLDescription("Available capacity for this seat, it depends on the SeatType, allows to set different capacities when is a banch or else")]
     public int Capacity
-    { 
+    {
         get => _capacity;
-        set 
+        set
         {
             switch (SeatType)
             {
@@ -83,7 +82,7 @@ public partial class Seat : BusinessEntity<long>
                     _capacity = 3;
                     break;
                 case SeatType.Bench:
-                    if(value <= 3)
+                    if (value <= 3)
                     {
                         throw new Exception("Seat capacity is incorrect because is unconsistent with the SeatType");
                     }
