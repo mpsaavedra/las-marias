@@ -1,25 +1,25 @@
 namespace LasMarias.PoS.Queries;
 
 [ExtendObjectType("Query")]
-[GraphQLDescription("Seat queries")]
-public partial class SeatQuery
+[GraphQLDescription("Plate queries")]
+public partial class PlateQuery
 {
     [UseFirstOrDefault]
     [UsePaging]
     [UseProjection]
     [UseFiltering]
     [UseSorting]
-    [GraphQLDescription("List all available Seat")]
-    public async Task<IQueryable<Seat>> GetSeats(
+    [GraphQLDescription("List all available Plate")]
+    public async Task<IQueryable<Plate>> GetPlates(
         [Service] IChainOfResponsibilityService chain
     )
     {
         try
         {
-            Log.Debug("Retrieving Seats list");
-            var data = new SeatListPayload();
-            var fail = await chain.ExecuteAsyncChain<SeatListPayload, bool>(
-                EventCodes.SeatList, data);
+            Log.Debug("Retrieving Plates list");
+            var data = new PlateListPayload();
+            var fail = await chain.ExecuteAsyncChain<PlateListPayload, bool>(
+                EventCodes.PlateList, data);
             return await Task.FromResult(data.Payload!);
         }
         catch (Exception ex)

@@ -12,6 +12,7 @@
     <ProjectReference Include="..\..\BuildingBlocks\src\Domain\Domain.csproj" />
     <ProjectReference Include="..\Domain\LasMarias.PoS.Domain.csproj" />
     <ProjectReference Include="..\Shared\LasMarias.PoS.Shared.csproj" />
+    <ProjectReference Include="..\Abstractions\LasMarias.PoS.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
