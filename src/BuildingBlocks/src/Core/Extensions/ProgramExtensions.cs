@@ -42,7 +42,6 @@ public static class ProgramExtensions
             .Enrich.WithProperty("ApplicationName", appName)
             .Enrich.FromLogContext()
             .WriteTo.Console(outputTemplate:
-                // "[{Timestamp:HH:mm:ss} {Level:u3}] -({ApplicationName}) {Message:lj}{Exception}"
                 "[{Timestamp:HH:mm:ss} {Level:u3}] - ({ApplicationName}) {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}"
             )
             .WriteTo.Seq(seqServerUrl)

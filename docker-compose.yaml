@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   postgres-data:
@@ -8,13 +8,13 @@ services:
     environment:
       - POSTGRES_USER=marias
       - POSTGRES_PASSWORD=marias
-      - POSTGRES_DB=marias
+      - POSTGRES_DB=marias_db
     ports:
       - 5432:5432
     deploy:
       resources:
         limits:
-          cpus: '1.00'
+          cpus: "1.00"
           memory: 512M
   seq:
     image: datalust/seq:latest
@@ -25,4 +25,3 @@ services:
 
 volumes:
   postgres_data:
-
