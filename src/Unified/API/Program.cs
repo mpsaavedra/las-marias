@@ -16,7 +16,49 @@ builder
     .AddCustomDatabase<ApplicationDbContext>(
         connectionString, IS_DEVELOPMENT
     )
-    .AddCustomHealthChecks();
+    .AddCustomHealthChecks()
+    .AddCustomGraphQL(
+        IS_DEVELOPMENT,
+        qry => qry
+            .AddType<AttributeNameQueries>()
+            .AddType<AttributeQueries>()
+            .AddType<BrandQueries>()
+            .AddType<CategoryQueries>()
+            .AddType<MeasureUnitQueries>()
+            .AddType<MovementQueries>()
+            .AddType<PriceHistoryQueries>()
+            .AddType<ProductPhotoQueries>()
+            .AddType<ProductBrandQueries>()
+            .AddType<ProductQueries>()
+            .AddType<VendorBrandQueries>()
+            .AddType<VendorQueries>()
+            .AddType<VouceQueries>()
+    );
+
+if (IS_DEVELOPMENT)
+{
+    builder.AddPluginsServices(System.IO.Path.Combine(System.Environment.CurrentDirectory, "..", "plugins"));
+}
+else
+{
+    // in production we should red configuration files first then check if a plugins directory
+    // exists and try load plugins from there.
+    builder.AddPluginsServices(System.IO.Path.Combine(System.Environment.CurrentDirectory, "plugins"));
+}
+
+builder.Services
+    .AddScoped<IAttributeNameRepository, AttributeNameRepository>()
+    .AddScoped<IAttributeRepository, AttributeRepository>()
+    .AddScoped<IBrandRepository, BrandRepository>()
+    .AddScoped<ICategoryRepository, CategoryRepository>()
+    .AddScoped<IMeasureUnitRepository, MeasureUnitRepository>()
+    .AddScoped<IMovementRepository, MovementRepository>()
+    .AddScoped<IPriceHistoryRepository, PriceHistoryRepository>()
+    .AddScoped<IProductBrandRepository, ProductBrandRepository>()
+    .AddScoped<IProductPhotoRepository, ProductPhotoRepository>()
+    .AddScoped<IProductRepository, ProductRepository>()
+    .AddScoped<IVendorBrandRepository, VendorBrandRepository>()
+    .AddScoped<IVendorRepository, VendorRepository>();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -48,7 +90,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app
-    .ApplyDatabaseMigration<ApplicationDbContext>();
+    .ApplyDatabaseMigration<ApplicationDbContext>()
+    .ConfigurePlugins();
 
 app.UseAuthentication();
 app.UseIdentityServer();

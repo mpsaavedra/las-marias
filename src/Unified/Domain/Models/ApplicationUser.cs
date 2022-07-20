@@ -1,6 +1,6 @@
 ﻿namespace LasMarias.Domain.Models;
 
-public class ApplicationUser : IdentityUser
+public class ApplicationUser : IdentityUser, IBusinessEntity<string>
 {
     public ApplicationUser() : base()
     {
@@ -66,4 +66,37 @@ public class ApplicationUser : IdentityUser
 
     [GraphQLDescription("user data as Employee")]
     public virtual Employee? Employee { get; set; }
+
+    #region Business Entity members
+
+    /// <summary>
+    /// Mark entity as soft deleted
+    /// </summary>
+    [JsonPropertyName("deleted")]
+    public bool Deleted { get; set; }
+
+    /// <summary>
+    /// creation date
+    /// </summary>
+    [JsonPropertyName("createdAt")]
+    public DateTimeOffset CreatedAt { get; set; }
+
+    /// <summary>
+    /// last modification date
+    /// </summary>
+    [JsonPropertyName("updateAt")]
+    public DateTimeOffset? UpdatedAt { get; set; }
+
+    /// <summary>
+    /// when the entity was soft deleted
+    /// </summary>
+    [JsonPropertyName("deletedAt")]
+    public DateTimeOffset? DeletedAt { get; set; }
+
+    /// <summary>
+    /// Version to avoid possible mismatch
+    /// </summary>
+    public string RowVersion { get; set; }
+
+    #endregion
 }

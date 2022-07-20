@@ -52,6 +52,20 @@ public static class EventCodes
 
     #endregion
 
+    #region Movement
+
+    public static string MovementCreate = "movement-create";
+
+    public static string MovementList = "movement-list";
+
+    public static string MovementGet = "movement-get";
+
+    public static string MovementUpdate = "movement-update";
+
+    public static string MovementDelete = "movement-delete";
+
+    #endregion
+
     #region PriceHistory
 
     public static string PriceHistoryCreate = "price-history-create";
