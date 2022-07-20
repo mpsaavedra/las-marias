@@ -19,7 +19,7 @@ public partial class PriceHistory : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual Product Product { get; set; }
+    public virtual Product? Product { get; set; }
 
     [GraphQLDescription("old product price")]
     public decimal OldPrice { get; set; }
@@ -36,5 +36,5 @@ public partial class PriceHistory : BusinessEntity<long>
     [GraphQLDescription("Application user that change the price")]
     [UseFiltering]
     [UseSorting]
-    public virtual ApplicationUser ApplicationUser { get; set; }
+    public virtual ApplicationUser? ApplicationUser { get; set; }
 }

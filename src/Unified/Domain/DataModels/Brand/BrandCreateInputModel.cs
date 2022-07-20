@@ -5,7 +5,7 @@ namespace LasMarias.Domain.DataModels.Brand;
 public class BrandCreateInputModel
 {
     [GraphQLDescription("name of the brand")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [GraphQLDescription("if true brand is available to the system")]
     public Optional<bool> Enable { get; set; }

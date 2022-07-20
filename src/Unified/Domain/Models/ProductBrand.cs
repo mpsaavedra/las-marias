@@ -16,11 +16,11 @@ public partial class ProductBrand : BusinessEntity<long>
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual Product Product { get; set; }
+    public virtual Product? Product { get; set; }
 
     [GraphQLDescription("Brand of the product")]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
-    public virtual Brand Brand { get; set; }
+    public virtual Brand? Brand { get; set; }
 }

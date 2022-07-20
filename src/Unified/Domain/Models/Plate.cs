@@ -51,7 +51,7 @@ public partial class Plate : BusinessEntity<long>
     [GraphQLDescription("Cost price of plate using product cost price")]
     public decimal Cost
     {
-        get => PlateProducts != null ? PlateProducts.Sum(x => x.Product.Price * x.Amount) : 0;
+        get => PlateProducts != null ? PlateProducts.Sum(x => x.Product!.Price * x.Amount) : 0;
     }
 
     [GraphQLDescription("Plate Earning (Selling price - Cost price)")]

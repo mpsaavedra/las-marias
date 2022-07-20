@@ -14,7 +14,7 @@ public class MovementCreateInputModel
     public Optional<string> Description { get; set; }
 
     [GraphQLDescription("id of the user that made the user")]
-    public string ApplicationUserId { get; set; }
+    public string? ApplicationUserId { get; set; }
 
     [GraphQLDescription("id of the product vendor if needed")]
     public Optional<long> VendorId { get; set; }

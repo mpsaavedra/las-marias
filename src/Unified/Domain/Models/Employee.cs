@@ -9,6 +9,7 @@ public partial class Employee : BusinessEntity<long>
         EmployeeType = EmployeeType.Employee; // employee as default
         Status = Models.EmployeeStatus.Hired; // recently hired
         HiredDate = DateOnly.FromDateTime(DateTime.UtcNow);
+        UserId = "";
     }
 
     public Employee(ApplicationUser user, EmployeeType employeeType, DateOnly dateOfBirth, EmployeeStatus status,
@@ -19,6 +20,7 @@ public partial class Employee : BusinessEntity<long>
         DateOfBirth = dateOfBirth;
         Status = status;
         HiredDate = hiredDate;
+        UserId = user.Id;
     }
 
     [GraphQLDescription("id of Employee data")]

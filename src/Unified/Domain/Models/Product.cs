@@ -12,6 +12,7 @@ public partial class Product : BusinessEntity<long>
         ProductMovements = new HashSet<ProductMovement>();
         ProductBrands = new HashSet<ProductBrand>();
         ReOrderLevel = -1;
+        Name = "";
     }
 
     [GraphQLDescription("id of the product")]

@@ -3,6 +3,11 @@ namespace LasMarias.Domain.DataModels.Product;
 [GraphQLDescription("basic data to create a new product")]
 public class ProductCreateInputModel
 {
+    public ProductCreateInputModel()
+    {
+        Name = "";
+    }
+
     [GraphQLDescription("name of the product")]
     public string Name { get; set; }
 

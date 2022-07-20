@@ -12,6 +12,7 @@ public partial class Category : BusinessEntity<long>
         ChildCategories = new HashSet<Category>();
         Products = new HashSet<Product>();
         Enable = true;
+        PlateCategories = new HashSet<PlateCategory>();
     }
 
     public Category(string name)
@@ -19,6 +20,7 @@ public partial class Category : BusinessEntity<long>
         Name = name;
         Code = name.SplitPascal("-");
         Enable = true;
+        PlateCategories = new HashSet<PlateCategory>();
     }
 
     public Category(string name, string code)
@@ -26,7 +28,9 @@ public partial class Category : BusinessEntity<long>
         Name = name;
         Code = code;
         Enable = true;
+        PlateCategories = new HashSet<PlateCategory>();
     }
+
     [GraphQLDescription("id of category")]
     public long CategoryId { get; set; }
 

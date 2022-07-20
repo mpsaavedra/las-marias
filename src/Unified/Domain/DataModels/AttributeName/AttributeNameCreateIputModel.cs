@@ -6,6 +6,7 @@ public class AttributeNameCreateInputModel
     public AttributeNameCreateInputModel()
     {
         Enable = true;
+        Name = "";
     }
 
     public AttributeNameCreateInputModel(string name)

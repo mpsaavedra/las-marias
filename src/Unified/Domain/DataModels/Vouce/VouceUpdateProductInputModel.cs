@@ -21,5 +21,5 @@ public class VouceUpdateProductInputModel
     public long VouceId { get; set; }
 
     [GraphQLDescription("Basic information to update the product")]
-    public VouceProductMovementInputModel Product { get; set; }
+    public VouceProductMovementInputModel? Product { get; set; }
 }

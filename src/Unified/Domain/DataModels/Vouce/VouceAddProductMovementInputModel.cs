@@ -8,5 +8,5 @@ public class VouceAddProductMovementInputModel
     public long VouceId { get; set; }
 
     [GraphQLDescription("Basic information to create the product and added to the vouce")]
-    public VouceProductMovementInputModel Product { get; set; }
+    public VouceProductMovementInputModel? Product { get; set; }
 }

@@ -6,6 +6,7 @@ public partial class VouceCreateInputModel
     public VouceCreateInputModel()
     {
         ProductMovements = new HashSet<VouceProductMovementInputModel>();
+        ApplicationUserId = "";
     }
 
     [GraphQLDescription("simple note about the vouce")]

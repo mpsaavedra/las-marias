@@ -7,6 +7,7 @@ public partial class Vendor : BusinessEntity<long>
     {
         Movements = new HashSet<Movement>();
         VendorBrands = new HashSet<VendorBrand>();
+        Name = "";
     }
 
     [GraphQLDescription("this vendor Id")]

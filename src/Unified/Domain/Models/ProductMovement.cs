@@ -19,14 +19,14 @@ public partial class ProductMovement : BusinessEntity<long>
     // [UseFiltering]
     // [JsonIgnore]
     [GraphQLDescription("Product data")]
-    public virtual Product Product { get; set; }
+    public virtual Product? Product { get; set; }
 
     // [UseFiltering]
     // [UseSorting]
     // [JsonIgnore]
     [GraphQLDescription("Movement data")]
-    public virtual Movement Movement { get; set; }
+    public virtual Movement? Movement { get; set; }
 
     [GraphQLDescription("vouce object")]
-    public virtual Vouce Vouce { get; set; }
+    public virtual Vouce? Vouce { get; set; }
 }

@@ -3,6 +3,11 @@ namespace LasMarias.Domain.DataModels.Attribute;
 [GraphQLDescription("basic data to create a new attribute")]
 public class AttributeCreateInputModel
 {
+    public AttributeCreateInputModel()
+    {
+        Value = "";
+    }
+
     [GraphQLDescription("value of the attribute")]
     public string Value { get; set; }
 

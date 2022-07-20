@@ -4,7 +4,7 @@ namespace LasMarias.Domain.DataModels.MeasureUnit;
 public class MeasureUnitCreateInputModel
 {
     [GraphQLDescription("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [GraphQLDescription("code")]
     public Optional<string> Code { get; set; }

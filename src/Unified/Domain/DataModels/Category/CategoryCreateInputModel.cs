@@ -5,7 +5,7 @@ namespace LasMarias.Domain.DataModels.Category;
 public class CategoryCreateInputModel
 {
     [GraphQLDescription("name of the category")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [GraphQLDescription("unique code of this category")]
     public Optional<string> Code { get; set; }
