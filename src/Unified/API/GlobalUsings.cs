@@ -1,3 +1,4 @@
+global using AutoMapper;
 global using HotChocolate;
 global using HotChocolate.Data;
 global using HotChocolate.Types;
