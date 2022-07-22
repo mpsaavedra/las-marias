@@ -359,3 +359,5 @@ MigrationBackup/
 **/plugins/
 **/*.db*
 **/*.db-wal*
+installer/components/
+installer/*.exe
