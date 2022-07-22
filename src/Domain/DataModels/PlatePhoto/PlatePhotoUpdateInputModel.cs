@@ -2,6 +2,8 @@ namespace LasMarias.Domain.DataModels.PlatePhoto;
 
 public class PlatePhotoUpdateInputModel
 {
+    public long Id { get; set; }
+
     public Optional<string> ContentType { get; set; }
 
     public Optional<string> Date { get; set; }

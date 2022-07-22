@@ -3,6 +3,8 @@ namespace LasMarias.Domain.DataModels.Category;
 [GraphQLDescription("basic data of the category to update")]
 public class CategoryUpdateInputModel
 {
+    public long Id { get; set; }
+
     [GraphQLDescription("name of the category")]
     public Optional<string> Name { get; set; }
 

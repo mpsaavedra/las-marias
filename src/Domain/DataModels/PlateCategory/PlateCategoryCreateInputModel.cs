@@ -1,6 +1,6 @@
 namespace LasMarias.Domain.DataModels.PlateCategory;
 
-public class PlateCategoryInputModel
+public class PlateCategoryCreateInputModel
 {
     public long PlateId { get; set; }
 

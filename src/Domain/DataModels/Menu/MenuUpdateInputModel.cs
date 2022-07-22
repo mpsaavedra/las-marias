@@ -2,6 +2,8 @@ namespace LasMarias.Domain.DataModels.Menu;
 
 public class MenuUpdateInputModel
 {
+    public long Id { get; set; }
+
     public Optional<string> Name { get; set; }
 
     public Optional<string> Description { get; set; }

@@ -3,6 +3,8 @@ namespace LasMarias.Domain.DataModels.MeasureUnit;
 [GraphQLDescription("basic data to update a measure unit")]
 public class MeasureUnitUpdateInputModel
 {
+    public long Id { get; set; }
+
     [GraphQLDescription("name of the measure unit")]
     public Optional<string> Name { get; set; }
 

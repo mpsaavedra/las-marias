@@ -2,6 +2,8 @@ namespace LasMarias.Domain.DataModels.Country;
 
 public class CountryUpdateInputModel
 {
+    public long Id { get; set; }
+
     public Optional<string> Name { get; set; }
 
     public Optional<string> Code { get; set; }

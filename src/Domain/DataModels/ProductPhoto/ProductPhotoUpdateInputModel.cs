@@ -2,6 +2,8 @@ namespace LasMarias.Domain.DataModels.ProductPhoto;
 
 public class ProductPhotoUpdateInputModel
 {
+    public long Id { get; set; }
+
     public Optional<long> ProductId { get; set; }
 
     public Optional<string> ContentType { get; set; }

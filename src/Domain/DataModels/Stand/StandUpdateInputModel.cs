@@ -2,6 +2,8 @@ namespace LasMarias.Domain.DataModels.Stand;
 
 public class StandUpdateInputModel
 {
+    public long Id { get; set; }
+
     public Optional<string> Name { get; set; }
 
     public Optional<bool> Enable { get; set; }

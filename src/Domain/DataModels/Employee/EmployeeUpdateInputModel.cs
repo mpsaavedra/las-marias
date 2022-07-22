@@ -2,6 +2,8 @@ namespace LasMarias.Domain.DataModels.Employee;
 
 public class EmployeeUpdateInputModel
 {
+    public long Id { get; set; }
+
     public Optional<string> Name { get; set; }
 
     public Optional<string> Description { get; set; }

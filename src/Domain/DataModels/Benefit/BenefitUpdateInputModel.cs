@@ -2,6 +2,8 @@ namespace LasMarias.Domain.DataModels.Benefit;
 
 public class BenefitUpdateInputModel
 {
+    public long Id { get; set; }
+
 #pragma warning disable CS8618
     public Optional<string> Name { get; set; }
 #pragma warning restore CS8618
