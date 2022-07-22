@@ -16,6 +16,7 @@ public partial class PriceHistory : BusinessEntity<long>
     public long ProductId { get; set; }
 
     [GraphQLDescription("product which price was changed")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
@@ -34,6 +35,7 @@ public partial class PriceHistory : BusinessEntity<long>
     public string? ApplicationUserId { get; set; }
 
     [GraphQLDescription("Application user that change the price")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     public virtual ApplicationUser? ApplicationUser { get; set; }

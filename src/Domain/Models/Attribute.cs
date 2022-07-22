@@ -48,6 +48,7 @@ public partial class Attribute : BusinessEntity<long>
     public virtual AttributeName? AttributeName { get; set; }
 
     [GraphQLDescription("list of produts that uses this attribute")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

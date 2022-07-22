@@ -8,7 +8,7 @@ public partial class Plate : BusinessEntity<long>
     {
         PlateProducts = new HashSet<PlateProduct>();
         PlatePhotos = new HashSet<PlatePhoto>();
-        SellingPrice = 0;
+        SellingPrice = 0m;
         Name = "";
         MenuPlates = new HashSet<MenuPlate>();
         SellingPrice = 0m;
@@ -40,10 +40,14 @@ public partial class Plate : BusinessEntity<long>
     public bool Available { get; set; }
 
     [GraphQLDescription("plate categories")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual ICollection<PlateCategory>? PlateCategories { get; set; }
 
     [GraphQLDescription("lilst of relation of plate photos")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<PlatePhoto>? PlatePhotos { get; set; }

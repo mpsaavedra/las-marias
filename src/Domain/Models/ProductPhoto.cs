@@ -33,6 +33,7 @@ public partial class ProductPhoto : BusinessEntity<long>
     public long ProductId { get; set; }
 
     [GraphQLDescription("Product this photo is related to")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

@@ -34,6 +34,7 @@ public partial class AttributeName : BusinessEntity<long>
     public bool Enable { get; set; }
 
     [GraphQLDescription("list of attributes that uses this name")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

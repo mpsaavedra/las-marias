@@ -41,6 +41,7 @@ public partial class Benefit : BusinessEntity<long>
 
     [GraphQLDescription("list of user with this benefit")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     public virtual ICollection<UserBenefit> UserBenefits { get; set; }
 }

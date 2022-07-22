@@ -22,6 +22,9 @@ public partial class PlateProduct : BusinessEntity<long>
 
     // TODO: retrieve the product from the warehouse using the product Id
     [GraphQLDescription("Product to use in plate")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual Product? Product { get; }
 
     [GraphQLDescription("Amount of product in plate")]
@@ -32,5 +35,8 @@ public partial class PlateProduct : BusinessEntity<long>
 
     // TODO: retrieve the measure unit from the warehouse using the measureunit Id
     [GraphQLDescription("Measure unit the product is measure to use in plate")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual MeasureUnit? MeasureUnit { get; }
 }

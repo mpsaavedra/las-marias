@@ -37,6 +37,7 @@ public partial class Country : BusinessEntity<long>
 
     [GraphQLDescription("list of users in this country")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<ApplicationUser> Users { get; set; }

@@ -116,6 +116,7 @@ public static class ProgramExtensions
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapGraphQL();
+            endpoints.MapControllers();
         });
         return app;
     }

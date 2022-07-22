@@ -35,15 +35,18 @@ public partial class Menu : BusinessEntity<long>
     public string? Description { get; set; }
 
     [GraphQLDescription("if true menu is available")]
-    public bool Available { get; set; }
+    public bool? Available { get; set; }
 
     [GraphQLDescription("if true this menu in in offer")]
-    public bool Offer { get; set; }
+    public bool? Offer { get; set; }
 
     [GraphQLDescription("type of stand")]
     public virtual StandType StandType { get; set; }
 
     [GraphQLDescription("Plates the menu includes")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual ICollection<MenuPlate> MenuPlates { get; set; }
 
     [GraphQLDescription("Seling price of menu")]

@@ -23,12 +23,14 @@ public partial class Vendor : BusinessEntity<long>
     public bool Enable { get; set; }
 
     [GraphQLDescription("List of movements made by this vendor")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<Movement>? Movements { get; set; }
 
     [GraphQLDescription("List of relations that describes the brands distributed by this vendor")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

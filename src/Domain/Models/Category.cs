@@ -50,6 +50,7 @@ public partial class Category : BusinessEntity<long>
     public virtual Category? ParentCategory { get; set; }
 
     [GraphQLDescription("sub-category of this category")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
@@ -62,5 +63,8 @@ public partial class Category : BusinessEntity<long>
     public virtual ICollection<Product>? Products { get; set; }
 
     [GraphQLDescription("plates in this category")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual ICollection<PlateCategory> PlateCategories { get; set; }
 }

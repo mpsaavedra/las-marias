@@ -34,5 +34,8 @@ public partial class PlatePhoto : BusinessEntity<long>
     public long? PlateId { get; set; }
 
     [GraphQLDescription("plate this photo belong")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual Plate? Plate { get; set; }
 }

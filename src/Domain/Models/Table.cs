@@ -19,6 +19,7 @@ public partial class Table : BusinessEntity<long>
 
     [GraphQLDescription("Seats available for this table")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<Seat>? Seats { get; set; }
@@ -27,6 +28,7 @@ public partial class Table : BusinessEntity<long>
 
     [GraphQLDescription("Stand this table belongs to")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual Stand? Stand { get; set; }

@@ -45,6 +45,7 @@ public partial class Movement : BusinessEntity<long>
     public string ApplicationUserId { get; set; }
 
     [GraphQLDescription("list of relations of movement of product")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
@@ -53,6 +54,7 @@ public partial class Movement : BusinessEntity<long>
     [GraphQLDescription("id of the vendor")]
     public long? VendorId { get; set; }
 
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

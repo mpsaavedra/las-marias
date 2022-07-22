@@ -14,8 +14,14 @@ public partial class PlateCategory : BusinessEntity<long>
     public long? CategoryId { get; set; }
 
     [GraphQLDescription("Plate")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual Plate? Plate { get; set; }
 
     [GraphQLDescription("Category")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual Category? Category { get; set; }
 }

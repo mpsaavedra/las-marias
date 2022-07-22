@@ -13,8 +13,10 @@ public class MovementCreateInputModel
     [GraphQLDescription("description of the movement")]
     public Optional<string> Description { get; set; }
 
+#pragma warning disable CS8618
     [GraphQLDescription("id of the user that made the user")]
-    public string? ApplicationUserId { get; set; }
+    public string ApplicationUserId { get; set; }
+#pragma warning restore CS8618
 
     [GraphQLDescription("id of the product vendor if needed")]
     public Optional<long> VendorId { get; set; }

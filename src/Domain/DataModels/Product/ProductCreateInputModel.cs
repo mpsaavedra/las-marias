@@ -3,13 +3,10 @@ namespace LasMarias.Domain.DataModels.Product;
 [GraphQLDescription("basic data to create a new product")]
 public class ProductCreateInputModel
 {
-    public ProductCreateInputModel()
-    {
-        Name = "";
-    }
-
+#pragma warning disable CS8618
     [GraphQLDescription("name of the product")]
     public string Name { get; set; }
+#pragma warning restore CS8618
 
     [GraphQLDescription("description about the product")]
     public Optional<string> Description { get; set; }
@@ -30,17 +27,17 @@ public class ProductCreateInputModel
     public Optional<decimal> ReOrderLevel { get; set; }
 
     [GraphQLDescription("id of the measure unit")]
-    public long MeasureUnitId { get; set; }
+    public Optional<long> MeasureUnitId { get; set; }
 
     [GraphQLDescription("list of id of attributes")]
-    public ICollection<long>? AttributesIds { get; set; }
+    public Optional<ICollection<long>> AttributesIds { get; set; }
 
     [GraphQLDescription("list of ids of categories")]
-    public ICollection<long>? CategoriesIds { get; set; }
+    public Optional<ICollection<long>> CategoriesIds { get; set; }
 
     [GraphQLDescription("list of ids of product photos")]
-    public ICollection<long>? ProductPhotosId { get; set; }
+    public Optional<ICollection<long>> ProductPhotosId { get; set; }
 
     [GraphQLDescription("list of ids of the product brands relations")]
-    public ICollection<long>? ProductBrandsId { get; set; }
+    public Optional<ICollection<long>> ProductBrandsId { get; set; }
 }

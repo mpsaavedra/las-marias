@@ -24,11 +24,13 @@ public partial class UserBenefit : BusinessEntity<long>
 
     [GraphQLDescription("Benefit")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     public virtual Benefit? Benefit { get; set; }
 
     [GraphQLDescription("User")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     public virtual ApplicationUser? User { get; set; }
 }

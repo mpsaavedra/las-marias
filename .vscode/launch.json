@@ -25,6 +25,26 @@
             }
         },
         {
+            "name": ".NET Core Launch (Backend)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_backend_api",
+            "program": "${workspaceFolder}/src/Backend/API/bin/Debug/net6.0/LasMarias.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Backend/API",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"

@@ -43,6 +43,7 @@ public partial class MeasureUnit : BusinessEntity<long>
     public bool Enable { get; set; }
 
     [GraphQLDescription("list of products that uses this Measure unit")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

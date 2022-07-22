@@ -24,6 +24,7 @@ public partial class Seat : BusinessEntity<long>
 
     [GraphQLDescription("table this seat is set, it could be null if it is at the bar or an open stand/area")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual Table? Table { get; set; }
@@ -33,6 +34,7 @@ public partial class Seat : BusinessEntity<long>
 
     [GraphQLDescription("stand this seat is located")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     public virtual Stand? Stand { get; set; }
 

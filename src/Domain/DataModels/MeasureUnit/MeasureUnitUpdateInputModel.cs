@@ -3,9 +3,6 @@ namespace LasMarias.Domain.DataModels.MeasureUnit;
 [GraphQLDescription("basic data to update a measure unit")]
 public class MeasureUnitUpdateInputModel
 {
-    [GraphQLDescription("id of the measure unit to update")]
-    public long Id { get; set; }
-
     [GraphQLDescription("name of the measure unit")]
     public Optional<string> Name { get; set; }
 
@@ -14,4 +11,6 @@ public class MeasureUnitUpdateInputModel
 
     [GraphQLDescription("cast method to cast attribute value")]
     public Optional<Cast> Cast { get; set; }
+
+    public Optional<bool> Enable { get; set; }
 }

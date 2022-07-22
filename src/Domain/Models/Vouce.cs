@@ -19,6 +19,9 @@ public partial class Vouce : BusinessEntity<long>
     public string? ApplicationUserId { get; set; }
 
     [GraphQLDescription("Application user that register the vouce")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual ApplicationUser? ApplicationUser { get; set; }
 
     /// <summary>
@@ -38,6 +41,7 @@ public partial class Vouce : BusinessEntity<long>
     /// list of products included in this vouce
     /// </summary>
     [GraphQLDescription("list of products moments include all data related with the product movements")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

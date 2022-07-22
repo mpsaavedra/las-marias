@@ -13,9 +13,15 @@ public partial class MenuPlate : BusinessEntity<long>
     public long? MenuId { get; set; }
 
     [GraphQLDescription("Plate")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual Plate? Plate { get; set; }
 
     [GraphQLDescription("Menu")]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public virtual Menu? Menu { get; set; }
 
     [GraphQLDescription("Plate cost")]

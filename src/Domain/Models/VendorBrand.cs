@@ -13,12 +13,14 @@ public partial class VendorBrand : BusinessEntity<long>
     public long BrandId { get; set; }
 
     [GraphQLDescription("Vendor that distributes the brand")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual Vendor? Vendor { get; set; }
 
     [GraphQLDescription("Brand that the vendor distributes")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

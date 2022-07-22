@@ -40,12 +40,14 @@ public partial class Stand : BusinessEntity<long>
 
     [GraphQLDescription("list of tables of this stand, it could be none")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<Table>? Tables { get; set; }
 
     [GraphQLDescription("Seats available for this Stand")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<Seat>? Seats { get; set; }

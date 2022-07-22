@@ -42,6 +42,7 @@ public class ApplicationUser : IdentityUser, IBusinessEntity<string>
 
     [GraphQLDescription("users referred by this user")]
     [UseProjection]
+    [UseFiltering]
     [UseSorting]
     public virtual ICollection<ApplicationUser>? ReferredUsers { get; set; }
 
@@ -54,9 +55,9 @@ public class ApplicationUser : IdentityUser, IBusinessEntity<string>
     public string? VerificationEmailToken { get; set; }
 
     [GraphQLDescription("list of user benefits")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
-    [JsonIgnore]
     public virtual ICollection<UserBenefit>? Benefits { get; set; }
 
     [GraphQLDescription("if true user is active in the system")]

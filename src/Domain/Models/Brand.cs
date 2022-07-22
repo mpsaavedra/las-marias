@@ -29,12 +29,14 @@ public partial class Brand : BusinessEntity<long>
     public bool Enable { get; set; }
 
     [GraphQLDescription("list of products of this brand")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<ProductBrand>? ProductBrands { get; set; }
 
     [GraphQLDescription("list of vendors that provide this brand")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]

@@ -29,14 +29,14 @@ public class ProductUpdateInputModel
     public Optional<decimal> ReOrderLevel { get; set; }
 
     [GraphQLDescription("ids of products attributes")]
-    public ICollection<long>? AttributesIds { get; set; }
+    public Optional<ICollection<long>> AttributesIds { get; set; }
 
     [GraphQLDescription("ids of products categories")]
-    public ICollection<long>? CategoriesIds { get; set; }
+    public Optional<ICollection<long>> CategoriesIds { get; set; }
 
     [GraphQLDescription("ids of product photos")]
-    public ICollection<long>? ProductPhotosIds { get; set; }
+    public Optional<ICollection<long>> ProductPhotosIds { get; set; }
 
     [GraphQLDescription("ids of product brands")]
-    public ICollection<long>? ProductBrandsIds { get; set; }
+    public Optional<ICollection<long>> ProductBrandsIds { get; set; }
 }

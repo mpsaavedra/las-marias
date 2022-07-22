@@ -52,18 +52,21 @@ public partial class Product : BusinessEntity<long>
     public long? MeasureUnitId { get; set; }
 
     [GraphQLDescription("Measure unit this product is measured normally")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual MeasureUnit? MeasureUnit { get; set; }
 
     [GraphQLDescription("list of attributes of this product. this allow to fine grain filter the products, for example pork meat 2kg bag and pork meat 1kg meat.")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<Attribute>? Attributes { get; set; }
 
     [GraphQLDescription("lilst of relation of product photos")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
@@ -76,18 +79,21 @@ public partial class Product : BusinessEntity<long>
     public virtual ICollection<Category>? Categories { get; set; }
 
     [GraphQLDescription("list all price changes")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<PriceHistory>? PriceHistories { get; set; }
 
     [GraphQLDescription("list of product movements, this relation trace all movements")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
     public virtual ICollection<ProductMovement>? ProductMovements { get; set; }
 
     [GraphQLDescription("brands list of this product, more than one if product could be produced by more than one brand, for example toothpaste, Colgate and SpringFlavor. Only one is normal in common cases")]
+    [UseProjection]
     [UseFiltering]
     [UseSorting]
     [JsonIgnore]
