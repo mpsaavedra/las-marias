@@ -74,9 +74,9 @@ LangString DESC_SecAspNET ${LANG_SPANISH} "Paquete de redistribucino de .NET 6"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecAspNET} $(DESC_SecAspNET)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
-Function finishpageaction
+; Function finishpageaction
 ; CreateShortcut "$DESKTOP\foo.lnk" "$INSTDIR\ControlPanel.exe"
-FunctionEnd
+; FunctionEnd
 
 ; !define MUI_FINISHPAGE_SHOWREADME ""
 ; !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
