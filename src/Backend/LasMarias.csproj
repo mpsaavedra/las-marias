@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="6.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.0" />
     <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="5.0.1" /> 
     <PackageReference Include="AutoMapper" Version="11.0.1" /> 
@@ -83,6 +86,37 @@
     <Exec Command="dotnet build ../BusinessLogic/Vendor/" />
     <Exec Command="dotnet build ../BusinessLogic/VendorBrand/" />
     <Exec Command="dotnet build ../BusinessLogic/Vouce/" />
+  </Target>
+
+  <Target Name="AfterPublishTarget" AfterTargets="Publish">
+    <Exec Command="dotnet publish ../BusinessLogic/ApplicationUser/ -o ../../installer/components/backend/plugins/ApplicationUser/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Attribute/ -o ../../installer/components/backend/plugins/Attribute/" />
+    <Exec Command="dotnet publish ../BusinessLogic/AttributeName/ -o ../../installer/components/backend/plugins/AttributeName/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Benefit/ -o ../../installer/components/backend/plugins/Benefit/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Brand/ -o ../../installer/components/backend/plugins/Brand/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Category/ -o ../../installer/components/backend/plugins/Category/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Country/ -o ../../installer/components/backend/plugins/Country/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Employee/ -o ../../installer/components/backend/plugins/Employee/" />
+    <Exec Command="dotnet publish ../BusinessLogic/MeasureUnit/ -o ../../installer/components/backend/plugins/MeasureUnit/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Menu/ -o ../../installer/components/backend/plugins/Menu/" />
+    <Exec Command="dotnet publish ../BusinessLogic/MenuPlate/ -o ../../installer/components/backend/plugins/MenuPlate/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Movement/ -o ../../installer/components/backend/plugins/Movement/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Plate/ -o ../../installer/components/backend/plugins/Plate/" />
+    <Exec Command="dotnet publish ../BusinessLogic/PlateCategory/ -o ../../installer/components/backend/plugins/PlateCategory/" />
+    <Exec Command="dotnet publish ../BusinessLogic/PlatePhoto/ -o ../../installer/components/backend/plugins/PlatePhoto/" />
+    <Exec Command="dotnet publish ../BusinessLogic/PlateProduct/ -o ../../installer/components/backend/plugins/PlateProduct/" />
+    <Exec Command="dotnet publish ../BusinessLogic/PriceHistory/ -o ../../installer/components/backend/plugins/PriceHistory/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Product/ -o ../../installer/components/backend/plugins/Product/" />
+    <Exec Command="dotnet publish ../BusinessLogic/ProductBrand/ -o ../../installer/components/backend/plugins/ProductBrand/" />
+    <Exec Command="dotnet publish ../BusinessLogic/ProductMovement/ -o ../../installer/components/backend/plugins/ProductMovement/" />
+    <Exec Command="dotnet publish ../BusinessLogic/ProductPhoto/ -o ../../installer/components/backend/plugins/ProductPhoto/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Seat/ -o ../../installer/components/backend/plugins/Seat/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Stand/ -o ../../installer/components/backend/plugins/Stand/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Table/ -o ../../installer/components/backend/plugins/Table/" />
+    <Exec Command="dotnet publish ../BusinessLogic/UserBenefit/ -o ../../installer/components/backend/plugins/UserBenefit/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Vendor/ -o ../../installer/components/backend/plugins/Vendor/" />
+    <Exec Command="dotnet publish ../BusinessLogic/VendorBrand/ -o ../../installer/components/backend/plugins/VendorBrand/" />
+    <Exec Command="dotnet publish ../BusinessLogic/Vouce/ -o ../../installer/components/backend/plugins/Vouce/" />
   </Target>
 
 </Project>

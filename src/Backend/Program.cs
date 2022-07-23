@@ -1,4 +1,14 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.Extensions.Hosting.WindowsServices;
+
+var options = new WebApplicationOptions
+{
+    Args = args,
+    ContentRootPath = WindowsServiceHelpers.IsWindowsService() ? AppContext.BaseDirectory : default
+};
+
+var builder = WebApplication.CreateBuilder(options);
+// var builder = WebApplication.CreateBuilder(args);
+
 const string APP_NAME = "Las Marias";
 var IS_DEVELOPMENT = builder.Environment.IsDevelopment();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -114,6 +124,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Host.UseWindowsService();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -130,4 +141,5 @@ app
     .ConfigurePlugins()
     .UseGraphQL();
 
-app.Run();
+// app.Run();
+await app.RunAsync();

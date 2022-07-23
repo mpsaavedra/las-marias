@@ -12,9 +12,9 @@
     "LasMarias": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
-      "applicationUrl": "https://0.0.0.0:7188;http://0.0.0.0:5094",
+      "applicationUrl": "https://0.0.0.0:7944;http://0.0.0.0:7945",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

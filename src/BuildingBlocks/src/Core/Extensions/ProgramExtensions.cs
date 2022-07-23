@@ -37,15 +37,20 @@ public static class ProgramExtensions
     {
         var seqServerUrl = builder.Configuration["SeqServerUrl"];
 
-        Log.Logger = new LoggerConfiguration()
+        var cfg = new LoggerConfiguration()
             .ReadFrom.Configuration(builder.Configuration)
             .Enrich.WithProperty("ApplicationName", appName)
             .Enrich.FromLogContext()
             .WriteTo.Console(outputTemplate:
                 "[{Timestamp:HH:mm:ss} {Level:u3}] - ({ApplicationName}) {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}"
-            )
-            .WriteTo.Seq(seqServerUrl)
-            .CreateLogger();
+            );
+
+        if (seqServerUrl != null)
+        {
+            cfg.WriteTo.Seq(seqServerUrl);
+        }
+
+        Log.Logger = cfg.CreateLogger();
 
         builder.Host.UseSerilog();
         return builder;

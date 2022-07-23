@@ -40,7 +40,6 @@ namespace Orun.Extensions
                 services));
 
             services.AddScoped<IChainOfResponsibilityService, ChainOfResponsibilityService>();
-            services.AddScoped<IPluginService, PluginService>();
 
             return services;
         }
