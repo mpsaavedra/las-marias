@@ -10,5 +10,5 @@ public class PlateProductUpdateInputModel
 
     public Optional<decimal> Amount { get; set; }
 
-    public Optional<long> MeaasureUnitId { get; set; }
+    public Optional<long> MeasureUnitId { get; set; }
 }

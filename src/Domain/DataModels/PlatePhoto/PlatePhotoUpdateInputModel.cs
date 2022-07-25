@@ -6,7 +6,7 @@ public class PlatePhotoUpdateInputModel
 
     public Optional<string> ContentType { get; set; }
 
-    public Optional<string> Date { get; set; }
+    public Optional<string> Data { get; set; }
 
     public Optional<string> PhotoUrl { get; set; }
 

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LasMarias.ControlPanel"
         mc:Ignorable="d"
-        Title="Control Panel" Height="450" Width="300">
+        Title="Las Marias Control Panel" Height="450" Width="300">
     <Grid>
-        <TextBox />
+        <TextBox Text="asd" />
     </Grid>
 </Window>

@@ -4,16 +4,15 @@ public class EmployeeUpdateInputModel
 {
     public long Id { get; set; }
 
-    public Optional<string> Name { get; set; }
+    public Optional<string> UserId { get; set; }
 
-    public Optional<string> Description { get; set; }
+    public Optional<EmployeeStatus> Status { get; set; }
 
-    public Optional<bool> Enable { get; set; }
+    public Optional<EmployeeType> EmployeeTye { get; set; }
 
-    public Optional<decimal> DisccountAmount { get; set; }
+    public Optional<DateOnly> DateOfBirth { get; set; }
 
-    [GraphQLDescription("Where the benefit is applied to, default Cost")]
-    public Optional<BenefitOver> Over { get; set; }
+    public Optional<DateOnly> HiredDate { get; set; }
 
     public Optional<DateOnly> ReleaseDate { get; set; }
 

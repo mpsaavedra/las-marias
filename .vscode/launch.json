@@ -5,7 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (Unified)",
+            "name": "Control Panel",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_control_panel",
+            "program": "${workspaceFolder}/src/ControlPanel/bin/Debug/net6.0-windows/LasMarias.ControlPanel.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Unified",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build_unified_api",
@@ -25,7 +36,7 @@
             }
         },
         {
-            "name": ".NET Core Launch (Backend)",
+            "name": "Backend",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build_backend_api",

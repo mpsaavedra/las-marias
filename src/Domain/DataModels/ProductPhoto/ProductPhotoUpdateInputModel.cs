@@ -14,5 +14,5 @@ public class ProductPhotoUpdateInputModel
 
     public Optional<string> DesignColor { get; set; }
 
-    public Optional<bool> DefaultColor { get; set; }
+    public Optional<bool> DefaultPhoto { get; set; }
 }

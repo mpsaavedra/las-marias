@@ -15,5 +15,5 @@ public class CategoryUpdateInputModel
     public Optional<bool> Enable { get; set; }
 
     [GraphQLDescription("id of the parent category")]
-    public Optional<long> ParentCagetoryId { get; set; }
+    public Optional<long> ParentCategoryId { get; set; }
 }

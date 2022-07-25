@@ -9,7 +9,8 @@ RequestExecutionLevel admin
 
 !define APP_NAME "LasMarias"
 !define MUI_HEADERIMAGE
-!define MUI_HEADERIMAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Header\nsis.bmp"
+!define MUI_HEADERIMAGE_BITMAP "banner.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "side.bmp"
 !define MUI_ABORTWARNING
 
 !insertmacro MUI_PAGE_WELCOME
@@ -48,12 +49,12 @@ Section "Nssm (Gestor de Servicios)" SecNssm
 SectionEnd
 
 Section "VC++ Redistributable" SecVCRedist
-    File /nonfatal /r "components\nssm"
+    ; File /nonfatal /r "components\vcredist"
 SectionEnd
 
 Section ".NET 6 Runime" SecAspNET
-  File /nonfatal /r "components\aspnetruntime"
-  ExecWait '"$INSTDIR\dotnetruntime\dotnet-runtime-6.0.1-win-x64.exe" "/install" "/passive"'
+;   File /nonfatal /r "components\aspnetruntime"
+;   ExecWait '"$INSTDIR\dotnetruntime\dotnet-runtime-6.0.1-win-x64.exe" "/install" "/passive"'
 SectionEnd
 
 LangString DESC_SecDatabase ${LANG_SPANISH} "Servidor de base de datos."
@@ -90,8 +91,8 @@ Function .oninstsuccess
     ExecWait '"$INSTDIR\nssm\Win64\nssm.exe" "install" "MariasNginx" "$INSTDIR\nginx\nginx.exe"'
     ExecWait '"$INSTDIR\nssm\Win64\nssm.exe" "start" "MariasNginx" "SERVICE_AUTO_START"'
     ExecWait '"$INSTDIR\nssm\Win64\nssm.exe" "start" "MariasNginx"'
-
-    ExecWait '"$INStDIR\nssm\Win64\nssm.exe" "install" "MariasPostgreSQL" "$INSTDIR\PostgreSQL\bin\pg_ctl.exe"'
+; "C:\Users\Michel\Desktop\test\LasMarias\PostgreSQL\bin\pg_ctl.exe" runservice -N " MariasPostgreSQL" -D "C:\Users\Michel\Desktop\test\LasMarias\ C:\Users\Michel\Desktop\test\LasMarias\db_data"
+    ExecWait '"$INStDIR\nssm\Win64\nssm.exe" "install" "MariasPostgreSQL" "$INSTDIR\PostgreSQL\bin\pg_ctl.exe" "-D $INSTDIR\PostgreSQL\data"'
     ; ExecWait '"$INSTDIR\nssm\Win64\nssm.exe" "set" "MariasPostgreSQL" "PATH="$INSTDIR\PostgreSQL\bin";%PATH%"'
     ; ExecWait '"$INSTDIR\nssm\Win64\nssm.exe" "set" "MariasPostgreSQL" "PGDATA="$INSTDIR\PostgreSQL\data"'
     ; ExecWait '"$INSTDIR\nssm\Win64\nssm.exe" "set" "MariasPostgreSQL" "PGUSER=marias"'
@@ -103,12 +104,7 @@ Function .oninstsuccess
     ExecWait '"$INStDIR\nssm\Win64\nssm.exe" "start" "MariasBackend" "SERVICE_AUTO_START"'
     ExecWait '"$INStDIR\nssm\Win64\nssm.exe" "start" "MariasBackend"'
 
-;    ShellExecAsUser::ShellExecAsUser "" "$INSTDIR\Application.exe" ""
-    ; Exec '"$WinDir\Notepad.exe"'
     ExecShell "open" "http://localhost/" SW_SHOWNORMAL
-    ; ExecWait '"$WinDir\Notepad.exe"'
-    ; ExecWait '"$instdir\myapp.exe"'
-    ; Exec '"$instdir\otherapp.exe" param1 "par am 2" param3'
 FunctionEnd
 
 Function .onInit

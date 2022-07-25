@@ -15,7 +15,7 @@ function App() {
             style={{ width: 250, height: 90 }}
           />
           <h5 className='mb-3'>
-            Thank you for using our product. We're glad you're with us.
+            Hello you, bro.
           </h5>
           <p className='mb-3'>MDB Team</p>
           <MDBBtn

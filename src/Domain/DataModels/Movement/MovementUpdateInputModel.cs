@@ -16,7 +16,7 @@ public class MovementUpdateInputModel
     public Optional<string> Description { get; set; }
 
     [GraphQLDescription("id of the user that made the movement")]
-    public Optional<string> ApplicationUserId { get; set; }
+    public Optional<string> UserId { get; set; }
 
     [GraphQLDescription("id of the vendor")]
     public Optional<long> VendorId { get; set; }
